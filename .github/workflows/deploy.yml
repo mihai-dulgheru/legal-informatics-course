@@ -25,10 +25,17 @@ jobs:
 
       - name: Criptare și pregătire fișiere
         run: |
-          # 1. Criptează fișierele HTML din folderul 'src' și le pune în noul folder 'dist'
-          staticrypt "src/*.html" -p ${{ secrets.STATIC_PASSWORD }} -d dist/ --remember 7
+          # 1. Creăm folderul 'dist' în prealabil ca să fim siguri că există
+          mkdir -p dist
 
-          # 2. Copiază restul fișierelor (CSS, JS, imagini) în 'dist', ignorând HTML-urile deja copiate
+          # 2. Căutăm fiecare fișier HTML și îl criptăm individual
+          for file in src/*.html; do
+            if [ -f "$file" ]; then
+              staticrypt "$file" -p "${{ secrets.STATIC_PASSWORD }}" -d dist/ --remember 7
+            fi
+          done
+
+          # 3. Copiem restul fișierelor (imagini, CSS), ignorând HTML-urile deja criptate
           rsync -a --exclude="*.html" src/ dist/
 
       - name: Publicare pe GitHub Pages
