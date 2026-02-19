@@ -26,7 +26,7 @@ jobs:
       - name: Criptare și pregătire fișiere
         run: |
           # 1. Criptează fișierele HTML din folderul 'src' și le pune în noul folder 'dist'
-          staticrypt "src/**/*.html" -p ${{ secrets.STATIC_PASSWORD }} -d dist/ --remember 7
+          staticrypt "src/*.html" -p ${{ secrets.STATIC_PASSWORD }} -d dist/ --remember 7
 
           # 2. Copiază restul fișierelor (CSS, JS, imagini) în 'dist', ignorând HTML-urile deja copiate
           rsync -a --exclude="*.html" src/ dist/
