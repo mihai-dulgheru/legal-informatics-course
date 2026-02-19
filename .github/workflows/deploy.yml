@@ -12,33 +12,29 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout cod
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Instalare Node.js
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      - name: Instalare StatiCrypt
+      - name: Install StatiCrypt
         run: npm install -g staticrypt
 
-      - name: Criptare și pregătire fișiere
+      - name: Encrypt and prepare files
         run: |
-          # 1. Creăm folderul 'dist' în prealabil ca să fim siguri că există
+          # 1. Create the 'dist' folder beforehand to ensure it exists
           mkdir -p dist
 
-          # 2. Căutăm fiecare fișier HTML și îl criptăm individual
-          for file in src/*.html; do
-            if [ -f "$file" ]; then
-              staticrypt "$file" -p "${{ secrets.STATIC_PASSWORD }}" -d dist/ --remember 7
-            fi
-          done
+          # 2. Encrypt all HTML files at once
+          staticrypt src/*.html -p "${{ secrets.STATIC_PASSWORD }}" -d dist/ --remember 7
 
-          # 3. Copiem restul fișierelor (imagini, CSS), ignorând HTML-urile deja criptate
+          # 3. Copy the rest of the files (images, CSS), ignoring the already encrypted HTML files
           rsync -a --exclude="*.html" src/ dist/
 
-      - name: Publicare pe GitHub Pages
+      - name: Publish to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
