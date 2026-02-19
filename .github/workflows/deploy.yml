@@ -1,0 +1,38 @@
+name: Encrypt and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout cod
+        uses: actions/checkout@v4
+
+      - name: Instalare Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Instalare StatiCrypt
+        run: npm install -g staticrypt
+
+      - name: Criptare și pregătire fișiere
+        run: |
+          # 1. Criptează fișierele HTML din folderul 'src' și le pune în noul folder 'dist'
+          staticrypt "src/**/*.html" -p ${{ secrets.STATIC_PASSWORD }} -d dist/ --remember 7
+
+          # 2. Copiază restul fișierelor (CSS, JS, imagini) în 'dist', ignorând HTML-urile deja copiate
+          rsync -a --exclude="*.html" src/ dist/
+
+      - name: Publicare pe GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
