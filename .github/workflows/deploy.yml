@@ -29,7 +29,21 @@ jobs:
           mkdir -p dist
 
           # 2. Encrypt all HTML files at once
-          staticrypt src/*.html -p "${{ secrets.STATIC_PASSWORD }}" -d dist/ --remember 7
+          staticrypt src/*.html \
+            -d dist/ \
+            -p "${{ secrets.STATICRYPT_PASSWORD }}" \
+            --remember 7 \
+            --template-button "DECRIPTEAZĂ" \
+            --template-color-primary "#4CAF50" \
+            --template-color-secondary "#E4E4E4" \
+            --template-instructions '<style>.staticrypt-form { border-radius: 12px !important; } #staticrypt-form > input { border-radius: 8px !important; }</style>' \
+            --template-error "Parolă incorectă!" \
+            --template-placeholder "Parolă" \
+            --template-remember "Ține-mă minte" \
+            --template-title "Pagină protejată" \
+            --template-toggle-hide "Ascunde parola" \
+            --template-toggle-show "Afișează parola"
+
 
           # 3. Copy the rest of the files (images, CSS), ignoring the already encrypted HTML files
           rsync -a --exclude="*.html" src/ dist/
