@@ -36,7 +36,7 @@ jobs:
             --template-button "Decriptează" \
             --template-color-primary "#4338CA" \
             --template-color-secondary "#EEF2FF" \
-            --template-instructions '<link rel="icon" href="favicon.ico"><style>.staticrypt-form { border-radius: 12px !important; } #staticrypt-form > input { border-radius: 8px !important; }</style>' \
+            --template-instructions '<style>.staticrypt-form { border-radius: 12px !important; } #staticrypt-form > input { border-radius: 8px !important; }</style>' \
             --template-error "Parolă incorectă!" \
             --template-placeholder "Parolă" \
             --template-remember "Ține-mă minte" \
