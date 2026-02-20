@@ -33,9 +33,9 @@ jobs:
             -d dist/ \
             -p "${{ secrets.STATICRYPT_PASSWORD }}" \
             --remember 7 \
-            --template-button "DECRIPTEAZĂ" \
-            --template-color-primary "#4CAF50" \
-            --template-color-secondary "#E4E4E4" \
+            --template-button "Decriptează" \
+            --template-color-primary "#4338CA" \
+            --template-color-secondary "#EEF2FF" \
             --template-instructions '<style>.staticrypt-form { border-radius: 12px !important; } #staticrypt-form > input { border-radius: 8px !important; }</style>' \
             --template-error "Parolă incorectă!" \
             --template-placeholder "Parolă" \
