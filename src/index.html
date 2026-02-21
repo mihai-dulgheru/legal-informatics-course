@@ -499,6 +499,9 @@
         padding: 20px 16px;
         min-height: 140px;
         transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
       }
 
       .drop-zone h4 {
@@ -1388,7 +1391,10 @@
           <button class="btn-check" onclick="checkBlanks('sec-2')">
             Verifică Răspunsuri
           </button>
-          <button class="btn-check btn-next" onclick="scrollToSection('sec-3')">
+          <button
+            class="btn-check btn-next"
+            onclick="scrollToSection('sec-3', this)"
+          >
             Continuă la Secțiunea 3
           </button>
           <div id="feedback-sec-2" class="feedback-msg"></div>
@@ -1798,6 +1804,7 @@
 
           <div class="drop-zones">
             <div
+              id="zone-doc"
               class="drop-zone"
               ondrop="drop(event, 'doc')"
               ondragover="allowDrop(event)"
@@ -1806,6 +1813,7 @@
               <small>Căutare &amp; Stocare Informații</small>
             </div>
             <div
+              id="zone-gest"
               class="drop-zone"
               ondrop="drop(event, 'gest')"
               ondragover="allowDrop(event)"
@@ -1814,6 +1822,7 @@
               <small>Management &amp; Organizare</small>
             </div>
             <div
+              id="zone-dec"
               class="drop-zone"
               ondrop="drop(event, 'dec')"
               ondragover="allowDrop(event)"
@@ -1825,7 +1834,10 @@
           <button class="btn-check" onclick="checkDragDrop('sec-3')">
             Verifică Clasificarea
           </button>
-          <button class="btn-check btn-next" onclick="scrollToSection('sec-4')">
+          <button
+            class="btn-check btn-next"
+            onclick="scrollToSection('sec-4', this)"
+          >
             Continuă la Secțiunea 4
           </button>
           <div id="feedback-sec-3" class="feedback-msg"></div>
@@ -2140,7 +2152,10 @@
           <button class="btn-check" onclick="checkRadio('sec-4', '1')">
             Verifică Răspunsul
           </button>
-          <button class="btn-check btn-next" onclick="scrollToSection('sec-5')">
+          <button
+            class="btn-check btn-next"
+            onclick="scrollToSection('sec-5', this)"
+          >
             Continuă la Secțiunea 5
           </button>
           <div id="feedback-sec-4" class="feedback-msg"></div>
@@ -2249,12 +2264,37 @@
                 </li>
               </ul>
 
-              <div class="video-placeholder" style="margin-top: 20px">
-                📹 <strong>Video:</strong> Demo căutare legislație pe Lege5
-                <br /><small
-                  >(Se va prezenta live sau căutați: "Lege5 tutorial" pe
-                  YouTube)</small
-                >
+              <div
+                style="
+                  margin-top: 20px;
+                  position: relative;
+                  padding-bottom: 56.25%;
+                  height: 0;
+                  overflow: hidden;
+                  border-radius: 8px;
+                "
+              >
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/a7jH53OQvko"
+                  title="Demo căutare legislație pe Lege5"
+                  frameborder="0"
+                  allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                  "
+                  allowfullscreen
+                  style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                  "
+                ></iframe>
               </div>
             </div>
           </details>
@@ -2298,10 +2338,37 @@
                 </li>
               </ul>
 
-              <div class="video-placeholder" style="margin-top: 20px">
-                📹 <strong>Video:</strong> EUR-Lex Navigation Guide <br /><small
-                  >(Video oficial Comisia Europeană)</small
-                >
+              <div
+                style="
+                  margin-top: 20px;
+                  position: relative;
+                  padding-bottom: 56.25%;
+                  height: 0;
+                  overflow: hidden;
+                  border-radius: 8px;
+                "
+              >
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/X3MWwONb8Ck"
+                  title="EUR-Lex Navigation Guide"
+                  frameborder="0"
+                  allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                  "
+                  allowfullscreen
+                  style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                  "
+                ></iframe>
               </div>
             </div>
           </details>
@@ -2350,10 +2417,6 @@
                 ECRIS (este pentru grefieri/magistrați). Veți interacționa prin
                 <strong>Portal Instanțe</strong> (portal.just.ro).
               </article>
-
-              <div class="video-placeholder" style="margin-top: 20px">
-                📹 Demo ECRIS pentru grefieri (prezentare generală)
-              </div>
             </div>
           </details>
 
@@ -2389,8 +2452,37 @@
                 în orice țară UE, informații despre sisteme judiciare.
               </p>
 
-              <div class="video-placeholder" style="margin-top: 20px">
-                📹 Video: How to use e-Justice Portal (Comisia Europeană)
+              <div
+                style="
+                  margin-top: 20px;
+                  position: relative;
+                  padding-bottom: 56.25%;
+                  height: 0;
+                  overflow: hidden;
+                  border-radius: 8px;
+                "
+              >
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/xQ8VrRSZFSs"
+                  title="How to use e-Justice Portal"
+                  frameborder="0"
+                  allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                  "
+                  allowfullscreen
+                  style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                  "
+                ></iframe>
               </div>
             </div>
           </details>
@@ -2472,7 +2564,10 @@
           <button class="btn-check" onclick="checkSelects('sec-5')">
             Verifică Asocierile
           </button>
-          <button class="btn-check btn-next" onclick="scrollToSection('sec-6')">
+          <button
+            class="btn-check btn-next"
+            onclick="scrollToSection('sec-6', this)"
+          >
             Continuă la Secțiunea 6
           </button>
           <div id="feedback-sec-5" class="feedback-msg"></div>
@@ -2765,10 +2860,17 @@
         }
       }
 
-      function scrollToSection(id) {
+      function scrollToSection(id, triggerElement) {
         const el = document.getElementById(id);
+        if (!el) return;
+        // Mark the section that contains the button as completed
+        if (triggerElement) {
+          const currentSection = triggerElement.closest("section");
+          if (currentSection) currentSection.classList.add("completed");
+        }
         el.classList.add("active");
         el.scrollIntoView({ behavior: "smooth" });
+        saveState();
       }
 
       // Utility: strip Romanian diacritics
@@ -2998,24 +3100,19 @@
         saveState();
       }
 
-      // ========== COOKIE PERSISTENCE ==========
-      function setCookie(name, value, days) {
-        const d = new Date();
-        d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
-        document.cookie =
-          name +
-          "=" +
-          encodeURIComponent(value) +
-          ";expires=" +
-          d.toUTCString() +
-          ";path=/;SameSite=Lax";
+      // ========== LOCALSTORAGE PERSISTENCE ==========
+      function setCookie(name, value) {
+        try {
+          localStorage.setItem(name, value);
+        } catch (e) {}
       }
 
       function getCookie(name) {
-        const match = document.cookie.match(
-          new RegExp("(^| )" + name + "=([^;]+)"),
-        );
-        return match ? decodeURIComponent(match[2]) : null;
+        try {
+          return localStorage.getItem(name);
+        } catch (e) {
+          return null;
+        }
       }
 
       function saveState() {
@@ -3086,11 +3183,18 @@
           }
         });
 
+        // Save drag-and-drop positions
+        data.dragPositions = {};
+        document.querySelectorAll(".draggable-item").forEach((item) => {
+          const parent = item.parentElement;
+          data.dragPositions[item.id] = parent ? parent.id : "source-sec3";
+        });
+
         // Save checkbox
         const chk = document.getElementById("check-objectives");
         if (chk) data.checkObjectives = chk.checked;
 
-        setCookie("courseState", JSON.stringify(data), 7);
+        setCookie("courseState", JSON.stringify(data));
       }
 
       function loadState() {
@@ -3177,6 +3281,17 @@
           });
         }
 
+        // Restore drag-and-drop positions
+        if (data.dragPositions) {
+          Object.entries(data.dragPositions).forEach(
+            ([itemId, containerId]) => {
+              const item = document.getElementById(itemId);
+              const container = document.getElementById(containerId);
+              if (item && container) container.appendChild(item);
+            },
+          );
+        }
+
         // Restore checkbox
         const chk = document.getElementById("check-objectives");
         if (chk && data.checkObjectives) chk.checked = true;
@@ -3197,6 +3312,19 @@
         document.getElementById("main-progress-bar").style.width =
           percent + "%";
         document.getElementById("percent-display").innerText = percent + "%";
+
+        // Scroll to the last active section (where the user left off).
+        const allSections = Array.from(
+          document.querySelectorAll("section[id]"),
+        );
+        const activeSectionEls = allSections.filter((s) =>
+          s.classList.contains("active"),
+        );
+        if (activeSectionEls.length > 1) {
+          // More than just sec-1 is active — scroll to the last one.
+          const target = activeSectionEls[activeSectionEls.length - 1];
+          target.scrollIntoView({ behavior: "instant" });
+        }
       }
 
       // Load saved state on page load
