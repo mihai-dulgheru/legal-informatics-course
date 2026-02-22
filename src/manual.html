@@ -1,0 +1,1329 @@
+<!doctype html>
+<html lang="ro" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curs Universitar Interactiv - Informatică Juridică 2026</title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ========== DESIGN TOKENS ========== */
+      :root {
+        --primary: #4338ca;
+        --primary-light: #6366f1;
+        --primary-dark: #3730a3;
+        --primary-bg: #eef2ff;
+        --primary-bg-hover: #e0e7ff;
+        --secondary: #0f172a;
+        --success: #059669;
+        --success-bg: #ecfdf5;
+        --success-border: #a7f3d0;
+        --error: #dc2626;
+        --error-bg: #fef2f2;
+        --error-border: #fecaca;
+        --warn-bg: #fffbeb;
+        --warn-border: #fde68a;
+        --surface: #ffffff;
+        --surface-2: #f8fafc;
+        --surface-3: #f1f5f9;
+        --border: #e2e8f0;
+        --border-light: #f1f5f9;
+        --text: #0f172a;
+        --text-secondary: #475569;
+        --text-muted: #94a3b8;
+        --radius: 16px;
+        --radius-sm: 10px;
+        --radius-xs: 6px;
+        --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+        --shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+        --shadow-lg: 0 12px 40px rgba(15, 23, 42, 0.1);
+        --shadow-primary: 0 4px 14px rgba(67, 56, 202, 0.25);
+        --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        --font-heading: "Inter", system-ui, -apple-system, sans-serif;
+        --font-body: "Source Serif 4", "Georgia", serif;
+        --font-ui: "Inter", system-ui, -apple-system, sans-serif;
+      }
+
+      /* ========== RESET & BASE ========== */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--font-body);
+        font-size: 1.05rem;
+        line-height: 1.75;
+        color: var(--text);
+        background: var(--surface-3);
+        padding: 40px 0;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: var(--font-heading);
+        line-height: 1.3;
+        letter-spacing: -0.01em;
+      }
+
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      ul,
+      ol {
+        padding-left: 1.5em;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+        text-align: justify;
+      }
+
+      img {
+        max-width: 100%;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      /* ========== MAIN CONTAINER ========== */
+      main.container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* ========== SECTIONS AS CARDS ========== */
+      section {
+        background: var(--surface);
+        border-radius: var(--radius);
+        padding: 40px 44px;
+        margin-bottom: 28px;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+      }
+
+      @media (max-width: 768px) {
+        section {
+          padding: 24px 20px;
+        }
+        main.container {
+          padding: 0 10px;
+        }
+      }
+
+      section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: var(--primary);
+      }
+
+      /* ========== TYPOGRAPHY ========== */
+      h1 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--primary-dark);
+        margin-bottom: 1.5rem;
+        text-align: center;
+        text-transform: uppercase;
+        border-bottom: 2px solid var(--border);
+        padding-bottom: 20px;
+      }
+
+      h2 {
+        color: var(--secondary);
+        font-size: 1.65rem;
+        font-weight: 800;
+        border-bottom: none;
+        padding-bottom: 16px;
+        margin-bottom: 8px;
+        margin-top: 2rem;
+        letter-spacing: -0.02em;
+      }
+
+      h3 {
+        color: var(--secondary);
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-top: 28px;
+        margin-bottom: 12px;
+      }
+
+      h4 {
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: var(--secondary);
+        margin-bottom: 8px;
+      }
+
+      /* ========== ARTICLES / INFO CARDS ========== */
+      article {
+        border-radius: var(--radius-sm);
+        padding: 20px 24px;
+        margin: 16px 0;
+        border: 1px solid var(--border);
+        background: var(--surface-2);
+        box-shadow: var(--shadow-sm);
+        display: block;
+      }
+
+      article.box-theory {
+        background: var(--primary-bg);
+        border-color: var(--primary-light);
+      }
+
+      article.box-case {
+        background: var(--surface-2);
+        border-color: var(--text-muted);
+      }
+
+      article.box-practice {
+        background: var(--success-bg);
+        border-color: var(--success-border);
+      }
+
+      article.box-debate {
+        background: var(--error-bg);
+        border-color: var(--error-border);
+      }
+
+      article.box {
+        background: var(--surface-2);
+        border-color: var(--border);
+        border-left: 4px solid var(--primary);
+      }
+
+      article h4 {
+        padding: 0 0 8px;
+        margin-bottom: 8px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      /* COVER PAGE */
+      .cover-page {
+        text-align: center;
+        padding: 60px 20px;
+      }
+
+      .uni-brand {
+        font-family: var(--font-heading);
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--text-secondary);
+        margin-bottom: 10px;
+      }
+
+      .course-title {
+        font-family: var(--font-heading);
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--primary-dark);
+        margin: 30px 0;
+        line-height: 1.2;
+      }
+
+      .course-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-muted);
+      }
+
+      .course-year {
+        margin-top: 60px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      /* Table layout */
+      table {
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+        border: 1px solid var(--border);
+        margin: 16px 0;
+      }
+
+      thead tr {
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-light)
+        );
+      }
+
+      th {
+        color: #fff;
+        font-family: var(--font-heading);
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 12px 16px;
+        text-align: left;
+      }
+
+      td {
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--border-light);
+        font-size: 0.95rem;
+      }
+
+      tbody tr:nth-child(even) {
+        background: var(--surface-2);
+      }
+
+      /* TOC */
+      .toc-entry {
+        display: block;
+        border-bottom: 1px dashed var(--border);
+        padding: 8px 0;
+        font-family: var(--font-heading);
+      }
+      .toc-link {
+        color: var(--text);
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        transition: color 0.2s ease;
+      }
+      .toc-link:hover {
+        color: var(--primary);
+      }
+
+      .meta-info {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        font-family: var(--font-ui);
+        margin-bottom: 20px;
+      }
+
+      .infographic-desc {
+        border: 2px dashed var(--border);
+        padding: 20px;
+        background: var(--surface-2);
+        border-radius: var(--radius-sm);
+        margin: 16px 0;
+      }
+
+      .page-break {
+        display: none;
+      }
+
+      blockquote {
+        border-left: 3px solid var(--primary);
+        padding-left: 15px;
+        font-style: italic;
+        color: var(--text-secondary);
+        background: var(--surface-2);
+        padding: 10px 15px;
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        margin: 15px 0;
+      }
+
+      code,
+      pre {
+        background: var(--surface-2);
+        padding: 5px;
+        border-radius: var(--radius-xs);
+        font-family: "Courier New", monospace;
+        font-size: 0.9em;
+        border: 1px solid var(--border);
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="container">
+      <section>
+        <!-- COVER PAGE -->
+        <div class="cover-page">
+          <div class="uni-brand"><span style="font-size: 32px">ASE</span></div>
+          <div class="uni-brand">FACULTATEA DE DREPT</div>
+
+          <div class="course-title">
+            CURS UNIVERSITAR INTERACTIV<br />INFORMATICĂ JURIDICĂ
+          </div>
+          <div class="course-subtitle"><br /></div>
+
+          <div style="margin-top: 80px">
+            <p>
+              <strong>Titular Curs:</strong>&nbsp;lect. univ. dr.&nbsp; Nicolae
+              Pană
+            </p>
+            <p>
+              <strong>Seminare:</strong>
+            </p>
+            <p>
+              <span style="white-space: pre"> </span>Alexandra Cerasela Pană
+            </p>
+            <p><span style="white-space: pre"> </span>Mihai Nicolae Dulgheru</p>
+            <p><span style="white-space: pre"> </span>Cristian Eugen Luchian</p>
+            <p><strong>Nivel:</strong> Licență</p>
+            <p><strong>Semestrul:</strong>&nbsp;II</p>
+          </div>
+
+          <div class="course-year">2026</div>
+        </div>
+      </section>
+      <section>
+        <!-- TABLE OF CONTENTS -->
+        <h2>CUPRINS</h2>
+        <div class="toc">
+          <div class="toc-entry">
+            <a href="#chapter-0" class="toc-link"
+              >Introducere în Curs: Obiective și Metodologie</a
+            >
+          </div>
+          <div class="toc-entry">
+            <a href="#chapter-1" class="toc-link"
+              >Cursul I - Introducere în informatica juridică</a
+            >
+          </div>
+          <div class="toc-entry">
+            <a href="#chapter-2" class="toc-link"
+              >Cursul II - Bazele tehnologiei informației pentru juriști</a
+            >
+          </div>
+          <div class="toc-entry">
+            <a href="#chapter-3" class="toc-link"
+              >Cursul III - Sisteme informatice și baze de date juridice</a
+            >
+          </div>
+          <div class="toc-entry">
+            <a href="#chapter-4" class="toc-link"
+              >Cursul IV - Securitatea informației și protecția datelor</a
+            >
+          </div>
+          <div class="toc-entry">
+            <a href="#chapter-5" class="toc-link"
+              >Cursul V - Inteligența artificială în domeniul juridic</a
+            >
+          </div>
+          <div class="toc-entry">
+            <a href="#chapter-6" class="toc-link"
+              >Cursul VI - Introducere în tehnologia Blockchain</a
+            >
+          </div>
+          <div class="toc-entry">
+            <a href="#chapter-7" class="toc-link"
+              >Cursul VII - Contracte inteligente și tehnologii emergente</a
+            >
+          </div>
+          <div class="toc-entry">
+            <a href="#chapter-8" class="toc-link"
+              >Platforma Interactivă: Specificații și Implementare</a
+            >
+          </div>
+          <div class="toc-entry">
+            <a href="#chapter-9" class="toc-link">Bibliografie</a>
+          </div>
+          <div class="toc-entry">
+            <a href="#chapter-10" class="toc-link">Anexe</a>
+          </div>
+        </div>
+      </section>
+      <section id="chapter-0">
+        <!-- INTRODUCTION -->
+        <h1>INTRODUCERE ÎN CURS</h1>
+
+        <h3>Obiectivele Cursului</h3>
+        <p>
+          Prezentul curs universitar de
+          <strong>Informatică Juridică</strong> este conceput pentru a „echipa”
+          viitorii juriști cu competențele digitale esențiale necesare într-un
+          peisaj juridic în rapidă schimbare. Obiectivul principal nu este
+          transformarea studenților în programatori, ci în profesioniști ai
+          dreptului capabili să utilizeze tehnologia pentru a eficientiza actul
+          de justiție, să înțeleagă implicațiile legale ale noilor tehnologii
+          (AI, Blockchain) și să protejeze datele clienților.
+        </p>
+
+        <h3>Rezultate ale învățării</h3>
+        <p>La finalul acestui curs, studenții vor fi capabili să:</p>
+        <ul>
+          <li>
+            Să cunoască și să utilizeze platforme IT: Google Workspace, Windows
+            Office etc.
+          </li>
+          <li>
+            Utilizeze avansat bazele de date legislative și jurisprudențiale
+            (Portalul Legislativ, EUR-Lex, ECLI).
+          </li>
+          <li>
+            Înțeleagă arhitectura sistemelor informatice judiciare (ECRIS,
+            Dosarul Electronic).
+          </li>
+          <li>
+            Aplice principiile GDPR în activitatea practică a unui cabinet de
+            avocatură sau instanță.
+          </li>
+          <li>
+            Analizeze critic utilizarea algoritmilor de inteligență artificială
+            în deciziile judiciare.
+          </li>
+          <li>
+            Înțeleagă mecanismele juridice ale contractelor inteligente (Smart
+            Contracts) și activelor criptografice.
+          </li>
+        </ul>
+
+        <h3>Metodologie</h3>
+        <p>
+          Cursul adoptă o abordare hibridă, combinând fundamentarea teoretică
+          (doctrina și legislația) cu aplicabilitatea practică. Fiecare modul de
+          80 de minute este structurat pentru a menține atenția activă:
+        </p>
+        <ol>
+          <li>
+            <strong>Prelegere interactivă:</strong> Prezentarea conceptelor
+            cheie.
+          </li>
+          <li>
+            <strong>Laborator digital:</strong> Demonstrații live (ex. căutare
+            avansată, criptare email).
+          </li>
+          <li>
+            <strong>Studiu de caz:</strong> Analiza jurisprudenței relevante
+            (CEDO, CJUE).
+          </li>
+          <li>
+            <strong>Dezbatere:</strong> Discuții pe marginea dilemelor etice și
+            juridice.
+          </li>
+        </ol>
+
+        <h3>Sistemul de Evaluare</h3>
+        <p>Nota finală este compusă din:</p>
+        <ul>
+          <li>
+            <strong>50% Evaluare continuă (Platforma Interactivă):</strong>
+            Quiz-uri săptămânale, participare la forumuri, teme practice
+            încărcate în Moodle.
+          </li>
+          <li>
+            <strong>50% Examen final:</strong> Test grilă și o speță practică de
+            informatică juridică.
+          </li>
+        </ul>
+
+        <article class="box box-practice">
+          <h4>Instrucțiuni Platformă Interactivă</h4>
+          <p>
+            Accesul la suportul de curs digital și la testele săptămânale se
+            face prin înscriere pe platforma Moodle a facultății, utilizând
+            adresa de email instituțională ca
+            <strong>username</strong>. Prezența la cursurile fizice se validează
+            prin google forms generate unic la fiecare curs/seminar.
+          </p>
+        </article>
+      </section>
+      <section id="chapter-1">
+        <!-- CURS I -->
+        <h1>CURSUL I<br />Introducere în informatica juridică</h1>
+        <div class="meta-info">
+          Durată: 80 minute | Tip: Prelegere &amp; Introducere
+        </div>
+
+        <h3>1. Definiții și Concepte Fundamentale (15 min)</h3>
+        <article class="box box-theory">
+          <h4>Definiție</h4>
+          <p>
+            <strong>Informatica juridică</strong> este disciplina de graniță
+            care studiază aplicarea tehnologiei informației și comunicațiilor
+            (TIC) în domeniul dreptului. Aceasta nu trebuie confundată cu
+            <em>Dreptul informatic</em> (care reglementează domeniul IT).
+          </p>
+          <p>
+            Distincția clasică în doctrină (ex.
+            <em>H. Baade, L. Loevinger</em>):
+          </p>
+          <ul>
+            <li>
+              <strong>Informatica juridică documentară:</strong> Stocarea și
+              regăsirea informației juridice (baze de date).
+            </li>
+            <li>
+              <strong>Informatica juridică de gestiune:</strong> Administrarea
+              dosarelor, managementul cabinetelor (CMS).
+            </li>
+            <li>
+              <strong
+                >Informatica juridică decizională (meta-documentară):</strong
+              >
+              Sisteme expert și AI care asistă sau propun soluții.
+            </li>
+          </ul>
+        </article>
+
+        <h3>2. Domeniul de Aplicare și Digitalizarea Justiției (20 min)</h3>
+        <p>
+          În România, digitalizarea sistemului judiciar a evoluat de la simpla
+          redactare computerizată la sisteme complexe de management al
+          dosarelor.
+        </p>
+
+        <h4>Sistemul ECRIS</h4>
+        <p>
+          Sistemul ECRIS (Electronic Court Register Information System)
+          reprezintă coloana vertebrală a justiției din România. Acesta permite
+          gestionarea electronică a dosarelor, repartizarea aleatorie a cauzelor
+          (element crucial pentru imparțialitate) și generarea de statistici
+          judiciare.
+        </p>
+
+        <h4>Dosarul Electronic Național</h4>
+        <p>
+          O evoluție recentă care permite justițiabililor și avocaților accesul
+          online la documentele din dosar (rezoluții, citații, probe), eliminând
+          necesitatea deplasării fizice la arhivă.
+        </p>
+
+        <h3>3. Jurisprudență și Drepturile Omului în Era Digitală (20 min)</h3>
+        <article class="box box-case">
+          <h4>Jurisprudență CEDO Relevantă</h4>
+          <p>
+            <strong>Cauza Lawyer Partners a.s. c. Slovaciei (2009):</strong>
+            Curtea a statuat că refuzul instanțelor de a accepta cereri în
+            format electronic, deși legislația națională o permitea teoretic dar
+            lipseau mijloacele tehnice, poate constitui o încălcare a accesului
+            la justiție (Art. 6 CEDO).
+          </p>
+          <p>
+            <strong>Importanța:</strong> Statele au obligația pozitivă de a
+            implementa sisteme informatice funcționale care să nu devină bariere
+            birocratice.
+          </p>
+        </article>
+
+        <article class="box box-case">
+          <h4>Jurisprudență CJUE</h4>
+          <p>
+            <strong>Cauza C-282/10 (Dominguez):</strong> Relevanța utilizării
+            mijloacelor electronice în comunicarea actelor de procedură și
+            interpretarea dreptului național în conformitate cu directivele UE
+            privind societatea informațională.
+          </p>
+        </article>
+
+        <h3>4. Infografic și Structura Cursului (15 min)</h3>
+        <div class="infographic-desc">
+          <h4>Infografic: Ecosistemul Informaticii Juridice</h4>
+          <p>
+            <strong>Vizualizare:</strong> Un cerc central divizat în trei
+            sectoare:
+          </p>
+          <ol>
+            <li>
+              <strong>Surse (Input):</strong> Legislație (Monitorul Oficial),
+              Jurisprudență, Doctrină.
+            </li>
+            <li>
+              <strong>Procesare (Processing):</strong> Indexare, Motoare de
+              căutare, Algoritmi de anonimizare, AI.
+            </li>
+            <li>
+              <strong>Utilizatori (Output):</strong> Judecători (ECRIS), Avocați
+              (Portal), Cetățeni (Infochiosc).
+            </li>
+          </ol>
+          <p>
+            <strong>Săgeți de conexiune:</strong> Fluxul datelor între instanțe,
+            parchete și poliție (interoperabilitate).
+          </p>
+        </div>
+
+        <h3>5. Dezbatere și Întrebări (10 min)</h3>
+        <article class="box box-debate">
+          <h4>Tema de dezbatere:</h4>
+          <p>
+            "Poate un sistem informatic să înlocuiască complet grefierul de
+            ședință?"
+          </p>
+          <p>
+            <strong>Răspuns Doctrinar (Sinteză):</strong> Deși tehnologiile
+            speech-to-text (STT) au avansat (ex. Google Cloud STT, sisteme
+            dedicate instanțelor), doctrina subliniază că rolul grefierului nu
+            este doar de transcriere mecanică, ci de certificare a
+            autenticității și legalității procedurii. Tehnologia este un
+            asistent, nu un substitut total (vezi
+            <em>Ghidul CEPEJ privind Cyberjustiția</em>).
+          </p>
+        </article>
+
+        <h3>Evaluare Curs I</h3>
+        <ol>
+          <li>Definiți informatica juridică decizională.</li>
+          <li>
+            Ce este sistemul ECRIS și care este funcția sa principală privind
+            integritatea procesului?
+          </li>
+          <li>
+            Explicați diferența dintre Dreptul Informatic și Informatica
+            Juridică.
+          </li>
+        </ol>
+      </section>
+      <section id="chapter-2">
+        <!-- CURS II -->
+        <h1>CURSUL II<br />Bazele tehnologiei informației pentru juriști</h1>
+
+        <h3>1. Hardware și Software în Activitatea Juridică (25 min)</h3>
+        <article class="box box-theory">
+          <h4>Arhitectura Calculatorului</h4>
+          <p>
+            Pentru un jurist, înțelegerea specificațiilor tehnice este vitală
+            pentru achiziții și securitate.
+          </p>
+          <ul>
+            <li>
+              <strong>CPU (Procesor):</strong> "Creierul" (relevant pentru
+              viteza de procesare a documentelor mari sau OCR).
+            </li>
+            <li>
+              <strong>RAM:</strong> Memoria de lucru (multitasking cu baze de
+              date și editoare de text).
+            </li>
+            <li>
+              <strong>Stocare (SSD vs HDD):</strong> Importanța SSD-urilor
+              criptate pentru protecția datelor clienților.
+            </li>
+          </ul>
+          <h4>Tipuri de Software Juridic</h4>
+          <ul>
+            <li>
+              <strong>Sisteme de Operare:</strong> Windows (predominant în
+              instanțe), macOS, Linux.
+            </li>
+            <li>
+              <strong>Aplicații de birotică:</strong> Microsoft Word (funcții
+              avansate: Track Changes, Cross-referencing pentru contracte).
+            </li>
+            <li>
+              <strong
+                >Software de gestiune (CMS - Case Management Systems):</strong
+              >
+              Sintact, Lege5, sau soluții proprii de cabinet.
+            </li>
+          </ul>
+        </article>
+
+        <h3>2. Rețele și Internet (20 min)</h3>
+        <p>
+          Noțiuni despre VPN (Virtual Private Network) – esențial pentru
+          avocații care lucrează remote pentru a securiza conexiunea la serverul
+          biroului.
+        </p>
+        <p>
+          <strong>Cloud Computing:</strong> Avantaje (accesibilitate) și riscuri
+          (unde sunt stocate fizic datele? - problema suveranității datelor,
+          relevantă post-Schrems II).
+        </p>
+
+        <h3>3. Tutorial Practic: Semnătura Electronică (20 min)</h3>
+        <article class="box box-practice">
+          <h4>Utilizarea Semnăturii Electronice Calificate</h4>
+          <p>
+            În România, conform Legii 455/2001 și Regulamentului eIDAS,
+            semnătura electronică calificată are valoare juridică egală cu
+            semnătura olografă.
+          </p>
+          <p><strong>Pași practici demonstrativi:</strong></p>
+          <ol>
+            <li>Conectarea token-ului USB criptografic.</li>
+            <li>Deschiderea documentului PDF.</li>
+            <li>Semnarea digitală cu marcă temporală (Timestamp).</li>
+            <li>
+              Verificarea validității semnăturii în Adobe Acrobat Reader (lanțul
+              de încredere).
+            </li>
+          </ol>
+        </article>
+
+        <h3>4. Studii de Caz (15 min)</h3>
+        <p>
+          <strong>Analiză eIDAS:</strong> Discuție pe marginea diferențelor
+          dintre semnătura simplă (ex. scanarea unei semnături olografe pe email
+          - valoare probatorie redusă) și semnătura calificată (prezumție de
+          autenticitate).
+        </p>
+      </section>
+      <section id="chapter-3">
+        <!-- CURS III -->
+        <h1>CURSUL III<br />Sisteme informatice și baze de date juridice</h1>
+
+        <h3>1. Surse de Informare Legislativă (25 min)</h3>
+        <p>
+          Accesul la lege este un serviciu public. În România, portalul oficial
+          este
+          <strong>legislatie.just.ro</strong> (administrat de Ministerul
+          Justiției), oferind acces gratuit la Monitorul Oficial.
+        </p>
+        <article class="box box-theory">
+          <h4>ECLI (European Case Law Identifier)</h4>
+          <p>
+            Identificatorul European de Jurisprudență este un standard uniform
+            pentru identificarea deciziilor judecătorești în Europa. Structura:
+            <code>ECLI:RO:JDBUC:2023:001.XXXX</code>.
+          </p>
+          <p>
+            Avantaj: Permite căutarea transfrontalieră și citarea uniformă în
+            documentele academice și procesuale.
+          </p>
+        </article>
+
+        <h3>2. Tutorial: Căutarea în EUR-Lex și HUDOC (25 min)</h3>
+        <article class="box box-practice">
+          <h4>Strategii de căutare (Boolean Search)</h4>
+          <p>
+            Utilizarea operatorilor logici pentru a filtra rezultatele în bazele
+            de date juridice (Sintact, LexisNexis, Westlaw):
+          </p>
+          <ul>
+            <li>
+              <strong>AND:</strong>
+              <em>"proprietate" AND "revendicare"</em> (ambele termeni).
+            </li>
+            <li>
+              <strong>OR:</strong> <em>"neglijență" OR "culpă"</em> (sinonime).
+            </li>
+            <li>
+              <strong>NOT:</strong> <em>"divorț" NOT "acord"</em> (exclude
+              divorțul prin acord).
+            </li>
+            <li>
+              <strong>" ":</strong> Căutare exactă a unei expresii (ex.
+              <em>"interesul superior al copilului"</em>).
+            </li>
+          </ul>
+        </article>
+
+        <h3>3. Portalul Instanțelor de Judecată (20 min)</h3>
+        <p>
+          Analiza funcționalității <strong>portal.just.ro</strong>. Cum se caută
+          un dosar, cum se interpretează termenele de judecată și soluțiile pe
+          scurt. Limite ale informațiilor publice vs. date cu caracter personal
+          (anonimizarea numelor în anumite cauze).
+        </p>
+
+        <h3>4. Întrebări Deschise (10 min)</h3>
+        <article class="box box-debate">
+          <p>
+            <strong>Întrebare:</strong> "Este suficientă publicarea legii în
+            format electronic pentru a se considera cunoscută de cetățeni?"
+          </p>
+          <p>
+            <strong>Răspuns:</strong> Doctrina analizează tranziția de la
+            "Monitorul Oficial tipărit" la cel digital. Accesibilitatea reală
+            depinde de gradul de alfabetizare digitală.
+          </p>
+        </article>
+      </section>
+      <section id="chapter-4">
+        <!-- CURS IV -->
+        <h1>
+          CURSUL IV<br />Securitatea informației și protecția datelor (GDPR)
+        </h1>
+
+        <h3>1. Triada CIA în Securitate (15 min)</h3>
+        <article class="box box-theory">
+          <h4>Principii Fundamentale</h4>
+          <ul>
+            <li>
+              <strong>Confidențialitate:</strong> Acces doar pentru persoanele
+              autorizate (Secretul profesional al avocatului).
+            </li>
+            <li>
+              <strong>Integritate:</strong> Datele nu au fost alterate
+              (importanța Hash-urilor în probe digitale).
+            </li>
+            <li>
+              <strong>Disponibilitate:</strong> Sistemele funcționează când este
+              nevoie (protecția contra atacurilor DDoS).
+            </li>
+          </ul>
+        </article>
+
+        <h3>2. GDPR în Activitatea Juridică (30 min)</h3>
+        <p>
+          Regulamentul (UE) 2016/679 (GDPR) impune obligații stricte avocaților
+          și instanțelor, care sunt operatori de date.
+        </p>
+        <ul>
+          <li>
+            <strong>Art. 5 Principii:</strong> Legalitate, echitate,
+            transparență, minimizarea datelor.
+          </li>
+          <li>
+            <strong>Art. 6 Temeiuri:</strong> Executarea unui contract
+            (asistența juridică), obligație legală, interes legitim.
+          </li>
+          <li>
+            <strong>Securitatea prelucrării (Art. 32):</strong> Criptarea
+            laptopurilor, pseudonimizarea numelor din decizii publicate.
+          </li>
+        </ul>
+
+        <h3>3. Jurisprudență Relevantă (25 min)</h3>
+        <article class="box box-case">
+          <h4>CJUE - Cauza C-311/18 (Schrems II)</h4>
+          <p>
+            Invalidarea "Privacy Shield" pentru transferul datelor UE-SUA.
+            Implicații majore pentru avocații care folosesc servicii cloud
+            americane (ex. Dropbox, Google Drive) fără măsuri suplimentare de
+            protecție.
+          </p>
+        </article>
+        <article class="box box-case">
+          <h4>CEDO - Bărbulescu c. României</h4>
+          <p>
+            Monitorizarea comunicațiilor electronice ale angajaților. Curtea a
+            stabilit necesitatea unui echilibru între dreptul angajatorului de a
+            verifica activitatea și dreptul la viață privată al angajatului.
+          </p>
+        </article>
+
+        <h3>4. Quiz Final (10 min)</h3>
+        <p>
+          Scenariu: Un avocat pierde un stick USB necriptat cu dosarele
+          clienților. Este aceasta o încălcare de securitate notificabilă
+          conform GDPR? (Răspuns: Da, conform Art. 33).
+        </p>
+      </section>
+      <section id="chapter-5">
+        <!-- CURS V -->
+        <h1>
+          CURSUL V<br />Introducere în inteligența artificială în domeniul
+          juridic
+        </h1>
+
+        <h3>1. Definiții și Clasificări AI (20 min)</h3>
+        <p>Distincția între:</p>
+        <ul>
+          <li>
+            <strong>AI Simbolic (Rule-based):</strong> Sisteme expert clasice
+            (ex. calculul taxelor de timbru).
+          </li>
+          <li>
+            <strong>Machine Learning (ML):</strong> Învățare automată din date
+            (ex. predicția sentințelor bazată pe istoric).
+          </li>
+          <li>
+            <strong>Generative AI (LLMs):</strong> ChatGPT, Harvey AI – capabile
+            să genereze text juridic.
+          </li>
+        </ul>
+
+        <h3>2. Aplicații Practice (25 min)</h3>
+        <article class="box box-practice">
+          <h4>Instrumente de Legal Tech</h4>
+          <ul>
+            <li>
+              <strong>e-Discovery:</strong> Analiza automată a mii de documente
+              pentru identificarea probelor (relevanță în dosare de
+              concurență/fraudă).
+            </li>
+            <li>
+              <strong>Justiție Predictivă:</strong> Analiza probabilității de
+              câștig. Ex: <em>Lex Machina</em> (SUA), aplicații emergente în
+              Franța și România.
+            </li>
+            <li>
+              <strong>Anonimizare automată:</strong> Utilizarea AI pentru a
+              șterge numele din hotărârile judecătorești înainte de publicare.
+            </li>
+          </ul>
+        </article>
+
+        <h3>3. Etică și Limite (25 min)</h3>
+        <article class="box box-theory">
+          <h4>Carta Etică Europeană a CEPEJ</h4>
+          <p>
+            Cele 5 principii fundamentale pentru utilizarea AI în sistemele
+            judiciare:
+          </p>
+          <ol>
+            <li>Respectarea drepturilor fundamentale.</li>
+            <li>Nediscriminarea (evitarea bias-ului algoritmic).</li>
+            <li>Calitate și securitate.</li>
+            <li>
+              Transparență, imparțialitate și corectitudine ("Black Box
+              problem").
+            </li>
+            <li>Controlul utilizatorului ("Under human control").</li>
+          </ol>
+        </article>
+        <article class="box box-case">
+          <h4>Studiu de Caz: State v. Loomis (SUA)</h4>
+          <p>
+            Utilizarea algoritmului COMPAS pentru stabilirea riscului de
+            recidivă la condamnare. Dezbaterea privind lipsa de transparență a
+            algoritmului proprietar și potențialul de discriminare rasială.
+          </p>
+        </article>
+
+        <h3>4. Întrebări de reflecție (10 min)</h3>
+        <p>
+          Poate un algoritm să înțeleagă conceptul de "echitate" sau
+          "bună-credință"?
+        </p>
+      </section>
+      <section id="chapter-6">
+        <!-- CURS VI -->
+        <h1>CURSUL VI<br />Introducere în tehnologia Blockchain</h1>
+
+        <h3>1. Principii de Funcționare (25 min)</h3>
+        <p>
+          <strong>Blockchain</strong> este un registru distribuit (DLT -
+          Distributed Ledger Technology), imuabil și transparent.
+        </p>
+        <ul>
+          <li>
+            <strong>Descentralizare:</strong> Nu există o autoritate centrală
+            (bancă, stat) care să valideze tranzacțiile.
+          </li>
+          <li>
+            <strong>Imuabilitate:</strong> Odată scrisă, informația nu poate fi
+            ștearsă (dificultăți în raport cu "Dreptul de a fi uitat" din GDPR).
+          </li>
+          <li>
+            <strong>Mecanism de consens:</strong> Proof of Work / Proof of
+            Stake.
+          </li>
+        </ul>
+
+        <h3>2. Criptomonede și Statut Juridic (25 min)</h3>
+        <article class="box box-theory">
+          <h4>Regulamentul MiCA (Markets in Crypto-Assets)</h4>
+          <p>
+            Cadrul european care reglementează emiterea și tranzacționarea
+            criptoactivelor. Clasificarea token-urilor (Utility tokens,
+            Asset-referenced tokens, E-money tokens). Obligațiile furnizorilor
+            de servicii (CASP).
+          </p>
+        </article>
+        <p>
+          Jurisprudența din România recunoaște veniturile din criptomonede ca
+          venituri impozabile (alte surse), dar statutul de "monedă" este
+          refuzat de BNR.
+        </p>
+
+        <h3>3. Utilizări Juridice ale Blockchain (20 min)</h3>
+        <ul>
+          <li>
+            <strong>Cadastrul pe Blockchain:</strong> Transferul proprietății
+            imobiliare transparent și imposibil de fraudat (proiecte pilot în
+            Suedia, Georgia).
+          </li>
+          <li>
+            <strong>Proprietate Intelectuală:</strong> Dovada existenței și
+            paternității unei opere (Time-stamping) fără a apela la notar.
+          </li>
+          <li>
+            <strong>Lanțul de custodie al probelor digitale:</strong> Asigurarea
+            că o probă video nu a fost alterată (Deepfake) prin hashing pe
+            blockchain.
+          </li>
+        </ul>
+
+        <h3>4. Evaluare (10 min)</h3>
+        <p>
+          Explicați de ce tehnologia blockchain este considerată un "machine
+          trust" (încredere automatizată).
+        </p>
+      </section>
+      <section id="chapter-7">
+        <!-- CURS VII -->
+        <h1>
+          CURSUL VII<br />Contracte inteligente și perspectivele utilizării
+          tehnologiilor emergente
+        </h1>
+
+        <h3>1. Smart Contracts: Codul este Lege? (30 min)</h3>
+        <article class="box box-theory">
+          <h4>Definiție</h4>
+          <p>
+            Un <strong>Smart Contract</strong> este un protocol informatic care
+            execută automat termenii unui contract atunci când condițiile
+            predefinite sunt îndeplinite. Ex:
+            <em
+              >"Dacă zborul X întârzie &gt; 3 ore, plătește automat despăgubirea
+              Y pasagerului Z."</em
+            >
+          </p>
+        </article>
+        <p><strong>Probleme juridice:</strong></p>
+        <ul>
+          <li>
+            <strong>Formarea consimțământului:</strong> Este codul sursă
+            contractul, sau doar executarea lui?
+          </li>
+          <li>
+            <strong>Imposibilitatea modificării:</strong> Ce se întâmplă în caz
+            de eroare de cod (bug) sau viciu de consimțământ?
+          </li>
+          <li>
+            <strong>Executarea silită:</strong> Smart contracts sunt
+            auto-executorii, eliminând faza de executare silită prin executor
+            judecătoresc.
+          </li>
+        </ul>
+
+        <h3>2. Internet of Things (IoT) și Dreptul (20 min)</h3>
+        <p>
+          Dispozitive interconectate (smart homes, mașini autonome). Probleme de
+          răspundere civilă delictuală: cine răspunde dacă un frigider
+          inteligent comandă greșit mâncare sau un vehicul autonom produce un
+          accident? (Producătorul software, proprietarul, sau rețeaua?).
+        </p>
+
+        <h3>3. Perspective: Justiția în Metaverse și ODR (20 min)</h3>
+        <p>
+          <strong>ODR (Online Dispute Resolution):</strong> Platforme de
+          soluționare a litigiilor online (ex. Platforma ODR a Comisiei Europene
+          pentru e-commerce). Viitorul instanțelor virtuale în Metaverse.
+        </p>
+
+        <h3>4. Concluzii Generale Curs (10 min)</h3>
+        <p>
+          Sinteza materiei: Tehnologia este un instrument care amplifică
+          capacitățile juristului, dar necesită o vigilență etică sporită.
+        </p>
+      </section>
+      <section id="chapter-8">
+        <!-- BIBLIOGRAPHY -->
+        <h1>BIBLIOGRAFIE</h1>
+
+        <article class="box">
+          <h3>1. Tratate și Monografii</h3>
+          <ul>
+            <li>
+              <strong>Rotary, Ioan</strong>, <em>Informatica juridică</em>, Ed.
+              Hamangiu, București, 2018.
+            </li>
+            <li>
+              <strong>Susskind, Richard</strong>,
+              <em>Tomorrow's Lawyers: An Introduction to Your Future</em>,
+              Oxford University Press, 2017.
+            </li>
+            <li>
+              <strong>Ashley, Kevin D.</strong>,
+              <em>Artificial Intelligence and Legal Analytics</em>, Cambridge
+              University Press, 2017.
+            </li>
+            <li>
+              <strong>De Filippi, P., &amp; Wright, A.</strong>,
+              <em>Blockchain and the Law: The Rule of Code</em>, Harvard
+              University Press, 2018.
+            </li>
+          </ul>
+
+          <h3>2. Articole Academice și Rapoarte</h3>
+          <ul>
+            <li>
+              <strong>CEPEJ</strong>,
+              <em
+                >European Ethical Charter on the use of Artificial Intelligence
+                in judicial systems and their environment</em
+              >, Strasbourg, 2018.
+            </li>
+            <li>
+              <strong>Comisia Europeană</strong>,
+              <em
+                >White Paper on Artificial Intelligence - A European approach to
+                excellence and trust</em
+              >, COM(2020) 65 final.
+            </li>
+            <li>
+              <strong>Ungureanu, M.</strong>,
+              <em>Protecția datelor cu caracter personal în procesul civil</em>,
+              Revista Română de Drept Privat, nr. 3/2019.
+            </li>
+          </ul>
+
+          <h3>3. Legislație și Jurisprudență</h3>
+          <ul>
+            <li>Regulamentul (UE) 2016/679 (GDPR).</li>
+            <li>Regulamentul (UE) 910/2014 (eIDAS).</li>
+            <li>Hotărârea CJUE în cauza C-311/18 (Schrems II).</li>
+            <li>
+              Hotărârea CEDO în cauza <em>Bărbulescu v. România</em> (2017).
+            </li>
+          </ul>
+        </article>
+      </section>
+      <section id="chapter-9">
+        <!-- INTERACTIVE PLATFORM -->
+        <h1>PLATFORMA INTERACTIVĂ</h1>
+        <h3>Specificații Tehnice pentru Implementare (Moodle)</h3>
+
+        <p>
+          Pentru a asigura caracterul interactiv și evaluarea continuă, cursul
+          va utiliza un LMS (Learning Management System) standard, precum
+          Moodle, configurat după cum urmează:
+        </p>
+
+        <article class="box box-practice">
+          <h4>1. Sistemul de Înregistrare</h4>
+          <ul>
+            <li>
+              <strong>Metoda:</strong> Auto-înregistrare cu restricție de
+              domeniu de e-mail.
+            </li>
+            <li>
+              <strong>Restricție:</strong> Se acceptă doar email-uri de forma
+              <code>@stud.ase.ro</code>.
+            </li>
+            <li>
+              <strong>Username:</strong> Adresa de email completă (pentru
+              identificare unică).
+            </li>
+          </ul>
+
+          <h4>2. Structura Cursului în Moodle</h4>
+          <p>
+            Cursul va fi organizat în format "Weekly format" sau "Topic format",
+            cu 7 secțiuni principale.
+          </p>
+
+          <p><strong>Exemplu Configurare Modul (Săptămâna 1):</strong></p>
+          <ul>
+            <li>📄 <em>Resursă:</em> Suport de curs PDF (Slide-uri).</li>
+            <li>
+              📹 <em>URL:</em> Link către înregistrarea video a prelegerii.
+            </li>
+            <li>
+              💬 <em>Forum:</em> "Dezbatere: Judecătorul Robot". Participarea
+              este notată.
+            </li>
+            <li>
+              ✅ <em>Quiz:</em> "Test verificare Curs I" - 10 întrebări, timp
+              limită 15 min, 2 încercări permise, se păstrează nota cea mai
+              mare.
+            </li>
+            <li>
+              📂 <em>Assignment:</em> "Încărcare Studiu de Caz anonimizat" (Tema
+              practică).
+            </li>
+          </ul>
+        </article>
+
+        <h3>Rubrica de Evaluare (Grading)</h3>
+        <table role="grid">
+          <thead>
+            <tr>
+              <th>Activitate</th>
+              <th>Pondere</th>
+              <th>Criterii</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Quiz-uri săptămânale (7x)</td>
+              <td>30%</td>
+              <td>Corectitudinea răspunsurilor grilă.</td>
+            </tr>
+            <tr>
+              <td>Participare Forum/Dezbateri</td>
+              <td>10%</td>
+              <td>Calitatea argumentării juridice, citarea surselor.</td>
+            </tr>
+            <tr>
+              <td>Teme Practice (Laborator)</td>
+              <td>10%</td>
+              <td>Realizarea sarcinilor tehnice (ex. semnare digitală).</td>
+            </tr>
+            <tr>
+              <td>Examen Final</td>
+              <td>50%</td>
+              <td>Sinteză teoretică și rezolvare speță.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section id="chapter-10">
+        <!-- APPENDICES -->
+        <h1>ANEXE</h1>
+
+        <h3>Glosar de Termeni</h3>
+        <dl>
+          <dt><strong>Algoritm</strong></dt>
+          <dd>
+            O secvență finită de instrucțiuni bine definite, utilizată pentru a
+            rezolva o clasă de probleme specifice sau pentru a efectua un
+            calcul.
+          </dd>
+
+          <dt><strong>Big Data</strong></dt>
+          <dd>
+            Seturi de date atât de mari sau complexe încât aplicațiile
+            tradiționale de procesare a datelor sunt inadecvate.
+          </dd>
+
+          <dt><strong>Criptografie asimetrică</strong></dt>
+          <dd>
+            Sistem criptografic care folosește perechi de chei: chei publice
+            (care pot fi diseminate larg) și chei private (care sunt cunoscute
+            doar de proprietar).
+          </dd>
+
+          <dt><strong>Interoperabilitate</strong></dt>
+          <dd>
+            Capacitatea diferitelor sisteme informatice și aplicații software de
+            a comunica, de a face schimb de date și de a utiliza informațiile
+            schimbate.
+          </dd>
+        </dl>
+
+        <h3>Link-uri Utile</h3>
+        <ul>
+          <li>
+            <a href="http://legislatie.just.ro/"
+              >Portalul Legislativ al României</a
+            >
+          </li>
+          <li>
+            <a href="http://portal.just.ro/"
+              >Portalul Instanțelor de Judecată</a
+            >
+          </li>
+          <li>
+            <a href="https://eur-lex.europa.eu/">EUR-Lex (Legislația UE)</a>
+          </li>
+          <li>
+            <a href="https://curia.europa.eu/"
+              >Curtea de Justiție a UE (CURIA)</a
+            >
+          </li>
+          <li>
+            <a href="https://www.dataprotection.ro/"
+              >ANSPDCP (Autoritatea pentru Protecția Datelor)</a
+            >
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
