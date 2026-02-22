@@ -1010,7 +1010,7 @@
             📊 Progres: <span id="percent-display">14%</span>
           </div>
           <div class="stat-item">
-            ⭐ Scor: <span id="score-display">0</span>/55
+            ⭐ Scor: <span id="score-display">0</span>/100
           </div>
         </div>
       </div>
@@ -1140,7 +1140,14 @@
             pentru promovare)
           </p>
 
-          <label style="margin-top: 25px; display: block; font-size: 1.1rem">
+          <label
+            style="
+              margin-top: 25px;
+              display: block;
+              font-size: 1.1rem;
+              cursor: pointer;
+            "
+          >
             <input
               type="checkbox"
               id="check-objectives"
@@ -2855,7 +2862,10 @@
         if (next) {
           next.classList.add("active");
           next.scrollIntoView({ behavior: "smooth" });
-          updateProgress(5); // 5 points for unlocking a section
+          if (!state.answers["unlock-" + nextSectionId]) {
+            state.answers["unlock-" + nextSectionId] = true;
+            updateProgress(5); // 5 points for unlocking a section
+          }
           saveState();
         }
       }
@@ -2913,7 +2923,10 @@
           fb.className = "feedback-msg feedback-success";
           document.querySelector(`#${sectionId} .btn-next`).style.display =
             "inline-block";
-          updateProgress(sectionScore > 10 ? 10 : sectionScore);
+          if (!state.answers["blanks-" + sectionId]) {
+            state.answers["blanks-" + sectionId] = true;
+            updateProgress(25);
+          }
         } else {
           fb.innerHTML = "⚠️ Mai încearcă. Verifică termenii scriși cu roșu.";
           fb.className = "feedback-msg feedback-error";
@@ -2938,7 +2951,7 @@
           fb.className = "feedback-msg feedback-success";
           if (!state.answers["bool-1"]) {
             state.answers["bool-1"] = true;
-            updateProgress(5);
+            updateProgress(10);
           }
         } else {
           fb.innerHTML =
@@ -2992,7 +3005,10 @@
           fb.className = "feedback-msg feedback-success";
           document.querySelector(`#${sectionId} .btn-next`).style.display =
             "inline-block";
-          updateProgress(15);
+          if (!state.answers["dragdrop-" + sectionId]) {
+            state.answers["dragdrop-" + sectionId] = true;
+            updateProgress(30);
+          }
         } else if (correctCount >= totalItems * 0.5) {
           fb.innerHTML = `⚠️ Aproape corect! Aveți ${correctCount} din ${totalItems} corecte. Verificați cele marcate cu roșu.`;
           fb.className = "feedback-msg feedback-error";
@@ -3015,7 +3031,10 @@
           fb.className = "feedback-msg feedback-success";
           document.querySelector(`#${sectionId} .btn-next`).style.display =
             "inline-block";
-          updateProgress(5);
+          if (!state.answers["radio-" + sectionId]) {
+            state.answers["radio-" + sectionId] = true;
+            updateProgress(10);
+          }
         } else {
           fb.innerHTML = "❌ Răspuns incorect.";
           fb.className = "feedback-msg feedback-error";
@@ -3036,7 +3055,10 @@
           fb.className = "feedback-msg feedback-success";
           document.querySelector(`#${sectionId} .btn-next`).style.display =
             "inline-block";
-          updateProgress(10);
+          if (!state.answers["selects-" + sectionId]) {
+            state.answers["selects-" + sectionId] = true;
+            updateProgress(15);
+          }
         } else {
           let correctCount =
             (s1 === "correct" ? 1 : 0) +
