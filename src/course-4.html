@@ -3268,15 +3268,35 @@
         });
         const chk = document.querySelector('input[type="checkbox"]');
         if (chk) data.checkObjectives = chk.checked;
+        data.quizOptionClasses = {};
+        for (let i = 1; i <= 10; i++) {
+          const opts = document.querySelectorAll(
+            `label.quiz-option:has(input[name="q${i}"])`,
+          );
+          if (opts.length)
+            data.quizOptionClasses[`q${i}`] = Array.from(opts).map(
+              (o) => o.className,
+            );
+        }
+        const rd = document.getElementById("final-result-panel");
+        if (rd && rd.style.display === "block") {
+          data.finalResult = {
+            score:
+              document.getElementById("final-score-display")?.textContent || "",
+            msg: document.getElementById("final-grade-msg")?.innerText || "",
+            msgColor:
+              document.getElementById("final-grade-msg")?.style.color || "",
+          };
+        }
         try {
-          localStorage.setItem("courseState", JSON.stringify(data));
+          localStorage.setItem("curs4_progress", JSON.stringify(data));
         } catch (e) {}
       }
 
       function loadState() {
         let data;
         try {
-          const raw = localStorage.getItem("courseState");
+          const raw = localStorage.getItem("curs4_progress");
           if (!raw) return;
           data = JSON.parse(raw);
         } catch (e) {
@@ -3361,6 +3381,28 @@
           activeSectionEls[activeSectionEls.length - 1].scrollIntoView({
             behavior: "instant",
           });
+        if (data.quizOptionClasses)
+          Object.entries(data.quizOptionClasses).forEach(([qName, classes]) => {
+            const opts = document.querySelectorAll(
+              `label.quiz-option:has(input[name="${qName}"])`,
+            );
+            classes.forEach((cls, i) => {
+              if (opts[i]) opts[i].className = cls;
+            });
+          });
+        if (data.finalResult) {
+          const rd = document.getElementById("final-result-panel");
+          if (rd) {
+            rd.style.display = "block";
+            const scoreEl = document.getElementById("final-score-display");
+            if (scoreEl) scoreEl.textContent = data.finalResult.score;
+            const msgEl = document.getElementById("final-grade-msg");
+            if (msgEl) {
+              msgEl.innerText = data.finalResult.msg;
+              msgEl.style.color = data.finalResult.msgColor;
+            }
+          }
+        }
       }
 
       loadState();

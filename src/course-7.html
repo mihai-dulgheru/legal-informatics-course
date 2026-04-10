@@ -1,0 +1,3317 @@
+<!doctype html>
+<html lang="ro" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Curs 7: Contracte Inteligente și Perspectivele Tehnologiilor Emergente în
+      Drept
+    </title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #4338ca;
+        --primary-light: #6366f1;
+        --primary-dark: #3730a3;
+        --primary-bg: #eef2ff;
+        --primary-bg-hover: #e0e7ff;
+        --secondary: #0f172a;
+        --success: #059669;
+        --success-bg: #ecfdf5;
+        --success-border: #a7f3d0;
+        --error: #dc2626;
+        --error-bg: #fef2f2;
+        --error-border: #fecaca;
+        --warn-bg: #fffbeb;
+        --warn-border: #fde68a;
+        --surface: #ffffff;
+        --surface-2: #f8fafc;
+        --surface-3: #f1f5f9;
+        --border: #e2e8f0;
+        --border-light: #f1f5f9;
+        --text: #0f172a;
+        --text-secondary: #475569;
+        --text-muted: #94a3b8;
+        --radius: 16px;
+        --radius-sm: 10px;
+        --radius-xs: 6px;
+        --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+        --shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+        --shadow-lg: 0 12px 40px rgba(15, 23, 42, 0.1);
+        --shadow-primary: 0 4px 14px rgba(67, 56, 202, 0.25);
+        --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        --font-heading: "Inter", system-ui, -apple-system, sans-serif;
+        --font-body: "Source Serif 4", "Georgia", serif;
+        --font-ui: "Inter", system-ui, -apple-system, sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--font-body);
+        font-size: 1.05rem;
+        line-height: 1.75;
+        color: var(--text);
+        background: var(--surface-3);
+        padding-top: 88px;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: var(--font-heading);
+        line-height: 1.3;
+        letter-spacing: -0.01em;
+      }
+
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      ul,
+      ol {
+        padding-left: 1.5em;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      input,
+      select,
+      button,
+      textarea {
+        font-family: var(--font-ui);
+      }
+
+      .course-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        z-index: 1000;
+        box-shadow:
+          0 1px 0 var(--border),
+          var(--shadow-sm);
+        padding: 14px 24px;
+      }
+
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .header-content h1 {
+        font-size: 1.05rem !important;
+        font-weight: 700;
+        color: var(--secondary);
+        margin: 0;
+      }
+
+      .header-content small {
+        color: var(--text-muted) !important;
+        font-family: var(--font-ui);
+        font-size: 0.82rem;
+      }
+
+      .progress-container {
+        width: 100%;
+        height: 4px;
+        background: var(--border);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+      }
+
+      .progress-bar {
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--primary),
+          var(--primary-light),
+          #818cf8
+        );
+        width: 0%;
+        transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 0 4px 4px 0;
+        position: relative;
+      }
+
+      .progress-bar::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.35) 50%,
+          transparent 100%
+        );
+        animation: shimmer 2s infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-100%);
+        }
+
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      .stats-panel {
+        font-size: 0.82rem;
+        display: flex;
+        gap: 10px;
+        font-family: var(--font-ui);
+        flex-shrink: 0;
+      }
+
+      .stat-item {
+        background: var(--primary-bg);
+        padding: 5px 14px;
+        border-radius: 100px;
+        color: var(--primary);
+        font-weight: 600;
+        white-space: nowrap;
+        border: 1px solid transparent;
+        transition: var(--transition);
+      }
+
+      .stat-item:hover {
+        border-color: var(--primary-light);
+        box-shadow: var(--shadow-primary);
+      }
+
+      main.container {
+        max-width: 860px;
+        margin: 0 auto 60px;
+        background: transparent;
+        padding: 0 20px;
+      }
+
+      section {
+        background: var(--surface);
+        border-radius: var(--radius);
+        padding: 40px 44px;
+        margin-bottom: 28px;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        opacity: 0.45;
+        pointer-events: none;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: var(--border);
+        transition: var(--transition);
+      }
+
+      section.active {
+        opacity: 1;
+        pointer-events: all;
+        border-color: var(--primary-bg-hover);
+        box-shadow: var(--shadow-lg);
+        padding-left: 44px;
+      }
+
+      section.active::before {
+        background: linear-gradient(
+          180deg,
+          var(--primary),
+          var(--primary-light)
+        );
+        width: 4px;
+      }
+
+      section.completed {
+        opacity: 1;
+        pointer-events: all;
+        padding-left: 44px;
+        border-color: var(--success-border);
+      }
+
+      section.completed::before {
+        background: linear-gradient(180deg, var(--success), #34d399);
+        width: 4px;
+      }
+
+      h2 {
+        color: var(--secondary);
+        font-size: 1.65rem;
+        font-weight: 800;
+        border-bottom: none;
+        padding-bottom: 16px;
+        margin-bottom: 8px;
+        letter-spacing: -0.02em;
+      }
+
+      h3 {
+        color: var(--secondary);
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-top: 28px;
+        margin-bottom: 12px;
+        font-family: var(--font-heading);
+      }
+
+      h4 {
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: var(--secondary);
+      }
+
+      .slide-content {
+        padding: 8px 0;
+      }
+
+      .slide-content h3 {
+        margin-top: 30px;
+        margin-bottom: 16px;
+        color: var(--primary);
+        border-bottom: 2px solid var(--primary-bg);
+        padding-bottom: 10px;
+      }
+
+      .slide-content p {
+        text-align: justify;
+        color: var(--text);
+        line-height: 1.8;
+      }
+
+      article {
+        border-radius: var(--radius-sm);
+        padding: 20px 24px;
+        margin: 16px 0;
+        border: 1px solid var(--border);
+        background: var(--surface-2);
+      }
+
+      article header {
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: 1.05rem;
+        padding: 0 0 8px;
+        margin-bottom: 8px;
+        border-bottom: 1px solid var(--border-light);
+      }
+
+      .interactive-box {
+        background: var(--surface-2);
+        padding: 28px 32px;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        margin: 32px 0;
+        box-shadow: var(--shadow-sm);
+        position: relative;
+      }
+
+      .interactive-box::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: 24px;
+        right: 24px;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--primary),
+          var(--primary-light),
+          #818cf8
+        );
+        border-radius: 0 0 4px 4px;
+      }
+
+      .blank-input {
+        border: none;
+        border-bottom: 2px solid var(--primary-light);
+        background: rgba(99, 102, 241, 0.06);
+        width: 150px;
+        text-align: center;
+        font-weight: 600;
+        font-family: var(--font-ui);
+        color: var(--secondary);
+        padding: 4px 8px;
+        border-radius: 4px 4px 0 0;
+        font-size: 0.95rem;
+        transition: var(--transition);
+        outline: none;
+      }
+
+      .blank-input:focus {
+        border-color: var(--primary);
+        background: rgba(99, 102, 241, 0.1);
+        box-shadow: 0 2px 8px rgba(99, 102, 241, 0.15);
+      }
+
+      .blank-input.correct {
+        border-color: var(--success);
+        color: var(--success);
+        background: rgba(5, 150, 105, 0.08);
+      }
+
+      .blank-input.incorrect {
+        border-color: var(--error);
+        color: var(--error);
+        background: rgba(220, 38, 38, 0.06);
+      }
+
+      .drop-zones {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+      }
+
+      .quiz-option {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 10px 0;
+        padding: 14px 18px;
+        border: 2px solid var(--border);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: var(--transition);
+        font-family: var(--font-ui);
+        font-size: 0.95rem;
+        background: var(--surface);
+      }
+
+      .quiz-option:hover {
+        background: var(--primary-bg);
+        border-color: var(--primary-light);
+        transform: translateX(4px);
+      }
+
+      .quiz-option input[type="radio"] {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--primary);
+        margin-right: 4px;
+        flex-shrink: 0;
+      }
+
+      .quiz-option.correct {
+        background: var(--success-bg);
+        border-color: var(--success);
+        box-shadow: 0 0 0 1px rgba(5, 150, 105, 0.15);
+      }
+
+      .quiz-option.incorrect {
+        background: var(--error-bg);
+        border-color: var(--error);
+        box-shadow: 0 0 0 1px rgba(220, 38, 38, 0.1);
+      }
+
+      .btn-check {
+        font-family: var(--font-ui);
+        font-weight: 600;
+        font-size: 0.95rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-light)
+        );
+        color: #fff;
+        border: none;
+        padding: 12px 28px;
+        border-radius: 100px;
+        cursor: pointer;
+        margin-top: 18px;
+        display: inline-block;
+        box-shadow: var(--shadow-primary);
+        transition: var(--transition);
+        letter-spacing: 0.01em;
+      }
+
+      .btn-check:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(67, 56, 202, 0.35);
+        filter: brightness(1.05);
+      }
+
+      .btn-check:active {
+        transform: translateY(0);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .btn-next {
+        background: linear-gradient(135deg, var(--secondary), #334155);
+        color: #fff;
+        margin-left: 12px;
+        display: none;
+        box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+      }
+
+      .btn-next:hover {
+        box-shadow: 0 6px 20px rgba(15, 23, 42, 0.3);
+      }
+
+      .feedback-msg {
+        margin-top: 14px;
+        font-weight: 600;
+        font-family: var(--font-ui);
+        padding: 12px 16px;
+        border-radius: var(--radius-xs);
+        font-size: 0.93rem;
+      }
+
+      .feedback-success {
+        color: #065f46;
+        background: var(--success-bg);
+        border: 1px solid var(--success-border);
+      }
+
+      .feedback-error {
+        color: #991b1b;
+        background: var(--error-bg);
+        border: 1px solid var(--error-border);
+      }
+
+      table {
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+        border: 1px solid var(--border);
+        margin: 16px 0;
+      }
+
+      thead tr {
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-light)
+        ) !important;
+      }
+
+      th {
+        color: #fff !important;
+        font-family: var(--font-heading);
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 12px 16px !important;
+        border: none !important;
+      }
+
+      td {
+        padding: 12px 16px !important;
+        border: none !important;
+        border-bottom: 1px solid var(--border-light) !important;
+        font-size: 0.95rem;
+      }
+
+      tbody tr:nth-child(even) {
+        background: var(--surface-2);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+        margin: 20px 0;
+      }
+
+      select {
+        font-family: var(--font-ui);
+        padding: 10px 14px !important;
+        border: 2px solid var(--border);
+        border-radius: var(--radius-xs);
+        background: var(--surface);
+        font-size: 0.95rem;
+        outline: none;
+        cursor: pointer;
+        transition: var(--transition);
+        color: var(--text);
+      }
+
+      select:focus {
+        border-color: var(--primary-light);
+        box-shadow: 0 0 0 3px var(--primary-bg);
+      }
+
+      input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        accent-color: var(--primary);
+        cursor: pointer;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+
+      #final-result-panel {
+        border-radius: var(--radius) !important;
+        border: 2px solid var(--primary) !important;
+        background: linear-gradient(
+          135deg,
+          var(--primary-bg) 0%,
+          #fff 100%
+        ) !important;
+        padding: 32px !important;
+      }
+
+      #final-result-panel h3 {
+        color: var(--text-secondary);
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      #final-result-panel h4 {
+        font-family: var(--font-heading);
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: var(--primary);
+        margin: 8px 0;
+      }
+
+      #sec-biblio {
+        background: var(--surface-2) !important;
+        border-top: none !important;
+        opacity: 1 !important;
+        pointer-events: all !important;
+      }
+
+      footer {
+        text-align: center;
+        padding: 40px 20px;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        font-family: var(--font-ui);
+      }
+
+      @media (max-width: 768px) {
+        html {
+          scroll-padding-top: 140px;
+        }
+
+        body {
+          padding-top: 130px;
+        }
+
+        .course-header {
+          padding: 10px 16px;
+        }
+
+        .header-content {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+
+        .header-content h1 {
+          font-size: 0.92rem !important;
+        }
+
+        .stats-panel {
+          width: 100%;
+          justify-content: flex-start;
+          gap: 6px;
+          flex-wrap: wrap;
+        }
+
+        .stat-item {
+          font-size: 0.75rem;
+          padding: 3px 10px;
+        }
+
+        main.container {
+          padding: 0 12px;
+        }
+
+        section {
+          padding: 24px 20px;
+          border-radius: var(--radius-sm);
+        }
+
+        section.active,
+        section.completed {
+          padding-left: 20px;
+        }
+
+        h2 {
+          font-size: 1.3rem;
+        }
+
+        h3 {
+          font-size: 1.05rem;
+        }
+
+        .interactive-box {
+          padding: 20px 16px;
+        }
+
+        .drop-zones {
+          grid-template-columns: 1fr;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .btn-check {
+          padding: 10px 20px;
+          font-size: 0.88rem;
+        }
+
+        .btn-next {
+          margin-left: 0;
+          margin-top: 8px;
+        }
+
+        table {
+          display: block;
+          overflow-x: auto;
+        }
+      }
+
+      @media (max-width: 480px) {
+        section {
+          padding: 18px 14px;
+        }
+
+        .interactive-box {
+          padding: 16px 12px;
+        }
+
+        h2 {
+          font-size: 1.15rem;
+        }
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 100px;
+      }
+
+      ::selection {
+        background: var(--primary-bg-hover);
+        color: var(--primary-dark);
+      }
+
+      .info-box {
+        border-radius: 10px;
+        padding: 18px 22px;
+        margin: 18px 0;
+        border-left: 5px solid;
+      }
+
+      .info-box.blue {
+        background: #e3f2fd;
+        border-color: #1976d2;
+      }
+
+      .info-box.purple {
+        background: #f3e5f5;
+        border-color: #6a1b9a;
+      }
+
+      .info-box.green {
+        background: #e8f5e9;
+        border-color: #2e7d32;
+      }
+
+      .info-box.orange {
+        background: #fff3e0;
+        border-color: #e65100;
+      }
+
+      .info-box.red {
+        background: #ffebee;
+        border-color: #c62828;
+      }
+
+      .info-box h4 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .info-box p,
+      .info-box li {
+        font-size: 0.9rem;
+        color: #444;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 16px;
+        margin: 20px 0;
+      }
+
+      .stat-card {
+        background: linear-gradient(135deg, #6a1b9a, #9c4dcc);
+        color: #fff;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .stat-card .stat-num {
+        font-size: 2rem;
+        font-weight: 800;
+        display: block;
+      }
+
+      .stat-card .stat-label {
+        font-size: 0.78rem;
+        opacity: 0.9;
+      }
+
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0;
+        font-size: 0.88rem;
+      }
+
+      .data-table th {
+        background: #6a1b9a;
+        color: #fff;
+        padding: 10px 14px;
+        text-align: left;
+      }
+
+      .data-table td {
+        padding: 9px 14px;
+        border-bottom: 1px solid #e1bee7;
+      }
+
+      .drag-zone {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 14px;
+        background: #f8f5fd;
+        border-radius: 10px;
+        min-height: 56px;
+        margin: 10px 0;
+      }
+
+      .drag-item {
+        background: linear-gradient(135deg, #6a1b9a, #9c4dcc);
+        color: #fff;
+        padding: 7px 14px;
+        border-radius: 20px;
+        font-size: 0.82rem;
+        cursor: grab;
+        user-select: none;
+        transition: var(--transition);
+        border: none;
+      }
+
+      .drag-item:active {
+        cursor: grabbing;
+        opacity: 0.7;
+        transform: scale(0.95);
+      }
+
+      .drop-zone {
+        border: 2px dashed #9c4dcc;
+        border-radius: 10px;
+        min-height: 70px;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: flex-start;
+        transition: var(--transition);
+      }
+
+      .drop-zone.drag-over {
+        background: #f3e5f5;
+        border-color: #6a1b9a;
+      }
+
+      .drop-zone-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #6a1b9a;
+        margin-bottom: 6px;
+      }
+
+      .drop-item {
+        background: #ce93d8;
+        color: #4a0072;
+        padding: 5px 12px;
+        border-radius: 16px;
+        font-size: 0.8rem;
+        cursor: pointer;
+      }
+
+      .drop-item:hover {
+        background: #ba68c8;
+      }
+
+      .select-match {
+        width: 100%;
+        padding: 8px 12px;
+        border: 2px solid #ce93d8;
+        border-radius: 8px;
+        font-size: 0.88rem;
+        color: #212121;
+        background: #fff;
+        cursor: pointer;
+      }
+
+      .select-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 8px 0;
+        flex-wrap: wrap;
+      }
+
+      .select-row span {
+        font-size: 0.88rem;
+        min-width: 220px;
+        flex: 1;
+      }
+
+      .quiz-question {
+        background: #fff;
+        border: 1px solid #e1bee7;
+        border-radius: 10px;
+        padding: 18px;
+        margin-bottom: 16px;
+      }
+
+      .quiz-question .q-text {
+        font-weight: 600;
+        margin-bottom: 12px;
+        font-size: 0.93rem;
+      }
+
+      .q-num {
+        font-size: 0.78rem;
+        color: #6a1b9a;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+
+      .chip {
+        display: inline-block;
+        background: #f3e5f5;
+        color: #6a1b9a;
+        border: 1px solid #ce93d8;
+        border-radius: 20px;
+        padding: 4px 12px;
+        font-size: 0.8rem;
+        margin: 3px;
+        font-weight: 600;
+      }
+
+      .chip.green {
+        background: #e8f5e9;
+        color: #2e7d32;
+        border-color: #a5d6a7;
+      }
+
+      .chip.orange {
+        background: #fff3e0;
+        color: #e65100;
+        border-color: #ffcc80;
+      }
+
+      .chip.red {
+        background: #ffebee;
+        color: #c62828;
+        border-color: #ef9a9a;
+      }
+
+      .timeline {
+        position: relative;
+        padding-left: 32px;
+        margin: 16px 0;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 10px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #ce93d8;
+      }
+
+      .tl-item {
+        position: relative;
+        margin-bottom: 18px;
+      }
+
+      .tl-item::before {
+        content: "";
+        position: absolute;
+        left: -26px;
+        top: 6px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #6a1b9a;
+        border: 2px solid #fff;
+        box-shadow: 0 0 0 2px #6a1b9a;
+      }
+
+      .tl-year {
+        font-weight: 700;
+        color: #6a1b9a;
+        font-size: 0.85rem;
+      }
+
+      .tl-text {
+        font-size: 0.88rem;
+        color: #444;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      @media (max-width: 680px) {
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+
+        .select-row {
+          flex-direction: column;
+        }
+      }
+
+      .btn-gold {
+        background: linear-gradient(135deg, #92400e, #c8960c);
+        color: #fff;
+      }
+
+      .btn-gold:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(200, 150, 12, 0.4);
+      }
+
+      .series-complete-panel {
+        background: linear-gradient(135deg, #1e3a5f, #c8960c);
+        border-radius: var(--radius);
+        padding: 36px;
+        text-align: center;
+        margin-top: 28px;
+        color: #fff;
+        display: none;
+      }
+
+      .series-complete-panel .trophy {
+        font-size: 4rem;
+        margin-bottom: 16px;
+        display: block;
+      }
+
+      .series-complete-panel h2 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 12px;
+      }
+
+      .series-complete-panel p {
+        font-size: 0.95rem;
+        opacity: 0.92;
+        max-width: 560px;
+        margin: 0 auto 20px;
+      }
+
+      .cert-box {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 12px;
+        padding: 20px;
+        margin: 16px auto;
+        max-width: 480px;
+      }
+
+      .cert-box h3 {
+        font-size: 1.1rem;
+        margin-bottom: 6px;
+      }
+
+      .cert-box p {
+        font-size: 0.85rem;
+        opacity: 0.85;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="course-header">
+      <div class="header-content">
+        <div>
+          <h1 style="margin: 0; font-size: 1.2rem">
+            Curs 7/7: Contracte Inteligente și Tehnologii Emergente în Drept
+          </h1>
+          <small style="color: #666"
+            >Smart contracts, DeFi, DAO, NFT și cadrul normativ integrat</small
+          >
+        </div>
+        <div class="stats-panel">
+          <div class="stat-item">⏱️ <span id="timer">00:00</span></div>
+          <div class="stat-item">
+            📊 Progres: <span id="percent-display">0%</span>
+          </div>
+          <div class="stat-item">
+            ⭐ Scor: <span id="score-display">0</span>/100
+          </div>
+        </div>
+      </div>
+      <div class="progress-container">
+        <div
+          class="progress-bar"
+          id="main-progress-bar"
+          style="width: 0%"
+        ></div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="sec-1" class="active">
+        <h2>1. Introducere și Obiective</h2>
+        <div class="slide-content">
+          <div class="info-box navy">
+            <h4>🔮 De ce este acesta cel mai important curs al seriei?</h4>
+            <p>
+              Contractele inteligente și tehnologiile emergente — IA,
+              Blockchain, IoT, Metavers, Computație Cuantică — nu mai sunt
+              science fiction. Ele transformă deja actele juridice, instanțele,
+              firmele de avocatură și relațiile contractuale. Juristul care
+              înțelege aceste tehnologii va defini dreptul de mâine.
+            </p>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-num">$300 Mrd</span
+              ><span class="stat-label"
+                >valoarea pieței de LegalTech până în 2030</span
+              >
+            </div>
+            <div class="stat-card gold-card">
+              <span class="stat-num">40%</span
+              ><span class="stat-label"
+                >din profesiile juridice vor fi transformate de IA până în
+                2030</span
+              >
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">Web3</span
+              ><span class="stat-label"
+                >noul internet descentralizat bazat pe blockchain și smart
+                contracts</span
+              >
+            </div>
+            <div class="stat-card gold-card">
+              <span class="stat-num">2026</span
+              ><span class="stat-label"
+                >când Metaversul juridic va genera primele dispute
+                internaționale majore</span
+              >
+            </div>
+          </div>
+          <div class="info-box blue">
+            <h4>
+              📚 Obiectivele cursului final (2 ore • 10 întrebări evaluare)
+            </h4>
+            <ul>
+              <li>
+                Aprofundarea smart contracts: tipuri, arhitectură, ciclu de
+                viață, recunoaștere legală
+              </li>
+              <li>
+                Cunoașterea platformelor avansate: Ethereum, Hyperledger,
+                Solana, Polkadot
+              </li>
+              <li>Înțelegerea DeFi, DAO și implicațiilor lor juridice</li>
+              <li>
+                Identificarea perspectivelor IoT, Metavers, Computație Cuantică
+                în drept
+              </li>
+              <li>
+                Sinteza cadrului normativ complet: EU AI Act, MiCA, eIDAS 2,
+                NIS2, GDPR
+              </li>
+              <li>Conturarea profilului juristului digital al viitorului</li>
+            </ul>
+          </div>
+          <div class="interactive-box">
+            <label
+              style="
+                margin-top: 25px;
+                display: block;
+                font-size: 1.1rem;
+                cursor: pointer;
+              "
+            >
+              <input type="checkbox" onchange="unlockSection('sec-2', this)" />
+              ✅ Am citit introducerea și sunt pregătit pentru ultimul modul
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-2">
+        <h2>2. Smart Contracts — Arhitectură și Ciclu de Viață</h2>
+        <div class="slide-content">
+          <div class="info-box navy">
+            <h4>📖 Recapitulare și aprofundare</h4>
+            <p>
+              Un <strong>smart contract</strong> este un program autoexecutabil
+              stocat pe blockchain. Spre deosebire de un contract tradițional —
+              care depinde de interpretare umană și executare silită — smart
+              contractul se execută automat, deterministă și imuabil prin codul
+              său, fără nicio intervenție externă.
+            </p>
+          </div>
+
+          <h4 style="color: #1e3a5f; margin: 20px 0 14px">
+            🔄 Ciclul de viață al unui Smart Contract
+          </h4>
+          <div class="three-col">
+            <div class="tech-card tc-blue">
+              <div class="tc-icon">✍️</div>
+              <h4>1. Redactare</h4>
+              <p>
+                Codul scris în Solidity (Ethereum), Rust (Solana) sau Go
+                (Hyperledger). Definirea condițiilor, funcțiilor și
+                evenimentelor.
+              </p>
+            </div>
+            <div class="tech-card tc-teal">
+              <div class="tc-icon">🔍</div>
+              <h4>2. Audit & Testare</h4>
+              <p>
+                Verificare formală a codului (audit de securitate). Testare pe
+                rețele de test (Goerli, Sepolia). Identificarea
+                vulnerabilităților înainte de deploy.
+              </p>
+            </div>
+            <div class="tech-card tc-green">
+              <div class="tc-icon">🚀</div>
+              <h4>3. Deploy (lansare)</h4>
+              <p>
+                Publicarea pe blockchain (mainnet). Contractului i se atribuie o
+                adresă unică și imuabilă. Codul devine public și permanent.
+              </p>
+            </div>
+            <div class="tech-card tc-gold">
+              <div class="tc-icon">⚡</div>
+              <h4>4. Execuție automată</h4>
+              <p>
+                Când condițiile (triggere) sunt îndeplinite, funcțiile se
+                execută automat. Tranzacția este înregistrată și ireversibilă.
+              </p>
+            </div>
+            <div class="tech-card tc-orange">
+              <div class="tc-icon">🔮</div>
+              <h4>5. Oracle (date externe)</h4>
+              <p>
+                Chainlink, Band Protocol furnizează date din lumea reală
+                (prețuri, cursuri valutare, rezultate sportive) în smart
+                contract în mod securizat.
+              </p>
+            </div>
+            <div class="tech-card tc-purple">
+              <div class="tc-icon">🗃️</div>
+              <h4>6. Upgrade / Deprecare</h4>
+              <p>
+                Contractele imuabile nu pot fi modificate direct. Soluții: proxy
+                patterns, migrare la nou contract, DAO governance pentru
+                upgrades.
+              </p>
+            </div>
+          </div>
+
+          <div class="two-col" style="margin-top: 20px">
+            <div>
+              <h4 style="color: #1e3a5f; margin-bottom: 12px">
+                💻 Smart Contract avansat — Escrow juridic
+              </h4>
+              <div class="contract-code">
+                <span class="cmt">// Contract Escrow Juridic - Ethereum</span>
+                <span class="kw">pragma solidity</span> ^0.8.19;
+
+                <span class="kw">contract</span>
+                <span class="fn">EscrowJuridic</span> {
+                <span class="kw">enum</span> Stare {Activ, Finalizat, Disputat}
+
+                <span class="kw">address</span>
+                <span class="kw">public</span> cumparator;
+                <span class="kw">address</span>
+                <span class="kw">public</span> vanzator;
+                <span class="kw">address</span>
+                <span class="kw">public</span> arbitru;
+                <span class="kw">uint</span>
+                <span class="kw">public</span> suma; Stare
+                <span class="kw">public</span> stare;
+
+                <span class="ev">event</span>
+                <span class="fn">FonduriEliberate</span>(address destinatar);
+                <span class="ev">event</span>
+                <span class="fn">DisputaDeschisa</span>(address initiat);
+
+                <span class="fn">function</span> confirmaLivrare()
+                <span class="kw">external</span> {
+                <span class="kw">require</span>(msg.sender == cumparator); stare
+                = Stare.Finalizat; payable(vanzator).transfer(suma);
+                <span class="kw">emit</span>
+                <span class="fn">FonduriEliberate</span>(vanzator); }
+
+                <span class="fn">function</span> deschideDisputa()
+                <span class="kw">external</span> {
+                <span class="kw">require</span>(msg.sender == cumparator ||
+                msg.sender == vanzator); stare = Stare.Disputat;
+                <span class="kw">emit</span>
+                <span class="fn">DisputaDeschisa</span>(msg.sender); }
+                <span class="cmt">// Arbitrul decide în caz de dispută</span>
+                }
+              </div>
+            </div>
+            <div>
+              <div class="info-box green">
+                <h4>✅ Standarde internaționale pentru Smart Contracts</h4>
+                <ul>
+                  <li>
+                    <strong>ERC-20</strong> — standard tokeni fungibili (monede
+                    digitale)
+                  </li>
+                  <li>
+                    <strong>ERC-721</strong> — standard NFT (tokeni unici,
+                    proprietate)
+                  </li>
+                  <li>
+                    <strong>ERC-1155</strong> — standard multi-token (jocuri,
+                    active mixte)
+                  </li>
+                  <li>
+                    <strong>Accord Project</strong> — cadru open-source pentru
+                    contracte juridice pe blockchain
+                  </li>
+                  <li>
+                    <strong>ISDA CDM</strong> — model standard pentru derivate
+                    financiare pe blockchain
+                  </li>
+                </ul>
+              </div>
+              <div class="info-box orange">
+                <h4>⚠️ Probleme juridice specifice Smart Contracts</h4>
+                <ul>
+                  <li>
+                    <strong>Vicii de consimțământ</strong> — eroarea în cod =
+                    eroare în contract?
+                  </li>
+                  <li>
+                    <strong>Forța majoră</strong> — codul nu poate opri execuția
+                    în caz de war/pandemie
+                  </li>
+                  <li>
+                    <strong>Jurisdicție</strong> — un contract pe Ethereum: care
+                    tribunal este competent?
+                  </li>
+                  <li>
+                    <strong>Reprezentare</strong> — poate un bot să încheie un
+                    contract valabil?
+                  </li>
+                  <li>
+                    <strong>Proba digitală</strong> — tranzacția blockchain ca
+                    mijloc de probă în instanță
+                  </li>
+                </ul>
+              </div>
+              <div class="info-box teal">
+                <h4>🇪🇺 Recunoaștere juridică în UE și România</h4>
+                <ul>
+                  <li>
+                    <strong>eIDAS 2 Art. 45f</strong> — recunoaște semnăturile
+                    electronice pe blockchain
+                  </li>
+                  <li>
+                    <strong>MiCA Art. 3(1)</strong> — smart contractul =
+                    infrastructură pentru crypto-assets
+                  </li>
+                  <li>
+                    <strong>Directiva 2019/770</strong> — contracte digitale
+                    valide în UE
+                  </li>
+                  <li>
+                    <strong>România</strong> — Legea 455/2001 + MiCA (aplicabil
+                    din 2024) creează cadrul
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="interactive-box">
+            <h3>✏️ Completați spațiile libere — Smart Contracts</h3>
+            <ol style="font-size: 0.9rem; line-height: 2.4">
+              <li>
+                Programul furnizor de date din lumea reală (prețuri, cursuri)
+                către un smart contract se numește
+                <input
+                  class="blank-input"
+                  id="b2_1"
+                  placeholder="?"
+                  style="width: 110px"
+                />
+                .
+              </li>
+              <li>
+                Standardul Ethereum pentru tokeni fungibili (monede digitale)
+                este
+                <input
+                  class="blank-input"
+                  id="b2_2"
+                  placeholder="?"
+                  style="width: 100px"
+                />
+                .
+              </li>
+              <li>
+                Standardul Ethereum pentru NFT (tokeni unici) este
+                <input
+                  class="blank-input"
+                  id="b2_3"
+                  placeholder="?"
+                  style="width: 100px"
+                />
+                .
+              </li>
+              <li>
+                Procesul de verificare a codului unui smart contract înainte de
+                lansare se numește
+                <input
+                  class="blank-input"
+                  id="b2_4"
+                  placeholder="?"
+                  style="width: 100px"
+                />
+                de securitate.
+              </li>
+              <li>
+                Odată publicat pe blockchain, codul unui smart contract este
+                <input
+                  class="blank-input"
+                  id="b2_5"
+                  placeholder="?"
+                  style="width: 120px"
+                />
+                (nu poate fi modificat).
+              </li>
+            </ol>
+            <button class="btn-check" onclick="checkBlanks2()">
+              ✅ Verifică
+            </button>
+            <div class="feedback" id="fb2"></div>
+          </div>
+
+          <div class="interactive-box">
+            <label
+              style="
+                margin-top: 25px;
+                display: block;
+                font-size: 1.1rem;
+                cursor: pointer;
+              "
+            >
+              <input type="checkbox" onchange="unlockSection('sec-3', this)" />
+              ✅ Am aprofundat smart contracts și continui
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-3">
+        <h2>3. DeFi, DAO și NFT — Implicații Juridice</h2>
+        <div class="slide-content">
+          <div class="two-col">
+            <div>
+              <div class="info-box navy">
+                <h4>💰 DeFi — Decentralized Finance</h4>
+                <p>
+                  <strong>DeFi</strong> = ecosistem de servicii financiare
+                  (împrumuturi, schimb valutar, asigurări) furnizate prin smart
+                  contracts, fără bănci sau intermediari tradiționali. TVL
+                  (Total Value Locked) a depășit
+                  <strong>$200 miliarde USD</strong> la vârf (2021).
+                </p>
+              </div>
+              <div class="info-box red">
+                <h4>⚖️ Probleme juridice DeFi</h4>
+                <ul>
+                  <li>
+                    <strong>Nicio entitate juridică identificabilă</strong> —
+                    cine răspunde?
+                  </li>
+                  <li>
+                    <strong>KYC/AML impossible</strong> — protocoalele nu
+                    identifică utilizatorii
+                  </li>
+                  <li>
+                    <strong>Rugpull</strong> = fraudă: fondatorii retrag
+                    lichiditatea. Răspundere penală?
+                  </li>
+                  <li>
+                    <strong>Impozitare</strong> — câștigurile DeFi sunt
+                    impozabile, dar greu de urmărit
+                  </li>
+                  <li>
+                    <strong>MiCA</strong> — reglementează parțial DeFi; ESMA
+                    lucrează la ghiduri
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <div class="info-box navy">
+                <h4>🏛️ DAO — Decentralized Autonomous Organization</h4>
+                <p>
+                  <strong>DAO</strong> = organizație guvernată integral prin
+                  smart contracts și vot al deținătorilor de tokeni, fără
+                  conducere umană centralizată. Deciziile (investiții,
+                  upgrade-uri, reguli) se iau on-chain, transparent și automat.
+                </p>
+              </div>
+              <div class="info-box purple">
+                <h4>📋 Statutul juridic al DAO</h4>
+                <ul>
+                  <li>
+                    <strong>Wyoming (SUA, 2021)</strong> — DAO = LLC (Limited
+                    Liability Company) — primii în lume
+                  </li>
+                  <li>
+                    <strong>Marshall Islands (2022)</strong> — recunosc DAO ca
+                    entitate juridică
+                  </li>
+                  <li>
+                    <strong>UE</strong> — DAO nu au statut juridic clar; lucrări
+                    MiCA II în curs
+                  </li>
+                  <li>
+                    <strong>România</strong> — DAO = entitate juridică
+                    nerecunoscută explicit
+                  </li>
+                  <li>
+                    <strong>Risc</strong>: în absența recunoașterii, membrii DAO
+                    pot fi ținuți personal răspunzători
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-box gold">
+            <h4>🎨 NFT și Dreptul Proprietății Intelectuale</h4>
+            <p>
+              <strong>NFT ≠ drept de autor</strong>. Cumpărarea unui NFT conferă
+              proprietatea <em>tokenului</em>, nu neapărat a operei în sine.
+              Legea dreptului de autor continuă să guverneze drepturile de
+              reproducere, distribuție și derivate. Un NFT = dovadă de
+              autenticitate și proveniență pe blockchain.
+            </p>
+          </div>
+
+          <table class="data-table">
+            <tr>
+              <th>Fenomen</th>
+              <th>Ce este</th>
+              <th>Problemă juridică principală</th>
+              <th>Soluție în discuție</th>
+            </tr>
+            <tr>
+              <td>🏦 DeFi</td>
+              <td>Servicii financiare fără intermediar</td>
+              <td>Nicio entitate responsabilă, AML imposibil</td>
+              <td>MiCA II, licențiere protocoale</td>
+            </tr>
+            <tr>
+              <td>🏛️ DAO</td>
+              <td>Organizație guvernată prin cod</td>
+              <td>Răspundere membrilor, statut juridic ambiguu</td>
+              <td>Wyoming LLC model, UE în deliberare</td>
+            </tr>
+            <tr>
+              <td>🎨 NFT artă</td>
+              <td>Token unic = dovadă proprietate digitală</td>
+              <td>NFT ≠ drept de autor automat</td>
+              <td>Smart contract cu licență explicită</td>
+            </tr>
+            <tr>
+              <td>🏠 NFT imobiliar</td>
+              <td>Titlu de proprietate pe blockchain</td>
+              <td>Forța executorie față de terți, cadastru</td>
+              <td>Integrare cu registrele naționale</td>
+            </tr>
+            <tr>
+              <td>⚽ NFT sportiv</td>
+              <td>Carte digitală colecție / fan token</td>
+              <td>Speculă, protecție consumatori</td>
+              <td>ESMA guidelines, MiCA Art. 4</td>
+            </tr>
+          </table>
+
+          <div class="interactive-box">
+            <h3>🖱️ Drag & Drop: Clasificați fenomenele Web3</h3>
+            <p style="font-size: 0.88rem; margin-bottom: 14px">
+              Trageți fiecare element în categoria juridică corespunzătoare:
+            </p>
+            <div class="drag-zone" id="dragSource3">
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="Rugpull DeFi"
+                data-cat="frauda"
+                >Rugpull DeFi</span
+              >
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="Wyoming DAO LLC"
+                data-cat="recunoastere"
+                >Wyoming DAO LLC</span
+              >
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="NFT = dovada autor"
+                data-cat="proprietate"
+                >NFT = dovadă autor</span
+              >
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="KYC imposibil DeFi"
+                data-cat="frauda"
+                >KYC imposibil DeFi</span
+              >
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="DAO vot on-chain"
+                data-cat="recunoastere"
+                >DAO vot on-chain</span
+              >
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="NFT imobiliar"
+                data-cat="proprietate"
+                >NFT imobiliar</span
+              >
+            </div>
+            <div class="three-col" style="margin-top: 14px">
+              <div>
+                <div class="drop-zone-label">⚠️ Riscuri/Fraude juridice</div>
+                <div
+                  class="drop-zone"
+                  id="drop3_frauda"
+                  data-cat="frauda"
+                  ondragover="allowDrop(event)"
+                  ondrop="dropItem(event, 'drop3_frauda', 'dragging3')"
+                ></div>
+              </div>
+              <div>
+                <div class="drop-zone-label">✅ Recunoaștere juridică DAO</div>
+                <div
+                  class="drop-zone"
+                  id="drop3_recunoastere"
+                  data-cat="recunoastere"
+                  ondragover="allowDrop(event)"
+                  ondrop="dropItem(event, 'drop3_recunoastere', 'dragging3')"
+                ></div>
+              </div>
+              <div>
+                <div class="drop-zone-label">🎨 Proprietate digitală NFT</div>
+                <div
+                  class="drop-zone"
+                  id="drop3_proprietate"
+                  data-cat="proprietate"
+                  ondragover="allowDrop(event)"
+                  ondrop="dropItem(event, 'drop3_proprietate', 'dragging3')"
+                ></div>
+              </div>
+            </div>
+            <button class="btn-check" onclick="checkDrop3()">
+              ✅ Verifică
+            </button>
+            <div class="feedback" id="fb3drag"></div>
+          </div>
+
+          <div class="interactive-box">
+            <label
+              style="
+                margin-top: 25px;
+                display: block;
+                font-size: 1.1rem;
+                cursor: pointer;
+              "
+            >
+              <input type="checkbox" onchange="unlockSection('sec-4', this)" />
+              ✅ Am înțeles DeFi, DAO și NFT juridic și continui
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-4">
+        <h2>4. Tehnologii Emergente cu Impact Juridic</h2>
+        <div class="slide-content">
+          <div class="info-box navy">
+            <h4>🔭 Orizontul tehnologic juridic 2025-2035</h4>
+            <p>
+              Dincolo de blockchain și IA, o serie de tehnologii emergente vor
+              redefini fundamental practica și teoria juridică în deceniul
+              următor. Juristul proactiv trebuie să anticipeze aceste
+              transformări înainte ca ele să devină probleme juridice urgente.
+            </p>
+          </div>
+
+          <div class="two-col">
+            <div>
+              <div class="info-box teal">
+                <h4>📡 IoT — Internet of Things și Dreptul</h4>
+                <ul>
+                  <li>
+                    <strong>Dispozitivele IoT</strong> pot executa smart
+                    contracts automat (ex: mașina care plătește parcarea
+                    singură)
+                  </li>
+                  <li>
+                    <strong>Răspundere</strong>: dacă un frigider IoT comandă
+                    produse expirate, cine răspunde?
+                  </li>
+                  <li>
+                    <strong>Date personale</strong>: GDPR se aplică datelor
+                    colectate de senzori IoT
+                  </li>
+                  <li>
+                    <strong>Probă digitală</strong>: logurile IoT = mijloace de
+                    probă (accidente auto, boli profesionale)
+                  </li>
+                  <li>
+                    <strong>AI Liability Directive</strong> — acoperă și
+                    dispozitivele IoT autonome
+                  </li>
+                </ul>
+              </div>
+              <div class="info-box purple">
+                <h4>🌐 Metaversul Juridic</h4>
+                <ul>
+                  <li>
+                    <strong>Proprietate virtuală</strong>: terenuri
+                    Decentraland, Sandbox = active juridice reale
+                  </li>
+                  <li>
+                    <strong>Infracțiuni în Metavers</strong>: hărțuire, furt de
+                    avatar, fraudă cu NFT
+                  </li>
+                  <li>
+                    <strong>Competența jurisdicțională</strong>: un avatar din
+                    România hărțuiește un avatar din Japonia pe un server
+                    american — care lege se aplică?
+                  </li>
+                  <li>
+                    <strong>Contracte de muncă</strong> pentru avatare și
+                    lucrători digitali
+                  </li>
+                  <li>
+                    <strong>UE</strong>: Raportul PE 2023 despre reglementarea
+                    Metaversului
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <div class="info-box red">
+                <h4>⚛️ Computația Cuantică și Criptografia Juridică</h4>
+                <ul>
+                  <li>
+                    <strong>Amenințare existențială</strong>: calculatoarele
+                    cuantice pot sparge RSA, SHA-256 (baza blockchain și
+                    semnăturii electronice)
+                  </li>
+                  <li>
+                    <strong>Post-quantum cryptography</strong>: NIST a
+                    standardizat primii algoritmi rezistenți cuantic (2024)
+                  </li>
+                  <li>
+                    <strong>eIDAS 2</strong> pregătit pentru migrare
+                    post-quantum
+                  </li>
+                  <li>
+                    <strong>Implicație juridică</strong>: toate documentele
+                    semnate digital astăzi pot deveni vulnerabile în 10-15 ani
+                  </li>
+                  <li>
+                    <strong>România</strong>: strategia națională de securitate
+                    cibernetică include riscuri cuantice
+                  </li>
+                </ul>
+              </div>
+              <div class="info-box gold">
+                <h4>🤖 IA Generativă și Dreptul (actualizare)</h4>
+                <ul>
+                  <li>
+                    <strong>GPT-4, Claude, Gemini</strong> în firmele de
+                    avocatură — asistare contracte, cercetare, due diligence
+                  </li>
+                  <li>
+                    <strong>Deepfake juridic</strong>: falsificarea probelor
+                    audio/video prin IA — crime informatice
+                  </li>
+                  <li>
+                    <strong>Dreptul de autor al IA</strong>: CJUE și EUIPO — IA
+                    nu poate fi autor (2023-2024)
+                  </li>
+                  <li>
+                    <strong>EU AI Act Art. 50</strong>: obligații de marcare a
+                    conținutului generat de IA
+                  </li>
+                  <li>
+                    <strong>Prompt engineering</strong> ca abilitate juridică
+                    esențială
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <h4 style="color: #1e3a5f; margin: 24px 0 14px">
+            🔭 Digital Twins și Contractele Viitorului
+          </h4>
+          <div class="info-box blue">
+            <h4>👤 Digital Twin = Geamăn Digital</h4>
+            <p>
+              O replică digitală exactă a unui bun fizic (clădire, mașinărie,
+              corp uman) sau a unui proces, actualizată în timp real prin
+              senzori IoT. <strong>Implicații juridice</strong>: Digital Twin al
+              unei clădiri = dovadă în litigii de construcții; Digital Twin
+              medical = probă în malpraxis; contractele pot referi starea
+              digitală twin în loc de inspecții fizice.
+            </p>
+          </div>
+
+          <div class="interactive-box">
+            <h3>📋 Asociere: Tehnologie emergentă → Implicație juridică</h3>
+            <p style="font-size: 0.88rem; margin-bottom: 14px">
+              Asociați fiecare tehnologie cu principala sa implicație juridică:
+            </p>
+            <div class="select-row">
+              <span
+                >1. IoT — dispozitivele care colectează date biometrice:</span
+              >
+              <select class="select-match" id="sel4_1">
+                <option value="">-- Alegeți --</option>
+                <option>Răspundere penală robot</option>
+                <option>GDPR — date personale</option>
+                <option>Drept de autor IA</option>
+                <option>MiCA — criptoactive</option>
+              </select>
+            </div>
+            <div class="select-row">
+              <span>2. Computația cuantică amenință:</span>
+              <select class="select-match" id="sel4_2">
+                <option value="">-- Alegeți --</option>
+                <option>Dreptul de autor</option>
+                <option>Criptografia și semnătura electronică</option>
+                <option>Dreptul la vot</option>
+                <option>Contractele de muncă</option>
+              </select>
+            </div>
+            <div class="select-row">
+              <span>3. Deepfake audio/video în instanță constituie:</span>
+              <select class="select-match" id="sel4_3">
+                <option value="">-- Alegeți --</option>
+                <option>Exercitarea dreptului la replică</option>
+                <option>Infracțiune de fals în înscrisuri digitale</option>
+                <option>Publicitate comparativă</option>
+                <option>Libertate de exprimare</option>
+              </select>
+            </div>
+            <div class="select-row">
+              <span>4. EU AI Act Art. 50 impune obligația de:</span>
+              <select class="select-match" id="sel4_4">
+                <option value="">-- Alegeți --</option>
+                <option>Licențiere obligatorie IA</option>
+                <option>Marcare/etichetare conținut generat de IA</option>
+                <option>Interzicere completă deepfake</option>
+                <option>Înregistrare la ANSPDCP</option>
+              </select>
+            </div>
+            <div class="select-row">
+              <span
+                >5. Un teren virtual din Metavers cumpărat cu ETH
+                generează:</span
+              >
+              <select class="select-match" id="sel4_5">
+                <option value="">-- Alegeți --</option>
+                <option>Drepturi reale imobiliare clasice</option>
+                <option>
+                  Drepturi contractuale și obligații fiscale pentru câștiguri
+                  cripto
+                </option>
+                <option>Drepturi de autor</option>
+                <option>Niciun drept recunoscut în UE</option>
+              </select>
+            </div>
+            <button class="btn-check" onclick="checkSelects4()">
+              ✅ Verifică
+            </button>
+            <div class="feedback" id="fb4sel"></div>
+          </div>
+
+          <div class="interactive-box">
+            <label
+              style="
+                margin-top: 25px;
+                display: block;
+                font-size: 1.1rem;
+                cursor: pointer;
+              "
+            >
+              <input type="checkbox" onchange="unlockSection('sec-5', this)" />
+              ✅ Am studiat tehnologiile emergente și continui
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-5">
+        <h2>5. Cadrul Normativ Integrat al Dreptului Digital</h2>
+        <div class="slide-content">
+          <div class="info-box navy">
+            <h4>🇪🇺 Ecosistemul normativ digital european — sinteza seriei</h4>
+            <p>
+              Uniunea Europeană a construit în perioada 2018-2024 cel mai
+              complet ecosistem normativ pentru spațiul digital din lume.
+              Juristul digital trebuie să navigheze simultan prin toate aceste
+              instrumente pentru a oferi consiliere juridică completă.
+            </p>
+          </div>
+
+          <table class="data-table">
+            <tr>
+              <th>Act normativ</th>
+              <th>An intrare vigoare</th>
+              <th>Domeniu</th>
+              <th>Aplicare România</th>
+            </tr>
+            <tr>
+              <td>🔐 <strong>GDPR</strong> (679/2016)</td>
+              <td>25 mai 2018</td>
+              <td>Date personale, confidențialitate</td>
+              <td>Direct aplicabil; ANSPDCP</td>
+            </tr>
+            <tr>
+              <td>🌐 <strong>DSA</strong> (2022/2065)</td>
+              <td>Febr. 2024</td>
+              <td>Platforme digitale, conținut ilegal</td>
+              <td>Direct aplicabil; ANCOM</td>
+            </tr>
+            <tr>
+              <td>🏪 <strong>DMA</strong> (2022/1925)</td>
+              <td>Mai 2023</td>
+              <td>Piața digitală, gatekeeper-i</td>
+              <td>Direct aplicabil; CE+ANPC</td>
+            </tr>
+            <tr>
+              <td>🔒 <strong>NIS2</strong> (2022/2555)</td>
+              <td>Oct. 2024</td>
+              <td>Securitate cibernetică entități esențiale</td>
+              <td>Transpus prin Legea 58/2023</td>
+            </tr>
+            <tr>
+              <td>💰 <strong>MiCA</strong> (2023/1114)</td>
+              <td>Dec. 2024</td>
+              <td>Cripto-active, blockchain, DeFi</td>
+              <td>Legea 244/2023; ASF/BNR</td>
+            </tr>
+            <tr>
+              <td>🤖 <strong>EU AI Act</strong> (2024/1689)</td>
+              <td>Aug. 2024</td>
+              <td>Inteligență artificială, risc, etică</td>
+              <td>Direct aplicabil; autoritate în curs</td>
+            </tr>
+            <tr>
+              <td>🪪 <strong>eIDAS 2</strong> (2024/1183)</td>
+              <td>2024-2026</td>
+              <td>Identitate digitală, semnătură electronică</td>
+              <td>Implementare EUDI Wallet 2026</td>
+            </tr>
+            <tr>
+              <td>📋 <strong>Data Act</strong> (2023/2854)</td>
+              <td>Sept. 2025</td>
+              <td>Accesul la date, portabilitate</td>
+              <td>Direct aplicabil</td>
+            </tr>
+            <tr>
+              <td>🏭 <strong>Data Governance Act</strong> (2022/868)</td>
+              <td>Sept. 2023</td>
+              <td>Guvernanța datelor, spații de date</td>
+              <td>Direct aplicabil</td>
+            </tr>
+          </table>
+
+          <div class="two-col">
+            <div class="info-box blue">
+              <h4>🇷🇴 Cadrul național integrat</h4>
+              <ul>
+                <li>
+                  <strong>Legea 455/2001</strong> — semnătura electronică
+                  (transpune eIDAS 1)
+                </li>
+                <li>
+                  <strong>Legea 365/2002</strong> — comerțul electronic
+                  (directiva 2000/31/CE)
+                </li>
+                <li>
+                  <strong>Legea 129/2019</strong> — AML/CFT, include cripto
+                  (transpune 5AMLD)
+                </li>
+                <li>
+                  <strong>Legea 58/2023</strong> — securitate cibernetică
+                  (transpune NIS2)
+                </li>
+                <li>
+                  <strong>Legea 244/2023</strong> — cripto-active (transpune
+                  parțial MiCA)
+                </li>
+                <li>
+                  <strong>OUG 117/2021</strong> — DSA național (mod intermediar)
+                </li>
+                <li>
+                  <strong>HG 1353/2022</strong> — Strategia Națională de
+                  Securitate Cibernetică
+                </li>
+              </ul>
+            </div>
+            <div class="info-box green">
+              <h4>🏛️ Autorități de supraveghere din România</h4>
+              <ul>
+                <li><strong>ANSPDCP</strong> — date personale (GDPR)</li>
+                <li>
+                  <strong>ANCOM</strong> — telecomunicații, DSA, NIS2 parțial
+                </li>
+                <li>
+                  <strong>ASF</strong> — piețe financiare, MiCA (cripto-active)
+                </li>
+                <li><strong>BNR</strong> — monedă electronică, EMT, CBDC</li>
+                <li>
+                  <strong>DNSC</strong> — Direcția Națională de Securitate
+                  Cibernetică
+                </li>
+                <li>
+                  <strong>ANPC</strong> — protecția consumatorilor digital
+                </li>
+                <li>
+                  <strong>Autoritate IA</strong> — în curs de desemnare (EU AI
+                  Act)
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="interactive-box">
+            <h3>✏️ Completați spațiile libere — Cadrul normativ</h3>
+            <ol style="font-size: 0.9rem; line-height: 2.4">
+              <li>
+                Regulamentul european privind securitatea rețelelor și
+                sistemelor informatice pentru entitățile esențiale este
+                <input
+                  class="blank-input"
+                  id="b5_1"
+                  placeholder="?"
+                  style="width: 90px"
+                />
+                .
+              </li>
+              <li>
+                Regulamentul privind piețele digitale care reglementează
+                gatekeeper-ii se numește
+                <input
+                  class="blank-input"
+                  id="b5_2"
+                  placeholder="?"
+                  style="width: 80px"
+                />
+                .
+              </li>
+              <li>
+                Autoritatea română pentru protecția datelor cu caracter personal
+                se numește
+                <input
+                  class="blank-input"
+                  id="b5_3"
+                  placeholder="?"
+                  style="width: 120px"
+                />
+                .
+              </li>
+              <li>
+                Legea română care transpune Directiva NIS2 în materie de
+                securitate cibernetică este Legea
+                <input
+                  class="blank-input"
+                  id="b5_4"
+                  placeholder="?"
+                  style="width: 90px"
+                />
+                din 2023.
+              </li>
+              <li>
+                Regulamentul UE privind accesul la date și portabilitatea
+                datelor, aplicabil din septembrie 2025, se numește
+                <input
+                  class="blank-input"
+                  id="b5_5"
+                  placeholder="?"
+                  style="width: 120px"
+                />
+                .
+              </li>
+            </ol>
+            <button class="btn-check" onclick="checkBlanks5()">
+              ✅ Verifică
+            </button>
+            <div class="feedback" id="fb5"></div>
+          </div>
+
+          <div class="interactive-box">
+            <label
+              style="
+                margin-top: 25px;
+                display: block;
+                font-size: 1.1rem;
+                cursor: pointer;
+              "
+            >
+              <input type="checkbox" onchange="unlockSection('sec-6', this)" />
+              ✅ Am studiat cadrul normativ integrat și continui
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-6">
+        <h2>6. Juristul Digital al Viitorului</h2>
+        <div class="slide-content">
+          <div class="info-box gold">
+            <h4>🌟 Profilul juristului digital 2030</h4>
+            <p>
+              Raportul World Economic Forum (2023) identifică
+              <em>„Technology Lawyer"</em> ca una din cele mai căutate profesii
+              ale deceniului. Nu este un informatician care știe drept, nici un
+              jurist care știe Excel — este un specialist care înțelege ambele
+              paradigme și le poate articula în context normativ.
+            </p>
+          </div>
+
+          <div class="three-col">
+            <div class="tech-card tc-blue">
+              <div class="tc-icon">🔑</div>
+              <h4>Competențe tehnice</h4>
+              <p>
+                Prompt engineering juridic, lectură cod Solidity de bază,
+                înțelegerea arhitecturii blockchain, utilizarea platformelor IA
+                juridice, securitate cibernetică de bază.
+              </p>
+            </div>
+            <div class="tech-card tc-green">
+              <div class="tc-icon">⚖️</div>
+              <h4>Competențe juridice extinse</h4>
+              <p>
+                GDPR, EU AI Act, MiCA, eIDAS 2, NIS2, Data Act. Drept comparat
+                digital. Smart contracts ca instrumente juridice. Probe digitale
+                în proces.
+              </p>
+            </div>
+            <div class="tech-card tc-gold">
+              <div class="tc-icon">🤝</div>
+              <h4>Competențe transversale</h4>
+              <p>
+                Gândire critică față de outputurile IA. Comunicare
+                interdisciplinară cu IT. Etică digitală. Evaluarea riscurilor
+                tehnologice. Lifelong learning digital.
+              </p>
+            </div>
+          </div>
+
+          <h4 style="color: #1e3a5f; margin: 24px 0 14px">
+            📅 Harta de carieră în LegalTech
+          </h4>
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-year">Acum → 2026</div>
+              <div class="tl-text">
+                Dobândirea competențelor digitale de bază: GDPR practic,
+                utilizare IA juridică, înțelegere blockchain; primele cursuri de
+                specializare LegalTech
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">2026 → 2028</div>
+              <div class="tl-text">
+                Specializare: consultant GDPR/AI Act, avocat crypto/DeFi,
+                specialist probe digitale, jurist LegalTech în firmă sau
+                startup; certificări europene (CIPP/E, CDPO)
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">2028 → 2030</div>
+              <div class="tl-text">
+                Roluri senior: Chief Legal Officer Digital, Regulatory Affairs
+                Manager tech company, judecător/arbitru în litigii digitale,
+                fondator startup LegalTech
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">Post 2030</div>
+              <div class="tl-text">
+                Drept cuantic, dreptul metaversului, Dreptul AGI (Inteligență
+                Generală Artificială), reglementarea conștiinței digitale —
+                frontier law
+              </div>
+            </div>
+          </div>
+
+          <div class="two-col">
+            <div class="info-box teal">
+              <h4>🇷🇴 Oportunități în România — 2025</h4>
+              <ul>
+                <li>Consultanță GDPR — cerere în creștere post-AI Act</li>
+                <li>Avocatură crypto/blockchain — sector neacoperit</li>
+                <li>
+                  Specialist probe digitale — criminalitate informatică în
+                  creștere
+                </li>
+                <li>Jurist în startup-uri fintech/legaltech</li>
+                <li>Consilier juridic ANCOM, ANSPDCP, ASF, DNSC</li>
+                <li>
+                  Judecător/procuror specializat criminalitate informatică
+                </li>
+              </ul>
+            </div>
+            <div class="info-box purple">
+              <h4>🌍 Resurse pentru dezvoltare continuă</h4>
+              <ul>
+                <li>
+                  <strong>IAPP</strong> (iapp.org) — certificări CIPP/E, CIPM
+                </li>
+                <li>
+                  <strong>Coursera / edX</strong> — cursuri blockchain law, AI
+                  law
+                </li>
+                <li>
+                  <strong>European Law Institute</strong> — Principles of Smart
+                  Contracts
+                </li>
+                <li>
+                  <strong>UNECE</strong> — Smart Contracts for International
+                  Trade
+                </li>
+                <li>
+                  <strong>EUR-Lex</strong> — monitorizare legislație digitală UE
+                </li>
+                <li>
+                  <strong>ENISA</strong> — rapoarte securitate cibernetică
+                </li>
+                <li>
+                  <strong>Juriste.ro</strong> — comunitate juriști digitali din
+                  România
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="interactive-box">
+            <h3>
+              🖱️ Drag & Drop: Competențe obligatorii vs. Opționale pentru
+              juristul digital
+            </h3>
+            <p style="font-size: 0.88rem; margin-bottom: 14px">
+              Clasificați fiecare competență conform priorității pentru juristul
+              digital:
+            </p>
+            <div class="drag-zone" id="dragSource6">
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="GDPR practic"
+                data-cat="obligatorie"
+                >GDPR practic</span
+              >
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="Programare Python"
+                data-cat="optionala"
+                >Programare Python</span
+              >
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="EU AI Act notiuni"
+                data-cat="obligatorie"
+                >EU AI Act noțiuni</span
+              >
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="Mining Bitcoin"
+                data-cat="optionala"
+                >Mining Bitcoin</span
+              >
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="Probe digitale in proces"
+                data-cat="obligatorie"
+                >Probe digitale în proces</span
+              >
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="Solidity avansat"
+                data-cat="optionala"
+                >Solidity avansat</span
+              >
+            </div>
+            <div class="two-col" style="margin-top: 14px">
+              <div>
+                <div class="drop-zone-label">
+                  ⭐ Obligatorii pentru orice jurist digital
+                </div>
+                <div
+                  class="drop-zone"
+                  id="drop6_obligatorie"
+                  data-cat="obligatorie"
+                  ondragover="allowDrop(event)"
+                  ondrop="dropItem(event, 'drop6_obligatorie', 'dragging6')"
+                ></div>
+              </div>
+              <div>
+                <div class="drop-zone-label">
+                  ➕ Opționale / specializare avansată
+                </div>
+                <div
+                  class="drop-zone"
+                  id="drop6_optionala"
+                  data-cat="optionala"
+                  ondragover="allowDrop(event)"
+                  ondrop="dropItem(event, 'drop6_optionala', 'dragging6')"
+                ></div>
+              </div>
+            </div>
+            <button class="btn-check" onclick="checkDrop6()">
+              ✅ Verifică
+            </button>
+            <div class="feedback" id="fb6drag"></div>
+          </div>
+
+          <div class="interactive-box">
+            <label
+              style="
+                margin-top: 25px;
+                display: block;
+                font-size: 1.1rem;
+                cursor: pointer;
+              "
+            >
+              <input type="checkbox" onchange="unlockSection('sec-7', this)" />
+              ✅ Am parcurs profilul juristului digital și sunt pregătit pentru
+              testul FINAL al seriei
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-7">
+        <h2>7. Test Final de Evaluare — Cursul 7/7</h2>
+        <div class="slide-content">
+          <div class="info-box gold" style="margin-bottom: 20px">
+            <h4>🎓 Instrucțiuni — Testul Final al Seriei</h4>
+            <p>
+              Acesta este ultimul test din seria
+              <strong>„Informatică Juridică"</strong>. Selectați un singur
+              răspuns corect pentru fiecare întrebare. La finalizare veți primi
+              <strong>Certificatul de Finalizare</strong> al seriei complete
+              (7/7 cursuri). Fiecare întrebare valorează 10 puncte.
+            </p>
+          </div>
+
+          <div class="quiz-question">
+            <div class="q-num">Întrebarea 1 / 10</div>
+            <div class="q-text">
+              Ce este un Oracle în contextul smart contracts?
+            </div>
+            <label class="quiz-option">
+              <input type="radio" name="q1" value="a" />
+              Un judecător specializat în litigii blockchain</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q1" value="b" />
+              Un furnizor de date din lumea reală (prețuri, cursuri) către smart
+              contractul pe blockchain</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q1" value="c" />
+              Un tip de criptografie post-cuantică</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q1" value="d" />
+              O autoritate de certificare electronică</label
+            >
+          </div>
+
+          <div class="quiz-question">
+            <div class="q-num">Întrebarea 2 / 10</div>
+            <div class="q-text">
+              Standardul Ethereum ERC-721 este utilizat pentru:
+            </div>
+            <label class="quiz-option">
+              <input type="radio" name="q2" value="a" />
+              Tokeni fungibili (monede digitale)</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q2" value="b" />
+              NFT — Non-Fungible Tokens (tokeni unici)</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q2" value="c" />
+              Smart contracts de escrow</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q2" value="d" />
+              Protocoale DeFi de împrumut</label
+            >
+          </div>
+
+          <div class="quiz-question">
+            <div class="q-num">Întrebarea 3 / 10</div>
+            <div class="q-text">
+              Ce a demonstrat „Rugpull" în contextul DeFi?
+            </div>
+            <label class="quiz-option">
+              <input type="radio" name="q3" value="a" />
+              Că DeFi este mai sigur decât sistemul bancar tradițional</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q3" value="b" />
+              Că absența entității juridice identificabile în DeFi facilitează
+              frauda și îngreunează răspunderea juridică</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q3" value="c" />
+              Că MiCA rezolvă complet problemele DeFi</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q3" value="d" />
+              Că criptomonedele sunt ilegale în UE</label
+            >
+          </div>
+
+          <div class="quiz-question">
+            <div class="q-num">Întrebarea 4 / 10</div>
+            <div class="q-text">
+              Wyoming (SUA) a fost primul stat din lume care a recunoscut
+              juridic DAO ca:
+            </div>
+            <label class="quiz-option">
+              <input type="radio" name="q4" value="a" />
+              Corporation (S.A.)</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q4" value="b" />
+              Non-profit Organization</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q4" value="c" />
+              LLC — Limited Liability Company</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q4" value="d" />
+              Trust fund</label
+            >
+          </div>
+
+          <div class="quiz-question">
+            <div class="q-num">Întrebarea 5 / 10</div>
+            <div class="q-text">
+              Computația cuantică reprezintă o amenințare majoră pentru
+              securitatea juridică digitală deoarece:
+            </div>
+            <label class="quiz-option">
+              <input type="radio" name="q5" value="a" />
+              Poate genera legi automat</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q5" value="b" />
+              Poate sparge algoritmii criptografici RSA și SHA-256 care stau la
+              baza semnăturilor electronice și blockchain-ului</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q5" value="c" />
+              Înlocuiește judecătorii în instanțe</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q5" value="d" />
+              Elimină necesitatea GDPR</label
+            >
+          </div>
+
+          <div class="quiz-question">
+            <div class="q-num">Întrebarea 6 / 10</div>
+            <div class="q-text">
+              EU AI Act Art. 50 impune ce obligație specifică în legătură cu
+              conținutul generat de IA?
+            </div>
+            <label class="quiz-option">
+              <input type="radio" name="q6" value="a" />
+              Interzicerea totală a deepfake-urilor</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q6" value="b" />
+              Marcarea/etichetarea conținutului generat de IA ca atare</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q6" value="c" />
+              Licențierea obligatorie a modelelor IA</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q6" value="d" />
+              Înregistrarea utilizatorilor IA la ANSPDCP</label
+            >
+          </div>
+
+          <div class="quiz-question">
+            <div class="q-num">Întrebarea 7 / 10</div>
+            <div class="q-text">
+              Regulamentul european NIS2 (2022/2555) a fost transpus în România
+              prin:
+            </div>
+            <label class="quiz-option">
+              <input type="radio" name="q7" value="a" />
+              Legea 244/2023</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q7" value="b" />
+              Legea 455/2001</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q7" value="c" />
+              Legea 58/2023</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q7" value="d" />
+              OUG 111/2020</label
+            >
+          </div>
+
+          <div class="quiz-question">
+            <div class="q-num">Întrebarea 8 / 10</div>
+            <div class="q-text">
+              Cumpărarea unui NFT al unei opere de artă conferă cumpărătorului:
+            </div>
+            <label class="quiz-option">
+              <input type="radio" name="q8" value="a" />
+              Dreptul de autor complet asupra operei</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q8" value="b" />
+              Proprietatea tokenului și dovada provenienței, nu neapărat dreptul
+              de autor</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q8" value="c" />
+              Dreptul de a reproduce și vinde opera comercial</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q8" value="d" />
+              Imunitate fiscală pentru câștigurile din vânzare</label
+            >
+          </div>
+
+          <div class="quiz-question">
+            <div class="q-num">Întrebarea 9 / 10</div>
+            <div class="q-text">
+              Autoritatea română responsabilă cu supravegherea respectării GDPR
+              este:
+            </div>
+            <label class="quiz-option">
+              <input type="radio" name="q9" value="a" />
+              ANCOM</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q9" value="b" />
+              ASF</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q9" value="c" />
+              DNSC</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q9" value="d" />
+              ANSPDCP</label
+            >
+          </div>
+
+          <div class="quiz-question">
+            <div class="q-num">Întrebarea 10 / 10</div>
+            <div class="q-text">
+              Care este principala problemă juridică a unui smart contract care
+              nu poate gestiona „forța majoră"?
+            </div>
+            <label class="quiz-option">
+              <input type="radio" name="q10" value="a" />
+              Problema scalabilității rețelei blockchain</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q10" value="b" />
+              Codul se execută automat și imuabil chiar și în situații
+              neprevăzute (pandemie, război), fără posibilitate de adaptare sau
+              suspendare</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q10" value="c" />
+              Lipsa semnăturii electronice calificate</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q10" value="d" />
+              Incompatibilitatea cu GDPR prin stocarea datelor personale</label
+            >
+          </div>
+
+          <button class="btn-check btn-gold" onclick="calculateFinalScore()">
+            🏆 Finalizează Seria & Calculează Scorul
+          </button>
+
+          <div
+            id="final-result-panel"
+            style="
+              display: none;
+              margin-top: 30px;
+              padding: 20px;
+              border: 1px solid #ccc;
+              text-align: center;
+            "
+          >
+            <h3>Rezultate Curs 7</h3>
+            <h4 id="final-score-display">0/100</h4>
+            <p id="final-grade-msg"></p>
+            <p>
+              Puteți face o captură de ecran (Screenshot) a acestui rezultat
+              pentru profesor.
+            </p>
+          </div>
+
+          <div class="series-complete-panel" id="seriesComplete">
+            <span class="trophy">🏆</span>
+            <h2>Felicitări! Ai finalizat seria completă!</h2>
+            <p>
+              Ai parcurs toate cele <strong>7 module</strong> din seria
+              <em>„Informatică Juridică pentru Juriști"</em>. Ești acum pregătit
+              să navighezi în peisajul juridic digital al secolului XXI.
+            </p>
+            <div class="cert-box">
+              <h3>📜 Certificat de Finalizare</h3>
+              <p id="certUserName">Utilizator</p>
+              <p>a finalizat cu succes seria de cursuri</p>
+              <p><strong>„Informatică Juridică — 7 Module"</strong></p>
+              <p style="margin-top: 8px">
+                Hardware • Software • Baze de date • GDPR • IA • Blockchain •
+                Smart Contracts
+              </p>
+              <p
+                style="margin-top: 8px; font-size: 0.8rem; opacity: 0.8"
+                id="certDate"
+              ></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        📜⚖️ Curs 7/7: Contracte Inteligente și Tehnologii Emergente în Drept |
+        Facultatea de Drept
+      </p>
+      <p>
+        <small
+          >Material didactic elaborat pentru studenții programului de
+          Informatică Juridică | © 2026</small
+        >
+      </p>
+    </footer>
+
+    <script>
+      let state = {
+        progress: 0,
+        score: 0,
+        sectionsCompleted: 0,
+        totalSections: 7,
+        answers: {},
+      };
+
+      let seconds = 0;
+      setInterval(() => {
+        seconds++;
+        const mins = Math.floor(seconds / 60)
+          .toString()
+          .padStart(2, "0");
+        const secs = (seconds % 60).toString().padStart(2, "0");
+        document.getElementById("timer").innerText = `${mins}:${secs}`;
+      }, 1000);
+
+      function updateProgress(pointsToAdd = 0) {
+        state.score += pointsToAdd;
+        document.getElementById("score-display").innerText = state.score;
+        let activeSections = document.querySelectorAll(
+          "section.active, section.completed",
+        ).length;
+        const biblio = document.getElementById("sec-biblio");
+        if (
+          biblio &&
+          (biblio.classList.contains("active") ||
+            biblio.classList.contains("completed"))
+        )
+          activeSections--;
+        let percent = Math.min(100, Math.round((activeSections / 7) * 100));
+        document.getElementById("main-progress-bar").style.width =
+          percent + "%";
+        document.getElementById("percent-display").innerText = percent + "%";
+        saveState();
+      }
+
+      function unlockSection(nextSectionId, triggerElement) {
+        if (triggerElement) {
+          let currentSection = triggerElement.closest("section");
+          if (currentSection) currentSection.classList.add("completed");
+        }
+        const next = document.getElementById(nextSectionId);
+        if (next) {
+          next.classList.add("active");
+          next.scrollIntoView({ behavior: "smooth" });
+          if (!state.answers["unlock-" + nextSectionId]) {
+            state.answers["unlock-" + nextSectionId] = true;
+            updateProgress(5);
+          }
+          saveState();
+        }
+      }
+
+      function scrollToSection(id, triggerElement) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (triggerElement) {
+          const currentSection = triggerElement.closest("section");
+          if (currentSection) currentSection.classList.add("completed");
+        }
+        el.classList.add("active");
+        el.scrollIntoView({ behavior: "smooth" });
+        saveState();
+      }
+
+      function checkBlanks2() {
+        const alternates = {
+          b2_1: ["oracle", "oracle provider"],
+          b2_2: ["erc-20", "erc20"],
+          b2_3: ["erc-721", "erc721"],
+          b2_4: ["audit", "auditul"],
+          b2_5: ["imuabil", "imutabil", "imuabila", "imutabila"],
+        };
+        let correct = 0;
+        Object.keys(alternates).forEach((id) => {
+          const el = document.getElementById(id);
+          const val = el.value.trim().toLowerCase();
+          const ok = alternates[id].map((a) => a.toLowerCase()).includes(val);
+          el.classList.remove("correct", "incorrect");
+          el.classList.add(ok ? "correct" : "incorrect");
+          if (ok) correct++;
+        });
+        const total = Object.keys(alternates).length;
+        const fb = document.getElementById("fb2");
+        if (correct === total) {
+          fb.innerHTML = "✅ Excelent! Toate răspunsurile sunt corecte.";
+          fb.className = "feedback-msg feedback-success";
+          if (!state.answers["blanks-sec-2"]) {
+            state.answers["blanks-sec-2"] = true;
+            updateProgress(15);
+          }
+          document.querySelector("#sec-2 .btn-next") &&
+            (document.querySelector("#sec-2 .btn-next").style.display =
+              "inline-block");
+        } else {
+          fb.innerHTML = `⚠️ ${correct}/${total} corecte. Răspunsuri: Oracle, ERC-20, ERC-721, audit, imuabil.`;
+          fb.className = "feedback-msg feedback-error";
+        }
+        saveState();
+      }
+
+      let dragging3 = null;
+      let dragging6 = null;
+
+      function initDrag3() {
+        document.querySelectorAll("#dragSource3 .drag-item").forEach((item) => {
+          item.addEventListener("dragstart", (e) => {
+            dragging3 = item;
+            e.dataTransfer.effectAllowed = "move";
+          });
+        });
+      }
+
+      function allowDrop(e) {
+        e.preventDefault();
+        e.currentTarget.classList.add("drag-over");
+      }
+
+      function dropItem(e, zoneId) {
+        e.preventDefault();
+        const zone = document.getElementById(zoneId);
+        zone.classList.remove("drag-over");
+        const dragging = zoneId.startsWith("drop3") ? dragging3 : dragging6;
+        const sourceId = zoneId.startsWith("drop3")
+          ? "dragSource3"
+          : "dragSource6";
+        if (dragging) {
+          const drop = document.createElement("span");
+          drop.className = "drop-item";
+          drop.textContent = dragging.dataset.id;
+          drop.dataset.id = dragging.dataset.id;
+          drop.dataset.cat = dragging.dataset.cat;
+          drop.onclick = () => {
+            document.getElementById(sourceId).appendChild(dragging);
+            drop.remove();
+          };
+          zone.appendChild(drop);
+          dragging.remove();
+          if (zoneId.startsWith("drop3")) dragging3 = null;
+          else dragging6 = null;
+        }
+      }
+
+      function checkDrop3() {
+        const zones = {
+          drop3_frauda: "frauda",
+          drop3_recunoastere: "recunoastere",
+          drop3_proprietate: "proprietate",
+        };
+        let correct = 0,
+          total = 0;
+        Object.entries(zones).forEach(([zoneId, expectedCat]) => {
+          document.querySelectorAll(`#${zoneId} .drop-item`).forEach((item) => {
+            total++;
+            if (item.dataset.cat === expectedCat) correct++;
+          });
+        });
+        const fb = document.getElementById("fb3drag");
+        if (correct === 6) {
+          fb.innerHTML =
+            "✅ Perfect! Fraudă: Rugpull+KYC imposibil; Recunoaștere: Wyoming DAO+vot on-chain; Proprietate: NFT dovadă+NFT imobiliar.";
+          fb.className = "feedback-msg feedback-success";
+          if (!state.answers["drop-sec-3"]) {
+            state.answers["drop-sec-3"] = true;
+            updateProgress(15);
+          }
+          document.querySelector("#sec-3 .btn-next") &&
+            (document.querySelector("#sec-3 .btn-next").style.display =
+              "inline-block");
+        } else {
+          fb.innerHTML = `⚠️ ${correct}/${total} corecte. Fraudă=Rugpull+KYC imposibil; Recunoaștere=Wyoming DAO+vot on-chain; Proprietate=NFT dovadă+NFT imobiliar.`;
+          fb.className = "feedback-msg feedback-error";
+        }
+        saveState();
+      }
+
+      const correctSelects4 = {
+        sel4_1: "GDPR — date personale",
+        sel4_2: "Criptografia și semnătura electronică",
+        sel4_3: "Infracțiune de fals în înscrisuri digitale",
+        sel4_4: "Marcare/etichetare conținut generat de IA",
+        sel4_5:
+          "Drepturi contractuale și obligații fiscale pentru câștiguri cripto",
+      };
+
+      function checkSelects4() {
+        let correct = 0;
+        Object.entries(correctSelects4).forEach(([id, ans]) => {
+          if (document.getElementById(id).value === ans) correct++;
+        });
+        const total = Object.keys(correctSelects4).length;
+        const fb = document.getElementById("fb4sel");
+        if (correct === total) {
+          fb.innerHTML = "✅ Excelent! Toate asocierile sunt corecte!";
+          fb.className = "feedback-msg feedback-success";
+          if (!state.answers["sel-sec-4"]) {
+            state.answers["sel-sec-4"] = true;
+            updateProgress(15);
+          }
+          document.querySelector("#sec-4 .btn-next") &&
+            (document.querySelector("#sec-4 .btn-next").style.display =
+              "inline-block");
+        } else {
+          fb.innerHTML = `⚠️ ${correct}/${total} corecte. 1-GDPR, 2-Criptografie, 3-Fals digital, 4-Marcare IA, 5-Drepturi contractuale+fiscale.`;
+          fb.className = "feedback-msg feedback-error";
+        }
+        saveState();
+      }
+
+      function checkBlanks5() {
+        const alts5 = {
+          b5_1: ["nis2", "nis 2", "directiva nis2"],
+          b5_2: ["dma", "DMA"],
+          b5_3: ["anspdcp", "ANSPDCP"],
+          b5_4: ["58/2023", "58", "legea 58"],
+          b5_5: ["data act", "Data Act", "regulamentul data act"],
+        };
+        let correct = 0;
+        Object.entries(alts5).forEach(([id, accepts]) => {
+          const el = document.getElementById(id);
+          const val = el.value.trim().toLowerCase();
+          const ok = accepts.map((a) => a.toLowerCase()).includes(val);
+          el.classList.remove("correct", "incorrect");
+          el.classList.add(ok ? "correct" : "incorrect");
+          if (ok) correct++;
+        });
+        const total = Object.keys(alts5).length;
+        const fb = document.getElementById("fb5");
+        if (correct === total) {
+          fb.innerHTML = "✅ Excelent! Toate răspunsurile corecte!";
+          fb.className = "feedback-msg feedback-success";
+          if (!state.answers["blanks-sec-5"]) {
+            state.answers["blanks-sec-5"] = true;
+            updateProgress(15);
+          }
+          document.querySelector("#sec-5 .btn-next") &&
+            (document.querySelector("#sec-5 .btn-next").style.display =
+              "inline-block");
+        } else {
+          fb.innerHTML = `⚠️ ${correct}/${total} corecte. Răspunsuri: NIS2, DMA, ANSPDCP, 58/2023, Data Act.`;
+          fb.className = "feedback-msg feedback-error";
+        }
+        saveState();
+      }
+
+      function initDrag6() {
+        document.querySelectorAll("#dragSource6 .drag-item").forEach((item) => {
+          item.addEventListener("dragstart", (e) => {
+            dragging6 = item;
+            e.dataTransfer.effectAllowed = "move";
+          });
+        });
+        document.querySelectorAll('[id^="drop6_"]').forEach((zone) => {
+          zone.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            zone.classList.add("drag-over");
+          });
+          zone.addEventListener("dragleave", () =>
+            zone.classList.remove("drag-over"),
+          );
+          zone.addEventListener("drop", (e) => {
+            e.preventDefault();
+            zone.classList.remove("drag-over");
+            if (dragging6) {
+              const drop = document.createElement("span");
+              drop.className = "drop-item";
+              drop.textContent = dragging6.dataset.id;
+              drop.dataset.id = dragging6.dataset.id;
+              drop.dataset.cat = dragging6.dataset.cat;
+              drop.onclick = () => {
+                document.getElementById("dragSource6").appendChild(dragging6);
+                drop.remove();
+              };
+              zone.appendChild(drop);
+              dragging6.remove();
+              dragging6 = null;
+            }
+          });
+        });
+      }
+
+      function checkDrop6() {
+        const zones = {
+          drop6_obligatorie: "obligatorie",
+          drop6_optionala: "optionala",
+        };
+        let correct = 0,
+          total = 0;
+        Object.entries(zones).forEach(([zId, cat]) => {
+          document.querySelectorAll(`#${zId} .drop-item`).forEach((item) => {
+            total++;
+            if (item.dataset.cat === cat) correct++;
+          });
+        });
+        const fb = document.getElementById("fb6drag");
+        if (correct === 6) {
+          fb.innerHTML =
+            "✅ Perfect! Obligatorii: GDPR, EU AI Act, Probe digitale. Opționale: Python, Mining Bitcoin, Solidity avansat.";
+          fb.className = "feedback-msg feedback-success";
+          if (!state.answers["drop-sec-6"]) {
+            state.answers["drop-sec-6"] = true;
+            updateProgress(15);
+          }
+          document.querySelector("#sec-6 .btn-next") &&
+            (document.querySelector("#sec-6 .btn-next").style.display =
+              "inline-block");
+        } else {
+          fb.innerHTML = `⚠️ ${correct}/${total} corecte. Obligatorii=GDPR+EU AI Act+Probe digitale; Opționale=Python+Mining+Solidity avansat.`;
+          fb.className = "feedback-msg feedback-error";
+        }
+        saveState();
+      }
+
+      const finalAnswers = {
+        q1: "b",
+        q2: "b",
+        q3: "b",
+        q4: "c",
+        q5: "b",
+        q6: "b",
+        q7: "c",
+        q8: "b",
+        q9: "d",
+        q10: "b",
+      };
+
+      function calculateFinalScore() {
+        let score = 0,
+          all = true;
+        for (let i = 1; i <= 10; i++) {
+          const qn = "q" + i;
+          const sel = document.querySelector(`input[name="${qn}"]:checked`);
+          if (!sel) {
+            all = false;
+            continue;
+          }
+          document
+            .querySelectorAll(`label.quiz-option:has(input[name="${qn}"])`)
+            .forEach((o) => {
+              o.classList.remove("correct", "incorrect");
+              const inp = o.querySelector("input");
+              if (inp.value === finalAnswers[qn]) o.classList.add("correct");
+              else if (inp.checked) o.classList.add("incorrect");
+            });
+          if (sel.value === finalAnswers[qn]) score += 10;
+        }
+        if (!all) {
+          alert(
+            "⚠️ Vă rugăm să răspundeți la toate cele 10 întrebări înainte de a trimite testul.",
+          );
+          return;
+        }
+        const rd = document.getElementById("final-result-panel");
+        rd.style.display = "block";
+        document.getElementById("final-score-display").textContent =
+          score + "/100";
+        const msg = document.getElementById("final-grade-msg");
+        if (score < 50) {
+          msg.innerText = "Insuficient. Vă rugăm să revizuiți materialul.";
+          msg.style.color = "red";
+        } else if (score < 70) {
+          msg.innerText = "Suficient. Ați promovat.";
+          msg.style.color = "orange";
+        } else if (score < 85) {
+          msg.innerText = "Bine! Rezultat solid.";
+          msg.style.color = "blue";
+        } else {
+          msg.innerText = "Foarte Bine! Felicitări!";
+          msg.style.color = "green";
+        }
+        rd.scrollIntoView({ behavior: "smooth" });
+        if (score >= 50) {
+          setTimeout(() => {
+            const cert = document.getElementById("seriesComplete");
+            if (cert) {
+              cert.style.display = "block";
+              const dateEl = document.getElementById("certDate");
+              if (dateEl)
+                dateEl.textContent = new Date().toLocaleDateString("ro-RO", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                });
+              cert.scrollIntoView({ behavior: "smooth" });
+            }
+          }, 800);
+        }
+        let globalContribution = score / 5;
+        let previousContribution = state.answers["finalTestContribution"] || 0;
+        let pointsToAdd = globalContribution - previousContribution;
+        state.answers["finalTestContribution"] = globalContribution;
+        updateProgress(pointsToAdd);
+        saveState();
+      }
+
+      function saveState() {
+        const data = {
+          score: state.score,
+          answers: state.answers,
+          timer: seconds,
+          sections: {},
+          inputs: {},
+          radios: {},
+          selects: {},
+          feedbacks: {},
+          dropItems: {},
+        };
+        document.querySelectorAll("section[id]").forEach((sec) => {
+          data.sections[sec.id] = {
+            active: sec.classList.contains("active"),
+            completed: sec.classList.contains("completed"),
+          };
+        });
+        [
+          "b2_1",
+          "b2_2",
+          "b2_3",
+          "b2_4",
+          "b2_5",
+          "b5_1",
+          "b5_2",
+          "b5_3",
+          "b5_4",
+          "b5_5",
+        ].forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) data.inputs[id] = el.value;
+        });
+        const radioGroups = new Set();
+        document
+          .querySelectorAll('input[type="radio"]')
+          .forEach((r) => radioGroups.add(r.name));
+        radioGroups.forEach((name) => {
+          const checked = document.querySelector(
+            `input[name="${name}"]:checked`,
+          );
+          if (checked) data.radios[name] = checked.value;
+        });
+        document.querySelectorAll("select[id]").forEach((el) => {
+          data.selects[el.id] = el.value;
+        });
+        document.querySelectorAll(".feedback-msg").forEach((fb) => {
+          if (fb.id && fb.innerHTML)
+            data.feedbacks[fb.id] = {
+              html: fb.innerHTML,
+              className: fb.className,
+            };
+        });
+        document.querySelectorAll('[id^="drop"]').forEach((zone) => {
+          data.dropItems[zone.id] = Array.from(
+            zone.querySelectorAll(".drop-item"),
+          ).map((i) => ({
+            id: i.dataset.id,
+            cat: i.dataset.cat,
+            text: i.textContent,
+          }));
+        });
+        const chk = document.querySelector('input[type="checkbox"]');
+        if (chk) data.checkObjectives = chk.checked;
+        data.btnNextVisible = [];
+        document.querySelectorAll(".btn-next").forEach((btn) => {
+          if (btn.style.display === "inline-block") {
+            const sec = btn.closest("section");
+            if (sec) data.btnNextVisible.push(sec.id);
+          }
+        });
+        data.quizOptionClasses = {};
+        for (let i = 1; i <= 10; i++) {
+          const opts = document.querySelectorAll(
+            `label.quiz-option:has(input[name="q${i}"])`,
+          );
+          if (opts.length)
+            data.quizOptionClasses[`q${i}`] = Array.from(opts).map(
+              (o) => o.className,
+            );
+        }
+        const rd = document.getElementById("final-result-panel");
+        if (rd && rd.style.display === "block") {
+          data.finalResult = {
+            score:
+              document.getElementById("final-score-display")?.textContent || "",
+            msg: document.getElementById("final-grade-msg")?.innerText || "",
+            msgColor:
+              document.getElementById("final-grade-msg")?.style.color || "",
+          };
+        }
+        try {
+          localStorage.setItem("curs7_progress", JSON.stringify(data));
+        } catch (e) {}
+      }
+
+      function loadState() {
+        let data;
+        try {
+          const raw = localStorage.getItem("curs7_progress");
+          if (!raw) return;
+          data = JSON.parse(raw);
+        } catch (e) {
+          return;
+        }
+        if (typeof data.score === "number") {
+          state.score = data.score;
+          document.getElementById("score-display").innerText = state.score;
+        }
+        if (data.answers) state.answers = data.answers;
+        if (typeof data.timer === "number") seconds = data.timer;
+        if (data.sections)
+          Object.entries(data.sections).forEach(([id, s]) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            if (s.active) el.classList.add("active");
+            if (s.completed) el.classList.add("completed");
+          });
+        if (data.inputs)
+          Object.entries(data.inputs).forEach(([id, val]) => {
+            const el = document.getElementById(id);
+            if (el) el.value = val;
+          });
+        if (data.radios)
+          Object.entries(data.radios).forEach(([name, value]) => {
+            const r = document.querySelector(
+              `input[name="${name}"][value="${value}"]`,
+            );
+            if (r) r.checked = true;
+          });
+        if (data.selects)
+          Object.entries(data.selects).forEach(([id, value]) => {
+            const el = document.getElementById(id);
+            if (el) el.value = value;
+          });
+        if (data.feedbacks)
+          Object.entries(data.feedbacks).forEach(([id, fb]) => {
+            const el = document.getElementById(id);
+            if (el) {
+              el.innerHTML = fb.html;
+              el.className = fb.className;
+            }
+          });
+        if (data.dropItems) {
+          const restoredIds = new Set();
+          Object.entries(data.dropItems).forEach(([zoneId, items]) => {
+            const zone = document.getElementById(zoneId);
+            if (!zone || !items.length) return;
+            items.forEach(({ id, cat, text }) => {
+              const drop = document.createElement("span");
+              drop.className = "drop-item";
+              drop.textContent = text;
+              drop.dataset.id = id;
+              drop.dataset.cat = cat;
+              zone.appendChild(drop);
+              restoredIds.add(id);
+            });
+          });
+          document.querySelectorAll(".drag-item").forEach((item) => {
+            if (restoredIds.has(item.dataset.id)) item.remove();
+          });
+        }
+        const chk = document.querySelector('input[type="checkbox"]');
+        if (chk && data.checkObjectives) chk.checked = true;
+        let activeSections = document.querySelectorAll(
+          "section.active, section.completed",
+        ).length;
+        const biblio = document.getElementById("sec-biblio");
+        if (
+          biblio &&
+          (biblio.classList.contains("active") ||
+            biblio.classList.contains("completed"))
+        )
+          activeSections--;
+        let percent = Math.min(100, Math.round((activeSections / 7) * 100));
+        document.getElementById("main-progress-bar").style.width =
+          percent + "%";
+        document.getElementById("percent-display").innerText = percent + "%";
+        const allSections = Array.from(
+          document.querySelectorAll("section[id]"),
+        );
+        const activeSectionEls = allSections.filter((s) =>
+          s.classList.contains("active"),
+        );
+        if (activeSectionEls.length > 1)
+          activeSectionEls[activeSectionEls.length - 1].scrollIntoView({
+            behavior: "instant",
+          });
+        if (data.btnNextVisible)
+          data.btnNextVisible.forEach((secId) => {
+            const btn = document.querySelector(`#${secId} .btn-next`);
+            if (btn) btn.style.display = "inline-block";
+          });
+        if (data.quizOptionClasses)
+          Object.entries(data.quizOptionClasses).forEach(([qName, classes]) => {
+            const opts = document.querySelectorAll(
+              `label.quiz-option:has(input[name="${qName}"])`,
+            );
+            classes.forEach((cls, i) => {
+              if (opts[i]) opts[i].className = cls;
+            });
+          });
+        if (data.finalResult) {
+          const rd = document.getElementById("final-result-panel");
+          if (rd) {
+            rd.style.display = "block";
+            const scoreEl = document.getElementById("final-score-display");
+            if (scoreEl) scoreEl.textContent = data.finalResult.score;
+            const msgEl = document.getElementById("final-grade-msg");
+            if (msgEl) {
+              msgEl.innerText = data.finalResult.msg;
+              msgEl.style.color = data.finalResult.msgColor;
+            }
+          }
+        }
+      }
+
+      loadState();
+      initDrag3();
+      initDrag6();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,3032 @@
+<!doctype html>
+<html lang="ro" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Curs 5: Introducere în Inteligența Artificială în Domeniul Juridic
+    </title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #4338ca;
+        --primary-light: #6366f1;
+        --primary-dark: #3730a3;
+        --primary-bg: #eef2ff;
+        --primary-bg-hover: #e0e7ff;
+        --secondary: #0f172a;
+        --success: #059669;
+        --success-bg: #ecfdf5;
+        --success-border: #a7f3d0;
+        --error: #dc2626;
+        --error-bg: #fef2f2;
+        --error-border: #fecaca;
+        --warn-bg: #fffbeb;
+        --warn-border: #fde68a;
+        --surface: #ffffff;
+        --surface-2: #f8fafc;
+        --surface-3: #f1f5f9;
+        --border: #e2e8f0;
+        --border-light: #f1f5f9;
+        --text: #0f172a;
+        --text-secondary: #475569;
+        --text-muted: #94a3b8;
+        --radius: 16px;
+        --radius-sm: 10px;
+        --radius-xs: 6px;
+        --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+        --shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+        --shadow-lg: 0 12px 40px rgba(15, 23, 42, 0.1);
+        --shadow-primary: 0 4px 14px rgba(67, 56, 202, 0.25);
+        --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        --font-heading: "Inter", system-ui, -apple-system, sans-serif;
+        --font-body: "Source Serif 4", "Georgia", serif;
+        --font-ui: "Inter", system-ui, -apple-system, sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--font-body);
+        font-size: 1.05rem;
+        line-height: 1.75;
+        color: var(--text);
+        background: var(--surface-3);
+        padding-top: 88px;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: var(--font-heading);
+        line-height: 1.3;
+        letter-spacing: -0.01em;
+      }
+
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      ul,
+      ol {
+        padding-left: 1.5em;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      input,
+      select,
+      button,
+      textarea {
+        font-family: var(--font-ui);
+      }
+
+      .course-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        z-index: 1000;
+        box-shadow:
+          0 1px 0 var(--border),
+          var(--shadow-sm);
+        padding: 14px 24px;
+      }
+
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .header-content h1 {
+        font-size: 1.05rem !important;
+        font-weight: 700;
+        color: var(--secondary);
+        margin: 0;
+      }
+
+      .header-content small {
+        color: var(--text-muted) !important;
+        font-family: var(--font-ui);
+        font-size: 0.82rem;
+      }
+
+      .progress-container {
+        width: 100%;
+        height: 4px;
+        background: var(--border);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+      }
+
+      .progress-bar {
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--primary),
+          var(--primary-light),
+          #818cf8
+        );
+        width: 0%;
+        transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 0 4px 4px 0;
+        position: relative;
+      }
+
+      .progress-bar::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.35) 50%,
+          transparent 100%
+        );
+        animation: shimmer 2s infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-100%);
+        }
+
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      .stats-panel {
+        font-size: 0.82rem;
+        display: flex;
+        gap: 10px;
+        font-family: var(--font-ui);
+        flex-shrink: 0;
+      }
+
+      .stat-item {
+        background: var(--primary-bg);
+        padding: 5px 14px;
+        border-radius: 100px;
+        color: var(--primary);
+        font-weight: 600;
+        white-space: nowrap;
+        border: 1px solid transparent;
+        transition: var(--transition);
+      }
+
+      .stat-item:hover {
+        border-color: var(--primary-light);
+        box-shadow: var(--shadow-primary);
+      }
+
+      main.container {
+        max-width: 860px;
+        margin: 0 auto 60px;
+        background: transparent;
+        padding: 0 20px;
+      }
+
+      section {
+        background: var(--surface);
+        border-radius: var(--radius);
+        padding: 40px 44px;
+        margin-bottom: 28px;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        opacity: 0.45;
+        pointer-events: none;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: var(--border);
+        transition: var(--transition);
+      }
+
+      section.active {
+        opacity: 1;
+        pointer-events: all;
+        border-color: var(--primary-bg-hover);
+        box-shadow: var(--shadow-lg);
+        padding-left: 44px;
+      }
+
+      section.active::before {
+        background: linear-gradient(
+          180deg,
+          var(--primary),
+          var(--primary-light)
+        );
+        width: 4px;
+      }
+
+      section.completed {
+        opacity: 1;
+        pointer-events: all;
+        padding-left: 44px;
+        border-color: var(--success-border);
+      }
+
+      section.completed::before {
+        background: linear-gradient(180deg, var(--success), #34d399);
+        width: 4px;
+      }
+
+      h2 {
+        color: var(--secondary);
+        font-size: 1.65rem;
+        font-weight: 800;
+        border-bottom: none;
+        padding-bottom: 16px;
+        margin-bottom: 8px;
+        letter-spacing: -0.02em;
+      }
+
+      h3 {
+        color: var(--secondary);
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-top: 28px;
+        margin-bottom: 12px;
+        font-family: var(--font-heading);
+      }
+
+      h4 {
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: var(--secondary);
+      }
+
+      .slide-content {
+        padding: 8px 0;
+      }
+
+      .slide-content h3 {
+        margin-top: 30px;
+        margin-bottom: 16px;
+        color: var(--primary);
+        border-bottom: 2px solid var(--primary-bg);
+        padding-bottom: 10px;
+      }
+
+      .slide-content p {
+        text-align: justify;
+        color: var(--text);
+        line-height: 1.8;
+      }
+
+      article {
+        border-radius: var(--radius-sm);
+        padding: 20px 24px;
+        margin: 16px 0;
+        border: 1px solid var(--border);
+        background: var(--surface-2);
+      }
+
+      article header {
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: 1.05rem;
+        padding: 0 0 8px;
+        margin-bottom: 8px;
+        border-bottom: 1px solid var(--border-light);
+      }
+
+      .interactive-box {
+        background: var(--surface-2);
+        padding: 28px 32px;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        margin: 32px 0;
+        box-shadow: var(--shadow-sm);
+        position: relative;
+      }
+
+      .interactive-box::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: 24px;
+        right: 24px;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--primary),
+          var(--primary-light),
+          #818cf8
+        );
+        border-radius: 0 0 4px 4px;
+      }
+
+      .blank-input {
+        border: none;
+        border-bottom: 2px solid var(--primary-light);
+        background: rgba(99, 102, 241, 0.06);
+        width: 150px;
+        text-align: center;
+        font-weight: 600;
+        font-family: var(--font-ui);
+        color: var(--secondary);
+        padding: 4px 8px;
+        border-radius: 4px 4px 0 0;
+        font-size: 0.95rem;
+        transition: var(--transition);
+        outline: none;
+      }
+
+      .blank-input:focus {
+        border-color: var(--primary);
+        background: rgba(99, 102, 241, 0.1);
+        box-shadow: 0 2px 8px rgba(99, 102, 241, 0.15);
+      }
+
+      .blank-input.correct {
+        border-color: var(--success);
+        color: var(--success);
+        background: rgba(5, 150, 105, 0.08);
+      }
+
+      .blank-input.incorrect {
+        border-color: var(--error);
+        color: var(--error);
+        background: rgba(220, 38, 38, 0.06);
+      }
+
+      .drop-zones {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+      }
+
+      .quiz-option {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 10px 0;
+        padding: 14px 18px;
+        border: 2px solid var(--border);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: var(--transition);
+        font-family: var(--font-ui);
+        font-size: 0.95rem;
+        background: var(--surface);
+      }
+
+      .quiz-option:hover {
+        background: var(--primary-bg);
+        border-color: var(--primary-light);
+        transform: translateX(4px);
+      }
+
+      .quiz-option input[type="radio"] {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--primary);
+        margin-right: 4px;
+        flex-shrink: 0;
+      }
+
+      .quiz-option.correct {
+        background: var(--success-bg);
+        border-color: var(--success);
+        box-shadow: 0 0 0 1px rgba(5, 150, 105, 0.15);
+      }
+
+      .quiz-option.incorrect {
+        background: var(--error-bg);
+        border-color: var(--error);
+        box-shadow: 0 0 0 1px rgba(220, 38, 38, 0.1);
+      }
+
+      .btn-check {
+        font-family: var(--font-ui);
+        font-weight: 600;
+        font-size: 0.95rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-light)
+        );
+        color: #fff;
+        border: none;
+        padding: 12px 28px;
+        border-radius: 100px;
+        cursor: pointer;
+        margin-top: 18px;
+        display: inline-block;
+        box-shadow: var(--shadow-primary);
+        transition: var(--transition);
+        letter-spacing: 0.01em;
+      }
+
+      .btn-check:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(67, 56, 202, 0.35);
+        filter: brightness(1.05);
+      }
+
+      .btn-check:active {
+        transform: translateY(0);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .btn-next {
+        background: linear-gradient(135deg, var(--secondary), #334155);
+        color: #fff;
+        margin-left: 12px;
+        display: none;
+        box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+      }
+
+      .btn-next:hover {
+        box-shadow: 0 6px 20px rgba(15, 23, 42, 0.3);
+      }
+
+      .feedback-msg {
+        margin-top: 14px;
+        font-weight: 600;
+        font-family: var(--font-ui);
+        padding: 12px 16px;
+        border-radius: var(--radius-xs);
+        font-size: 0.93rem;
+      }
+
+      .feedback-success {
+        color: #065f46;
+        background: var(--success-bg);
+        border: 1px solid var(--success-border);
+      }
+
+      .feedback-error {
+        color: #991b1b;
+        background: var(--error-bg);
+        border: 1px solid var(--error-border);
+      }
+
+      table {
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+        border: 1px solid var(--border);
+        margin: 16px 0;
+      }
+
+      thead tr {
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-light)
+        ) !important;
+      }
+
+      th {
+        color: #fff !important;
+        font-family: var(--font-heading);
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 12px 16px !important;
+        border: none !important;
+      }
+
+      td {
+        padding: 12px 16px !important;
+        border: none !important;
+        border-bottom: 1px solid var(--border-light) !important;
+        font-size: 0.95rem;
+      }
+
+      tbody tr:nth-child(even) {
+        background: var(--surface-2);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+        margin: 20px 0;
+      }
+
+      select {
+        font-family: var(--font-ui);
+        padding: 10px 14px !important;
+        border: 2px solid var(--border);
+        border-radius: var(--radius-xs);
+        background: var(--surface);
+        font-size: 0.95rem;
+        outline: none;
+        cursor: pointer;
+        transition: var(--transition);
+        color: var(--text);
+      }
+
+      select:focus {
+        border-color: var(--primary-light);
+        box-shadow: 0 0 0 3px var(--primary-bg);
+      }
+
+      input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        accent-color: var(--primary);
+        cursor: pointer;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+
+      #final-result-panel {
+        border-radius: var(--radius) !important;
+        border: 2px solid var(--primary) !important;
+        background: linear-gradient(
+          135deg,
+          var(--primary-bg) 0%,
+          #fff 100%
+        ) !important;
+        padding: 32px !important;
+      }
+
+      #final-result-panel h3 {
+        color: var(--text-secondary);
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      #final-result-panel h4 {
+        font-family: var(--font-heading);
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: var(--primary);
+        margin: 8px 0;
+      }
+
+      #sec-biblio {
+        background: var(--surface-2) !important;
+        border-top: none !important;
+        opacity: 1 !important;
+        pointer-events: all !important;
+      }
+
+      footer {
+        text-align: center;
+        padding: 40px 20px;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        font-family: var(--font-ui);
+      }
+
+      @media (max-width: 768px) {
+        html {
+          scroll-padding-top: 140px;
+        }
+
+        body {
+          padding-top: 130px;
+        }
+
+        .course-header {
+          padding: 10px 16px;
+        }
+
+        .header-content {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+
+        .header-content h1 {
+          font-size: 0.92rem !important;
+        }
+
+        .stats-panel {
+          width: 100%;
+          justify-content: flex-start;
+          gap: 6px;
+          flex-wrap: wrap;
+        }
+
+        .stat-item {
+          font-size: 0.75rem;
+          padding: 3px 10px;
+        }
+
+        main.container {
+          padding: 0 12px;
+        }
+
+        section {
+          padding: 24px 20px;
+          border-radius: var(--radius-sm);
+        }
+
+        section.active,
+        section.completed {
+          padding-left: 20px;
+        }
+
+        h2 {
+          font-size: 1.3rem;
+        }
+
+        h3 {
+          font-size: 1.05rem;
+        }
+
+        .interactive-box {
+          padding: 20px 16px;
+        }
+
+        .drop-zones {
+          grid-template-columns: 1fr;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .btn-check {
+          padding: 10px 20px;
+          font-size: 0.88rem;
+        }
+
+        .btn-next {
+          margin-left: 0;
+          margin-top: 8px;
+        }
+
+        table {
+          display: block;
+          overflow-x: auto;
+        }
+      }
+
+      @media (max-width: 480px) {
+        section {
+          padding: 18px 14px;
+        }
+
+        .interactive-box {
+          padding: 16px 12px;
+        }
+
+        h2 {
+          font-size: 1.15rem;
+        }
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 100px;
+      }
+
+      ::selection {
+        background: var(--primary-bg-hover);
+        color: var(--primary-dark);
+      }
+
+      .info-box {
+        border-radius: 10px;
+        padding: 18px 22px;
+        margin: 18px 0;
+        border-left: 5px solid;
+      }
+
+      .info-box.blue {
+        background: #e3f2fd;
+        border-color: #1976d2;
+      }
+
+      .info-box.purple {
+        background: #f3e5f5;
+        border-color: #6a1b9a;
+      }
+
+      .info-box.green {
+        background: #e8f5e9;
+        border-color: #2e7d32;
+      }
+
+      .info-box.orange {
+        background: #fff3e0;
+        border-color: #e65100;
+      }
+
+      .info-box.red {
+        background: #ffebee;
+        border-color: #c62828;
+      }
+
+      .info-box h4 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .info-box p,
+      .info-box li {
+        font-size: 0.9rem;
+        color: #444;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 16px;
+        margin: 20px 0;
+      }
+
+      .stat-card {
+        background: linear-gradient(135deg, #6a1b9a, #9c4dcc);
+        color: #fff;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .stat-card .stat-num {
+        font-size: 2rem;
+        font-weight: 800;
+        display: block;
+      }
+
+      .stat-card .stat-label {
+        font-size: 0.78rem;
+        opacity: 0.9;
+      }
+
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0;
+        font-size: 0.88rem;
+      }
+
+      .data-table th {
+        background: #6a1b9a;
+        color: #fff;
+        padding: 10px 14px;
+        text-align: left;
+      }
+
+      .data-table td {
+        padding: 9px 14px;
+        border-bottom: 1px solid #e1bee7;
+      }
+
+      .drag-zone {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 14px;
+        background: #f8f5fd;
+        border-radius: 10px;
+        min-height: 56px;
+        margin: 10px 0;
+      }
+
+      .drag-item {
+        background: linear-gradient(135deg, #6a1b9a, #9c4dcc);
+        color: #fff;
+        padding: 7px 14px;
+        border-radius: 20px;
+        font-size: 0.82rem;
+        cursor: grab;
+        user-select: none;
+        transition: var(--transition);
+        border: none;
+      }
+
+      .drag-item:active {
+        cursor: grabbing;
+        opacity: 0.7;
+        transform: scale(0.95);
+      }
+
+      .drop-zone {
+        border: 2px dashed #9c4dcc;
+        border-radius: 10px;
+        min-height: 70px;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: flex-start;
+        transition: var(--transition);
+      }
+
+      .drop-zone.drag-over {
+        background: #f3e5f5;
+        border-color: #6a1b9a;
+      }
+
+      .drop-zone-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #6a1b9a;
+        margin-bottom: 6px;
+      }
+
+      .drop-item {
+        background: #ce93d8;
+        color: #4a0072;
+        padding: 5px 12px;
+        border-radius: 16px;
+        font-size: 0.8rem;
+        cursor: pointer;
+      }
+
+      .drop-item:hover {
+        background: #ba68c8;
+      }
+
+      .select-match {
+        width: 100%;
+        padding: 8px 12px;
+        border: 2px solid #ce93d8;
+        border-radius: 8px;
+        font-size: 0.88rem;
+        color: #212121;
+        background: #fff;
+        cursor: pointer;
+      }
+
+      .select-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 8px 0;
+        flex-wrap: wrap;
+      }
+
+      .select-row span {
+        font-size: 0.88rem;
+        min-width: 220px;
+        flex: 1;
+      }
+
+      .quiz-question {
+        background: #fff;
+        border: 1px solid #e1bee7;
+        border-radius: 10px;
+        padding: 18px;
+        margin-bottom: 16px;
+      }
+
+      .quiz-question .q-text {
+        font-weight: 600;
+        margin-bottom: 12px;
+        font-size: 0.93rem;
+      }
+
+      .q-num {
+        font-size: 0.78rem;
+        color: #6a1b9a;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+
+      .chip {
+        display: inline-block;
+        background: #f3e5f5;
+        color: #6a1b9a;
+        border: 1px solid #ce93d8;
+        border-radius: 20px;
+        padding: 4px 12px;
+        font-size: 0.8rem;
+        margin: 3px;
+        font-weight: 600;
+      }
+
+      .chip.green {
+        background: #e8f5e9;
+        color: #2e7d32;
+        border-color: #a5d6a7;
+      }
+
+      .chip.orange {
+        background: #fff3e0;
+        color: #e65100;
+        border-color: #ffcc80;
+      }
+
+      .chip.red {
+        background: #ffebee;
+        color: #c62828;
+        border-color: #ef9a9a;
+      }
+
+      .timeline {
+        position: relative;
+        padding-left: 32px;
+        margin: 16px 0;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 10px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #ce93d8;
+      }
+
+      .tl-item {
+        position: relative;
+        margin-bottom: 18px;
+      }
+
+      .tl-item::before {
+        content: "";
+        position: absolute;
+        left: -26px;
+        top: 6px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #6a1b9a;
+        border: 2px solid #fff;
+        box-shadow: 0 0 0 2px #6a1b9a;
+      }
+
+      .tl-year {
+        font-weight: 700;
+        color: #6a1b9a;
+        font-size: 0.85rem;
+      }
+
+      .tl-text {
+        font-size: 0.88rem;
+        color: #444;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      @media (max-width: 680px) {
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+
+        .select-row {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="course-header">
+      <div class="header-content">
+        <div>
+          <h1 style="margin: 0; font-size: 1.2rem">
+            Curs 5/7: Inteligență Artificială în Domeniul Juridic
+          </h1>
+          <small style="color: #666"
+            >Aplicații IA în drept, EU AI Act și implicații etice</small
+          >
+        </div>
+        <div class="stats-panel">
+          <div class="stat-item">⏱️ <span id="timer">00:00</span></div>
+          <div class="stat-item">
+            📊 Progres: <span id="percent-display">0%</span>
+          </div>
+          <div class="stat-item">
+            ⭐ Scor: <span id="score-display">0</span>/100
+          </div>
+        </div>
+      </div>
+      <div class="progress-container">
+        <div
+          class="progress-bar"
+          id="main-progress-bar"
+          style="width: 0%"
+        ></div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="sec-1" class="active">
+        <h2>1. Introducere și Obiective</h2>
+        <div class="slide-content">
+          <div class="info-box purple">
+            <h4>🌟 De ce contează IA pentru juriști?</h4>
+            <p>
+              Inteligența Artificială transformă profund profesia juridică: de
+              la căutarea jurisprudenței în secunde, la redactarea contractelor,
+              prezicerea deciziilor instanțelor și identificarea riscurilor
+              legale. Juristul modern trebuie să înțeleagă ce poate IA, ce nu
+              poate — și ce riscuri juridice și etice implică.
+            </p>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-num">35%</span
+              ><span class="stat-label"
+                >din sarcinile juridice automatizabile (McKinsey)</span
+              >
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">2030</span
+              ><span class="stat-label"
+                >când IA va fi prezentă în toate marile firme juridice</span
+              >
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">+300</span
+              ><span class="stat-label"
+                >platforme LegalTech cu IA disponibile în 2024</span
+              >
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">EU AI Act</span
+              ><span class="stat-label"
+                >primul cadru legal dedicat IA la nivel mondial (2024)</span
+              >
+            </div>
+          </div>
+          <div class="info-box blue">
+            <h4>📚 Obiectivele cursului (2 ore, 10 întrebări evaluare)</h4>
+            <ul>
+              <li>
+                Definirea IA și a ramurilor sale relevante pentru drept (ML,
+                NLP, LLM)
+              </li>
+              <li>
+                Identificarea aplicațiilor concrete în activitatea juridică
+              </li>
+              <li>
+                Cunoașterea limitelor și riscurilor utilizării IA în drept
+              </li>
+              <li>
+                Înțelegerea cadrului normativ: EU AI Act, GDPR & IA, răspunderea
+                algoritmică
+              </li>
+              <li>
+                Conștientizarea implicațiilor etice și a principiului „human in
+                the loop"
+              </li>
+            </ul>
+          </div>
+          <div class="interactive-box">
+            <label
+              style="
+                margin-top: 25px;
+                display: block;
+                font-size: 1.1rem;
+                cursor: pointer;
+              "
+            >
+              <input type="checkbox" onchange="unlockSection('sec-2', this)" />
+              ✅ Am citit introducerea și sunt pregătit să continui
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-2">
+        <h2>2. Fundamente ale Inteligenței Artificiale</h2>
+        <div class="slide-content">
+          <div class="info-box purple">
+            <h4>📖 Definiție operațională</h4>
+            <p>
+              <strong>Inteligența Artificială (IA)</strong> = capacitatea unui
+              sistem informatic de a realiza sarcini care, dacă ar fi realizate
+              de oameni, ar necesita inteligență: înțelegerea limbajului,
+              recunoașterea pattern-urilor, luarea deciziilor, traducerea
+              automată.
+            </p>
+          </div>
+          <div class="two-col">
+            <div>
+              <h4 style="color: #6a1b9a; margin-bottom: 12px">
+                🧠 Ramuri cheie pentru juriști
+              </h4>
+              <div class="info-box blue">
+                <h4>Machine Learning (ML)</h4>
+                <p>
+                  Sistemul „învață" din date fără reguli explicite. Ex:
+                  predicție rezultate litigii pe baza jurisprudenței anterioare.
+                </p>
+              </div>
+              <div class="info-box blue">
+                <h4>Natural Language Processing (NLP)</h4>
+                <p>
+                  Procesarea limbajului natural: înțelegerea și generarea
+                  textelor juridice, extragerea clauzelor din contracte.
+                </p>
+              </div>
+              <div class="info-box blue">
+                <h4>Large Language Models (LLM)</h4>
+                <p>
+                  GPT-4, Claude, Gemini: modele antrenate pe miliarde de texte,
+                  capabile de redactare juridică, sintetiză, analiză.
+                </p>
+              </div>
+            </div>
+            <div>
+              <h4 style="color: #6a1b9a; margin-bottom: 12px">
+                📊 Tipuri de IA după capacitate
+              </h4>
+              <table class="data-table">
+                <tr>
+                  <th>Tip</th>
+                  <th>Descriere</th>
+                  <th>Exemple</th>
+                </tr>
+                <tr>
+                  <td>IA Îngustă (ANI)</td>
+                  <td>Realizează o singură sarcină foarte bine</td>
+                  <td>ChatGPT, Westlaw Edge IA</td>
+                </tr>
+                <tr>
+                  <td>IA Generală (AGI)</td>
+                  <td>Capacitate umană largă</td>
+                  <td>Inexistentă încă</td>
+                </tr>
+                <tr>
+                  <td>IA Superinteligentă</td>
+                  <td>Depășește inteligența umană</td>
+                  <td>Teorie/viitor</td>
+                </tr>
+                <tr>
+                  <td>IA Generativă</td>
+                  <td>Produce text, imagini, cod</td>
+                  <td>GPT-4, DALL-E, Copilot</td>
+                </tr>
+              </table>
+              <div class="info-box orange">
+                <h4>⚠️ Important pentru juriști</h4>
+                <p>
+                  Toate instrumentele IA actuale sunt <strong>ANI</strong> -
+                  realizează excelent sarcini specifice, dar nu „înțeleg"
+                  dreptul. Halucinations (date fabricate) sunt un risc real!
+                </p>
+              </div>
+            </div>
+          </div>
+          <h4 style="color: #6a1b9a; margin: 20px 0 12px">
+            📅 Evoluția IA - repere pentru drept
+          </h4>
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-year">1956</div>
+              <div class="tl-text">
+                Alan Turing propune „Testul Turing" - baza IA moderne
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">1970-1980</div>
+              <div class="tl-text">
+                Sisteme expert juridice (TAXMAN, HYPO) - primele aplicații în
+                drept
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">2001</div>
+              <div class="tl-text">
+                Westlaw și LexisNexis introduc funcții de căutare bazate pe ML
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">2017</div>
+              <div class="tl-text">
+                Ross Intelligence (IBM Watson) - primul asistent IA pentru
+                cercetare juridică
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">2022</div>
+              <div class="tl-text">
+                ChatGPT revoluționează redactarea juridică; COMPAS contestat în
+                SUA
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">2024</div>
+              <div class="tl-text">
+                EU AI Act publicat; Harvey AI în top firme; primul avocat IA
+                autorizat controversat
+              </div>
+            </div>
+          </div>
+
+          <div class="interactive-box">
+            <h3>✏️ Exercițiu: Completați spațiile libere</h3>
+            <p style="font-size: 0.9rem; margin-bottom: 14px">
+              Completați cu termenul corect:
+            </p>
+            <ol style="font-size: 0.9rem; line-height: 2.2">
+              <li>
+                Capacitatea unui sistem de a realiza sarcini care necesită
+                inteligență umană se numește
+                <input class="blank-input" id="b2_1" placeholder="?" />
+                artificială.
+              </li>
+              <li>
+                Procesarea limbajului natural se abreviază
+                <input
+                  class="blank-input"
+                  id="b2_2"
+                  placeholder="?"
+                  style="width: 80px"
+                />
+                .
+              </li>
+              <li>
+                Modelele de tip GPT-4 și Claude sunt denumite
+                <input
+                  class="blank-input"
+                  id="b2_3"
+                  placeholder="?"
+                  style="width: 120px"
+                />
+                Language Models.
+              </li>
+              <li>
+                Fenomenul prin care IA generează informații false cu aparentă
+                certitudine se numește
+                <input
+                  class="blank-input"
+                  id="b2_4"
+                  placeholder="?"
+                  style="width: 130px"
+                />
+                .
+              </li>
+              <li>
+                Toate sistemele IA actuale sunt de tip
+                <input
+                  class="blank-input"
+                  id="b2_5"
+                  placeholder="?"
+                  style="width: 100px"
+                />
+                (IA îngustă).
+              </li>
+            </ol>
+            <button class="btn-check" onclick="checkBlanks2()">
+              ✅ Verifică
+            </button>
+            <div class="feedback" id="fb2"></div>
+          </div>
+
+          <div class="interactive-box">
+            <label
+              style="
+                margin-top: 25px;
+                display: block;
+                font-size: 1.1rem;
+                cursor: pointer;
+              "
+            >
+              <input type="checkbox" onchange="unlockSection('sec-3', this)" />
+              ✅ Am înțeles fundamentele IA și sunt pregătit să continui
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-3">
+        <h2>3. Aplicații IA în Practica Juridică</h2>
+        <div class="slide-content">
+          <div class="info-box purple">
+            <h4>🔍 Categorii principale de aplicații</h4>
+            <p>
+              IA aduce schimbări profunde în mai multe domenii ale practicii
+              juridice. De la cercetarea jurisprudenței în secunde, la
+              redactarea contractelor, analiza documentelor voluminoase și chiar
+              prezicerea probabilă a deciziilor judiciare.
+            </p>
+          </div>
+
+          <table class="data-table">
+            <tr>
+              <th>Aplicație IA</th>
+              <th>Ce face</th>
+              <th>Platforme exemple</th>
+              <th>Beneficiu cheie</th>
+            </tr>
+            <tr>
+              <td>🔍 Cercetare juridică</td>
+              <td>Caută automat precedente, articole, opinii</td>
+              <td>Westlaw Edge, Lexis+ AI, Lege5 AI</td>
+              <td>-80% timp de cercetare</td>
+            </tr>
+            <tr>
+              <td>📝 Redactare asistată</td>
+              <td>Generează contracte, rezumate, acte</td>
+              <td>Harvey AI, Clio Draft, Co-counsel</td>
+              <td>Productivitate x3</td>
+            </tr>
+            <tr>
+              <td>📂 Document Review</td>
+              <td>Analizează mii de documente (due diligence)</td>
+              <td>Relativity, Logikcull, Everlaw</td>
+              <td>-90% costuri revizuire</td>
+            </tr>
+            <tr>
+              <td>🔮 Predicție litigii</td>
+              <td>Estimează probabilitatea câștigării unui caz</td>
+              <td>Lex Machina, Premonition, Praedicat</td>
+              <td>Strategie bazată pe date</td>
+            </tr>
+            <tr>
+              <td>📃 Extragere clauze</td>
+              <td>Identifică clauze riscante în contracte</td>
+              <td>Kira, LawGeex, Luminance</td>
+              <td>Viteză + acuratețe</td>
+            </tr>
+            <tr>
+              <td>🤖 Chatbot juridic</td>
+              <td>Răspunde la întrebări juridice simple</td>
+              <td>DoNotPay, Robot Lawyer, Lexi</td>
+              <td>Acces la justiție</td>
+            </tr>
+            <tr>
+              <td>⚖️ Asistare judiciară</td>
+              <td>Sprijin în analiza dosarelor (nu decizie)</td>
+              <td>COMPAS (SUA), Prometea (Argentina)</td>
+              <td>Eficiență instanțe</td>
+            </tr>
+          </table>
+
+          <div class="two-col">
+            <div class="info-box green">
+              <h4>✅ Instrumente IA utilizabile de juristul român</h4>
+              <ul>
+                <li>
+                  <strong>ChatGPT / Claude</strong> - redactare drafturi,
+                  rezumate
+                </li>
+                <li>
+                  <strong>Lege5 cu IA</strong> - căutare legislativă inteligentă
+                </li>
+                <li>
+                  <strong>Google Bard/Gemini</strong> - sintetiță documente
+                </li>
+                <li>
+                  <strong>Microsoft Copilot</strong> - integrare în Word/Outlook
+                </li>
+                <li>
+                  <strong>Whisper (OpenAI)</strong> - transcrierea ședințelor
+                </li>
+              </ul>
+            </div>
+            <div class="info-box orange">
+              <h4>⚠️ Cazuri notabile de utilizare</h4>
+              <ul>
+                <li>
+                  <strong>Mata v. Avianca (2023)</strong> - avocați sancționați
+                  pentru citări false generate de ChatGPT
+                </li>
+                <li>
+                  <strong>COMPAS (SUA)</strong> - sistem IA acuzat de
+                  discriminare rasială în sentințe
+                </li>
+                <li>
+                  <strong>Estonia</strong> - judecător IA propus pentru cauze
+                  sub 7.000 EUR
+                </li>
+                <li>
+                  <strong>China</strong> - sisteme IA asistă judecătorii în 95%
+                  din cauze
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="interactive-box">
+            <h3>🖱️ Drag & Drop: Clasificați aplicațiile IA</h3>
+            <p style="font-size: 0.88rem; margin-bottom: 14px">
+              Trageți fiecare instrument în categoria corectă:
+            </p>
+            <div class="drag-zone" id="dragSource3">
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="Harvey AI"
+                data-cat="redactare"
+                >Harvey AI</span
+              >
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="COMPAS"
+                data-cat="judiciar"
+                >COMPAS</span
+              >
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="Kira"
+                data-cat="contracte"
+                >Kira</span
+              >
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="Lex Machina"
+                data-cat="predictie"
+                >Lex Machina</span
+              >
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="DoNotPay"
+                data-cat="acces"
+                >DoNotPay</span
+              >
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="Westlaw Edge"
+                data-cat="cercetare"
+                >Westlaw Edge</span
+              >
+            </div>
+            <div class="two-col" style="margin-top: 14px">
+              <div>
+                <div class="drop-zone-label">
+                  📝 Redactare contracte / documente
+                </div>
+                <div
+                  class="drop-zone"
+                  id="drop3_redactare"
+                  data-cat="redactare"
+                  ondragover="allowDrop(event)"
+                  ondrop="dropItem(event, 'drop3_redactare')"
+                ></div>
+                <div class="drop-zone-label" style="margin-top: 10px">
+                  🔍 Cercetare juridică
+                </div>
+                <div
+                  class="drop-zone"
+                  id="drop3_cercetare"
+                  data-cat="cercetare"
+                  ondragover="allowDrop(event)"
+                  ondrop="dropItem(event, 'drop3_cercetare')"
+                ></div>
+                <div class="drop-zone-label" style="margin-top: 10px">
+                  📃 Analiză contracte / extragere clauze
+                </div>
+                <div
+                  class="drop-zone"
+                  id="drop3_contracte"
+                  data-cat="contracte"
+                  ondragover="allowDrop(event)"
+                  ondrop="dropItem(event, 'drop3_contracte')"
+                ></div>
+              </div>
+              <div>
+                <div class="drop-zone-label">🔮 Predicție litigii</div>
+                <div
+                  class="drop-zone"
+                  id="drop3_predictie"
+                  data-cat="predictie"
+                  ondragover="allowDrop(event)"
+                  ondrop="dropItem(event, 'drop3_predictie')"
+                ></div>
+                <div class="drop-zone-label" style="margin-top: 10px">
+                  ⚖️ Asistare judiciară
+                </div>
+                <div
+                  class="drop-zone"
+                  id="drop3_judiciar"
+                  data-cat="judiciar"
+                  ondragover="allowDrop(event)"
+                  ondrop="dropItem(event, 'drop3_judiciar')"
+                ></div>
+                <div class="drop-zone-label" style="margin-top: 10px">
+                  🌐 Acces la justiție / chatbot cetățeni
+                </div>
+                <div
+                  class="drop-zone"
+                  id="drop3_acces"
+                  data-cat="acces"
+                  ondragover="allowDrop(event)"
+                  ondrop="dropItem(event, 'drop3_acces')"
+                ></div>
+              </div>
+            </div>
+            <button class="btn-check" onclick="checkDrop3()">
+              ✅ Verifică clasificarea
+            </button>
+            <div class="feedback" id="fb3drag"></div>
+          </div>
+
+          <div class="interactive-box">
+            <label
+              style="
+                margin-top: 25px;
+                display: block;
+                font-size: 1.1rem;
+                cursor: pointer;
+              "
+            >
+              <input type="checkbox" onchange="unlockSection('sec-4', this)" />
+              ✅ Am studiat aplicațiile IA și continui
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-4">
+        <h2>4. Cadrul Normativ — EU AI Act</h2>
+        <div class="slide-content">
+          <div class="info-box purple">
+            <h4>🇪🇺 EU AI Act - Regulamentul (UE) 2024/1689</h4>
+            <p>
+              Adoptat în mai 2024, intrat în vigoare august 2024 —
+              <strong>primul cadru legal dedicat IA la nivel mondial</strong>.
+              Clasifică sistemele IA pe niveluri de risc și impune obligații
+              proporționale. Se aplică în toată UE, inclusiv în România.
+            </p>
+          </div>
+
+          <h4 style="color: #6a1b9a; margin: 18px 0 12px">
+            ⚠️ Clasificarea riscurilor IA conform EU AI Act
+          </h4>
+          <table class="data-table">
+            <tr>
+              <th>Nivel risc</th>
+              <th>Descriere</th>
+              <th>Exemple juridice</th>
+              <th>Regim juridic</th>
+            </tr>
+            <tr>
+              <td style="color: #c62828; font-weight: 700">🔴 Inacceptabil</td>
+              <td>Interzis total în UE</td>
+              <td>Scoring social al cetățenilor, manipulare subliminală</td>
+              <td>Interdicție absolută</td>
+            </tr>
+            <tr>
+              <td style="color: #e65100; font-weight: 700">🟠 Ridicat</td>
+              <td>Impact semnificativ asupra drepturilor</td>
+              <td>COMPAS-like, sisteme scoring credite, biometrie juridică</td>
+              <td>Conformitate strictă + audit</td>
+            </tr>
+            <tr>
+              <td style="color: #ff9800; font-weight: 700">🟡 Limitat</td>
+              <td>Interacțiune cu cetățenii</td>
+              <td>Chatboți juridici, AI-generated contracts</td>
+              <td>Obligații transparență</td>
+            </tr>
+            <tr>
+              <td style="color: #2e7d32; font-weight: 700">🟢 Minim</td>
+              <td>Risc neglijabil</td>
+              <td>Sugestii auto-complete Word, filtru spam</td>
+              <td>Fără obligații specifice</td>
+            </tr>
+          </table>
+
+          <div class="two-col">
+            <div class="info-box blue">
+              <h4>🔐 GDPR și utilizarea IA cu date personale</h4>
+              <ul>
+                <li>
+                  <strong>Art. 22 GDPR</strong> - dreptul de a nu fi supus
+                  deciziilor exclusiv automate cu efecte juridice
+                </li>
+                <li>
+                  <strong>Art. 13-14</strong> - informare despre utilizarea IA
+                  în prelucrare
+                </li>
+                <li>
+                  <strong>DPIA obligatorie</strong> (Art. 35) când IA procesează
+                  date sensibile la scară largă
+                </li>
+                <li>
+                  <strong>Principiul explicabilității</strong> - deciziile IA
+                  trebuie să poată fi explicate
+                </li>
+              </ul>
+            </div>
+            <div class="info-box red">
+              <h4>⚖️ Răspunderea juridică pentru IA</h4>
+              <ul>
+                <li>
+                  <strong>AI Liability Directive</strong> (propus 2022) -
+                  răspundere civilă pentru daune cauzate de IA
+                </li>
+                <li><strong>Operatorul IA</strong> = responsabil principal</li>
+                <li>
+                  <strong>Avocatul care folosește IA</strong> rămâne responsabil
+                  pentru conținut (Mata v. Avianca)
+                </li>
+                <li>
+                  <strong>Product Liability Directive</strong> (revizuită 2024)
+                  - include software & IA
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="interactive-box">
+            <h3>📋 Asociere: Nivel de risc EU AI Act</h3>
+            <p style="font-size: 0.88rem; margin-bottom: 14px">
+              Asociați fiecare sistem IA cu nivelul corect de risc conform EU AI
+              Act:
+            </p>
+            <div class="select-row">
+              <span>1. Sistem de scoring social al cetățenilor:</span>
+              <select class="select-match" id="sel4_1">
+                <option value="">-- Alegeți --</option>
+                <option>Risc inacceptabil</option>
+                <option>Risc ridicat</option>
+                <option>Risc limitat</option>
+                <option>Risc minim</option>
+              </select>
+            </div>
+            <div class="select-row">
+              <span>2. Chatbot juridic care informează cetățenii:</span>
+              <select class="select-match" id="sel4_2">
+                <option value="">-- Alegeți --</option>
+                <option>Risc inacceptabil</option>
+                <option>Risc ridicat</option>
+                <option>Risc limitat</option>
+                <option>Risc minim</option>
+              </select>
+            </div>
+            <div class="select-row">
+              <span
+                >3. Sistem IA de evaluare a riscului de recidivă (COMPAS):</span
+              >
+              <select class="select-match" id="sel4_3">
+                <option value="">-- Alegeți --</option>
+                <option>Risc inacceptabil</option>
+                <option>Risc ridicat</option>
+                <option>Risc limitat</option>
+                <option>Risc minim</option>
+              </select>
+            </div>
+            <div class="select-row">
+              <span>4. Filtru de spam în email-ul avocatural:</span>
+              <select class="select-match" id="sel4_4">
+                <option value="">-- Alegeți --</option>
+                <option>Risc inacceptabil</option>
+                <option>Risc ridicat</option>
+                <option>Risc limitat</option>
+                <option>Risc minim</option>
+              </select>
+            </div>
+            <div class="select-row">
+              <span>5. Art. 22 GDPR protejează cetățenii împotriva:</span>
+              <select class="select-match" id="sel4_5">
+                <option value="">-- Alegeți --</option>
+                <option>Decizii exclusiv automate cu efecte juridice</option>
+                <option>Utilizarea datelor în rețele sociale</option>
+                <option>Accesul la internet al IA</option>
+                <option>Publicarea numelor în documente juridice</option>
+              </select>
+            </div>
+            <button class="btn-check" onclick="checkSelects4()">
+              ✅ Verifică
+            </button>
+            <div class="feedback" id="fb4sel"></div>
+          </div>
+
+          <div class="interactive-box">
+            <label
+              style="
+                margin-top: 25px;
+                display: block;
+                font-size: 1.1rem;
+                cursor: pointer;
+              "
+            >
+              <input type="checkbox" onchange="unlockSection('sec-5', this)" />
+              ✅ Am studiat cadrul normativ și continui
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-5">
+        <h2>5. Riscuri și Limitări ale IA în Drept</h2>
+        <div class="slide-content">
+          <div class="info-box red">
+            <h4>🚨 Riscul #1: Halucinations (Halucinații IA)</h4>
+            <p>
+              Sistemele LLM pot genera cu mare
+              <strong>aparentă certitudine</strong> informații
+              <strong>complet false</strong>: hotărâri judecătorești
+              inexistente, articole de lege inventate, nume de judecători
+              greșite. Cazul <em>Mata v. Avianca (2023)</em>: avocații au citat
+              6 hotărâri inexistente generate de ChatGPT → sancțiuni judiciare.
+            </p>
+          </div>
+
+          <div class="two-col">
+            <div>
+              <h4 style="color: #6a1b9a; margin-bottom: 12px">
+                🔴 Riscuri majore identificate
+              </h4>
+              <div class="info-box red">
+                <h4>Bias algoritmic</h4>
+                <p>
+                  IA reflectă prejudecățile din datele de antrenament. COMPAS
+                  (SUA): afroamericanii clasificați de 2x mai des ca „risc
+                  ridicat" de recidivă față de albi cu aceleași dosare.
+                </p>
+              </div>
+              <div class="info-box red">
+                <h4>Confidențialitate și secret profesional</h4>
+                <p>
+                  Introducerea datelor confidențiale ale clientului în ChatGPT
+                  public poate viola <strong>secretul profesional</strong> al
+                  avocatului și GDPR. Samsung a pierdut cod sursă secret după ce
+                  angajații l-au introdus în ChatGPT.
+                </p>
+              </div>
+              <div class="info-box red">
+                <h4>Opacitate (black box)</h4>
+                <p>
+                  Algoritmii ML complexi nu pot explica DE CE au luat o decizie,
+                  contravenind principiului motivării actelor juridice și
+                  dreptului la apărare efectivă.
+                </p>
+              </div>
+            </div>
+            <div>
+              <h4 style="color: #6a1b9a; margin-bottom: 12px">
+                ✅ Principii etice pentru utilizarea IA în drept
+              </h4>
+              <div class="info-box green">
+                <h4>1. Human in the Loop</h4>
+                <p>
+                  Juristul rămâne responsabil final. IA asistă, nu decide. Toate
+                  outputurile IA trebuie verificate de expertul uman.
+                </p>
+              </div>
+              <div class="info-box green">
+                <h4>2. Verificarea surselor</h4>
+                <p>
+                  Orice citat, articol sau hotărâre generată de IA trebuie
+                  verificată independent în surse oficiale (legislatie.just.ro,
+                  portal.just.ro, EUR-Lex).
+                </p>
+              </div>
+              <div class="info-box green">
+                <h4>3. Date anonimizate în IA publică</h4>
+                <p>
+                  Folosiți doar date anonimizate sau fictive în platforme IA
+                  publice. Pentru date reale, utilizați platforme cu clauze de
+                  confidențialitate adecvate.
+                </p>
+              </div>
+              <div class="info-box green">
+                <h4>4. Transparență față de client</h4>
+                <p>
+                  Unele barouri (UK, SUA) impun informarea clientului când se
+                  utilizează IA. Tendință emergentă și în România.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-box orange">
+            <h4>
+              📋 Regulile de bune practici CCBE pentru avocați și IA (2023)
+            </h4>
+            <ul>
+              <li>
+                Avocatul rămâne responsabil pentru fiecare act generat cu IA
+              </li>
+              <li>
+                Verificarea obligatorie a oricărui output IA înainte de
+                utilizare
+              </li>
+              <li>
+                Protejarea secretului profesional în utilizarea platformelor IA
+              </li>
+              <li>Competența digitală ca obligație de formare continuă</li>
+              <li>
+                Nediscriminarea - evitarea utilizării sistemelor IA biasate
+              </li>
+            </ul>
+          </div>
+
+          <div class="interactive-box">
+            <h3>✏️ Completați spațiile libere</h3>
+            <ol style="font-size: 0.9rem; line-height: 2.2">
+              <li>
+                Fenomenul prin care IA generează hotărâri judecătorești
+                inexistente se numește
+                <input
+                  class="blank-input"
+                  id="b5_1"
+                  placeholder="?"
+                  style="width: 150px"
+                />
+                .
+              </li>
+              <li>
+                Cazul
+                <input
+                  class="blank-input"
+                  id="b5_2"
+                  placeholder="? v. ?"
+                  style="width: 160px"
+                />
+                (2023) este referința pentru sancționarea avocaților pentru
+                citări false IA.
+              </li>
+              <li>
+                Principiul
+                <input
+                  class="blank-input"
+                  id="b5_3"
+                  placeholder="?"
+                  style="width: 130px"
+                />
+                in the Loop înseamnă că juristul rămâne responsabil final.
+              </li>
+              <li>
+                Sistemul
+                <input
+                  class="blank-input"
+                  id="b5_4"
+                  placeholder="?"
+                  style="width: 100px"
+                />
+                din SUA a fost acuzat de bias rasial în evaluarea riscului de
+                recidivă.
+              </li>
+              <li>
+                Introducerea datelor confidențiale ale clientului în ChatGPT
+                public poate viola
+                <input
+                  class="blank-input"
+                  id="b5_5"
+                  placeholder="?"
+                  style="width: 150px"
+                />
+                avocațial.
+              </li>
+            </ol>
+            <button class="btn-check" onclick="checkBlanks5()">
+              ✅ Verifică
+            </button>
+            <div class="feedback" id="fb5"></div>
+          </div>
+
+          <div class="interactive-box">
+            <label
+              style="
+                margin-top: 25px;
+                display: block;
+                font-size: 1.1rem;
+                cursor: pointer;
+              "
+            >
+              <input type="checkbox" onchange="unlockSection('sec-6', this)" />
+              ✅ Am studiat riscurile IA și continui
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-6">
+        <h2>6. Etica IA și Human in the Loop</h2>
+        <div class="slide-content">
+          <div class="info-box purple">
+            <h4>🔮 Ce se schimbă în profesiile juridice?</h4>
+            <p>
+              Raportul World Economic Forum (2023): juristul viitorului va
+              combina competențe juridice tradiționale cu abilități digitale, IA
+              și gândire critică pentru a evalua outputurile algoritmice. Nu IA
+              îl va înlocui pe avocat — ci
+              <strong
+                >avocatul care știe IA îl va înlocui pe cel care nu știe</strong
+              >.
+            </p>
+          </div>
+
+          <div class="two-col">
+            <div>
+              <h4 style="color: #6a1b9a; margin-bottom: 12px">
+                📈 Tendințe 2025-2030
+              </h4>
+              <div class="info-box blue">
+                <h4>LegalTech în creștere exponențială</h4>
+                <p>
+                  Piața globală LegalTech va depăși 50 miliarde USD până în
+                  2027. IA va fi integrată în toate platformele juridice majore.
+                </p>
+              </div>
+              <div class="info-box blue">
+                <h4>Automatizarea sarcinilor rutiniere</h4>
+                <p>
+                  Cercetare juridică, redactare contracte standard, due
+                  diligence, billing — parțial sau total automatizate. Economii
+                  de 90% din timp pentru aceste activități.
+                </p>
+              </div>
+              <div class="info-box blue">
+                <h4>IA generativă juridică specializată</h4>
+                <p>
+                  Harvey AI (OpenAI + Allen & Overy), Thomson Reuters CoCounsel,
+                  Westlaw Precision — platforme IA antrenate exclusiv pe texte
+                  juridice.
+                </p>
+              </div>
+            </div>
+            <div>
+              <h4 style="color: #6a1b9a; margin-bottom: 12px">
+                🏆 Competențele juridice ale viitorului
+              </h4>
+              <div class="info-box green">
+                <h4>Must-have pentru juristul modern</h4>
+                <ul>
+                  <li>
+                    Prompt engineering juridic (formularea interogărilor
+                    eficiente)
+                  </li>
+                  <li>Evaluarea critică a outputurilor IA</li>
+                  <li>Cunoașterea EU AI Act și GDPR în context IA</li>
+                  <li>Utilizarea platformelor de research juridic cu IA</li>
+                  <li>Gândire etică privind utilizarea IA</li>
+                </ul>
+              </div>
+              <div class="info-box orange">
+                <h4>Profesii mai puțin afectate de IA</h4>
+                <ul>
+                  <li>Judecătorii - decizia finală rămâne umană</li>
+                  <li>Avocații de pledoarie (advocacy, negociere)</li>
+                  <li>Mediatorii - empatia nu poate fi simulată</li>
+                  <li>Notarii - actele autentice necesită prezență umană</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <h4 style="color: #6a1b9a; margin: 18px 0 12px">
+            🇷🇴 Stadiul IA în sistemul juridic românesc
+          </h4>
+          <table class="data-table">
+            <tr>
+              <th>Domeniu</th>
+              <th>Stadiu actual</th>
+              <th>Perspectivă</th>
+            </tr>
+            <tr>
+              <td>Instanțe judecătorești</td>
+              <td>Dosarul electronic (ECRIS), fără IA decizională</td>
+              <td>Asistare IA în gestionarea dosarelor</td>
+            </tr>
+            <tr>
+              <td>Avocatură</td>
+              <td>Adopție timpurie: Lege5 AI, ChatGPT pentru drafturi</td>
+              <td>Platforme specializate (Harvey-like) pentru România</td>
+            </tr>
+            <tr>
+              <td>Notariat</td>
+              <td>Digitalizare parțială (RNPM), fără IA</td>
+              <td>Verificare automată acte, anti-fraudă</td>
+            </tr>
+            <tr>
+              <td>Parchet/DNA</td>
+              <td>Analiză date financiare (IA pentru fraud detection)</td>
+              <td>Extindere analiză probe digitale cu IA</td>
+            </tr>
+            <tr>
+              <td>Legal education</td>
+              <td>Curs opțional IA juridic (câteva facultăți)</td>
+              <td>Integrare curriculară obligatorie</td>
+            </tr>
+          </table>
+
+          <div class="interactive-box">
+            <h3>
+              🖱️ Drag & Drop: Sarcini automatizabile vs. Necesită judecată umană
+            </h3>
+            <p style="font-size: 0.88rem; margin-bottom: 14px">
+              Trageți fiecare sarcină în categoria corespunzătoare:
+            </p>
+            <div class="drag-zone" id="dragSource6">
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="Cercetare jurisprudenta"
+                data-cat="auto"
+                >Cercetare jurisprudență</span
+              >
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="Sentinta penala"
+                data-cat="uman"
+                >Pronunțarea sentinței penale</span
+              >
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="Due diligence"
+                data-cat="auto"
+                >Due diligence documente</span
+              >
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="Negociere"
+                data-cat="uman"
+                >Negocierea unui contract</span
+              >
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="Contract standard"
+                data-cat="auto"
+                >Redactare contract standard</span
+              >
+              <span
+                class="drag-item"
+                draggable="true"
+                data-id="Pledoarie"
+                data-cat="uman"
+                >Pledoarie în instanță</span
+              >
+            </div>
+            <div class="two-col" style="margin-top: 14px">
+              <div>
+                <div class="drop-zone-label">🤖 Automatizabile cu IA</div>
+                <div
+                  class="drop-zone"
+                  id="drop6_auto"
+                  data-cat="auto"
+                  ondragover="allowDrop(event)"
+                  ondrop="dropItem(event, 'drop6_auto')"
+                ></div>
+              </div>
+              <div>
+                <div class="drop-zone-label">👨‍⚖️ Necesită judecată umană</div>
+                <div
+                  class="drop-zone"
+                  id="drop6_uman"
+                  data-cat="uman"
+                  ondragover="allowDrop(event)"
+                  ondrop="dropItem(event, 'drop6_uman')"
+                ></div>
+              </div>
+            </div>
+            <button class="btn-check" onclick="checkDrop6()">
+              ✅ Verifică
+            </button>
+            <div class="feedback" id="fb6drag"></div>
+          </div>
+
+          <div class="interactive-box">
+            <label
+              style="
+                margin-top: 25px;
+                display: block;
+                font-size: 1.1rem;
+                cursor: pointer;
+              "
+            >
+              <input type="checkbox" onchange="unlockSection('sec-7', this)" />
+              ✅ Am studiat viitorul IA în drept și sunt pregătit pentru testul
+              final
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-7">
+        <h2>7. Test Final — Inteligență Artificială în Drept</h2>
+        <div class="slide-content">
+          <div class="info-box blue" style="margin-bottom: 20px">
+            <h4>📋 Instrucțiuni test</h4>
+            <p>
+              Selectați un singur răspuns corect pentru fiecare întrebare.
+              Apăsați <strong>„Calculează Scorul"</strong> după ce ați răspuns
+              la toate întrebările. Fiecare întrebare valorează 10 puncte.
+            </p>
+          </div>
+
+          <div class="quiz-question">
+            <div class="q-num">Întrebarea 1 / 10</div>
+            <div class="q-text">
+              Care este primul cadru legal dedicat IA la nivel mondial?
+            </div>
+            <label class="quiz-option">
+              <input type="radio" name="q1" value="a" />
+              Directiva NIS2 (2022)</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q1" value="b" />
+              Regulamentul (UE) 2024/1689 - EU AI Act</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q1" value="c" />
+              GDPR (Regulamentul 679/2016)</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q1" value="d" />
+              Convenția de la Budapest (2001)</label
+            >
+          </div>
+
+          <div class="quiz-question">
+            <div class="q-num">Întrebarea 2 / 10</div>
+            <div class="q-text">
+              Ce fenomen descrie situația când IA generează hotărâri
+              judecătorești fictive cu aparentă certitudine?
+            </div>
+            <label class="quiz-option">
+              <input type="radio" name="q2" value="a" />
+              Deepfake juridic</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q2" value="b" />
+              Bias algoritmic</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q2" value="c" />
+              Halucinații (Hallucinations)</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q2" value="d" />
+              Overfitting juridic</label
+            >
+          </div>
+
+          <div class="quiz-question">
+            <div class="q-num">Întrebarea 3 / 10</div>
+            <div class="q-text">Cazul Mata v. Avianca (2023) a demonstrat:</div>
+            <label class="quiz-option">
+              <input type="radio" name="q3" value="a" />
+              Că IA poate înlocui complet avocatul</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q3" value="b" />
+              Că avocații pot fi sancționați pentru citări false generate de
+              ChatGPT</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q3" value="c" />
+              Că EU AI Act este eficient</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q3" value="d" />
+              Că GDPR interzice utilizarea IA</label
+            >
+          </div>
+
+          <div class="quiz-question">
+            <div class="q-num">Întrebarea 4 / 10</div>
+            <div class="q-text">
+              Conform EU AI Act, sistemele de scoring social al cetățenilor sunt
+              clasificate ca:
+            </div>
+            <label class="quiz-option">
+              <input type="radio" name="q4" value="a" />
+              Risc minim</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q4" value="b" />
+              Risc limitat</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q4" value="c" />
+              Risc ridicat</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q4" value="d" />
+              Risc inacceptabil (interzise)</label
+            >
+          </div>
+
+          <div class="quiz-question">
+            <div class="q-num">Întrebarea 5 / 10</div>
+            <div class="q-text">
+              Ce drept conferă Art. 22 GDPR persoanelor vizate în contextul
+              utilizării IA?
+            </div>
+            <label class="quiz-option">
+              <input type="radio" name="q5" value="a" />
+              Dreptul de a folosi IA gratuit</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q5" value="b" />
+              Dreptul de a nu fi supus deciziilor exclusiv automate cu efecte
+              juridice</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q5" value="c" />
+              Dreptul la un judecător IA</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q5" value="d" />
+              Dreptul de a refuza utilizarea calculatoarelor</label
+            >
+          </div>
+
+          <div class="quiz-question">
+            <div class="q-num">Întrebarea 6 / 10</div>
+            <div class="q-text">
+              NLP (Natural Language Processing) permite sistemelor IA să:
+            </div>
+            <label class="quiz-option">
+              <input type="radio" name="q6" value="a" />
+              Să înlocuiască judecătorii</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q6" value="b" />
+              Să înțeleagă și să genereze limbaj natural, inclusiv texte
+              juridice</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q6" value="c" />
+              Să acceseze date confidențiale ale clienților</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q6" value="d" />
+              Să emită hotărâri judecătorești obligatorii</label
+            >
+          </div>
+
+          <div class="quiz-question">
+            <div class="q-num">Întrebarea 7 / 10</div>
+            <div class="q-text">
+              Principiul „Human in the Loop" în utilizarea IA juridică înseamnă
+              că:
+            </div>
+            <label class="quiz-option">
+              <input type="radio" name="q7" value="a" />
+              IA controlează juristul</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q7" value="b" />
+              Juristul rămâne responsabil final, IA asistă dar nu decide</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q7" value="c" />
+              Orice decizie IA este automată și fără control uman</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q7" value="d" />
+              IA poate semna acte juridice</label
+            >
+          </div>
+
+          <div class="quiz-question">
+            <div class="q-num">Întrebarea 8 / 10</div>
+            <div class="q-text">
+              Sistemul COMPAS din SUA a fost criticat pentru:
+            </div>
+            <label class="quiz-option">
+              <input type="radio" name="q8" value="a" />
+              Că era prea scump pentru instanțe</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q8" value="b" />
+              Că nu putea citi documente juridice</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q8" value="c" />
+              Bias rasial în evaluarea riscului de recidivă</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q8" value="d" />
+              Că viola GDPR prin stocarea datelor</label
+            >
+          </div>
+
+          <div class="quiz-question">
+            <div class="q-num">Întrebarea 9 / 10</div>
+            <div class="q-text">Harvey AI este un exemplu de:</div>
+            <label class="quiz-option">
+              <input type="radio" name="q9" value="a" />
+              Sistem IA generalist pentru publicul larg</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q9" value="b" />
+              Platformă IA specializată pentru activitatea juridică (redactare,
+              cercetare)</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q9" value="c" />
+              Sistem de securitate cibernetică</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q9" value="d" />
+              Baza de date legislativă fără IA</label
+            >
+          </div>
+
+          <div class="quiz-question">
+            <div class="q-num">Întrebarea 10 / 10</div>
+            <div class="q-text">
+              Conform CCBE (2023), avocatul care utilizează IA este:
+            </div>
+            <label class="quiz-option">
+              <input type="radio" name="q10" value="a" />
+              Exonerat de responsabilitate dacă IA face o eroare</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q10" value="b" />
+              Obligat să informeze clientul că IA a redactat actul</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q10" value="c" />
+              Responsabil profesional pentru fiecare act, indiferent de
+              instrumentul utilizat</label
+            >
+            <label class="quiz-option">
+              <input type="radio" name="q10" value="d" />
+              Autorizat să folosească IA fără restricții de
+              confidențialitate</label
+            >
+          </div>
+
+          <button class="btn-check" onclick="calculateFinalScore()">
+            🎯 Calculează Scorul Final
+          </button>
+
+          <div
+            id="final-result-panel"
+            style="
+              display: none;
+              margin-top: 30px;
+              padding: 20px;
+              border: 1px solid #ccc;
+              text-align: center;
+            "
+          >
+            <h3>Rezultate Curs 5</h3>
+            <h4 id="final-score-display">0/100</h4>
+            <p id="final-grade-msg"></p>
+            <p>
+              Puteți face o captură de ecran (Screenshot) a acestui rezultat
+              pentru profesor.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        🤖⚖️ Curs 5/7: Inteligență Artificială în Domeniul Juridic | Facultatea
+        de Drept
+      </p>
+      <p>
+        <small
+          >Material didactic elaborat pentru studenții programului de
+          Informatică Juridică | © 2026</small
+        >
+      </p>
+    </footer>
+
+    <script>
+      let state = {
+        progress: 0,
+        score: 0,
+        sectionsCompleted: 0,
+        totalSections: 7,
+        answers: {},
+      };
+
+      let seconds = 0;
+      setInterval(() => {
+        seconds++;
+        const mins = Math.floor(seconds / 60)
+          .toString()
+          .padStart(2, "0");
+        const secs = (seconds % 60).toString().padStart(2, "0");
+        document.getElementById("timer").innerText = `${mins}:${secs}`;
+      }, 1000);
+
+      function updateProgress(pointsToAdd = 0) {
+        state.score += pointsToAdd;
+        document.getElementById("score-display").innerText = state.score;
+        let activeSections = document.querySelectorAll(
+          "section.active, section.completed",
+        ).length;
+        const biblio = document.getElementById("sec-biblio");
+        if (
+          biblio &&
+          (biblio.classList.contains("active") ||
+            biblio.classList.contains("completed"))
+        )
+          activeSections--;
+        let percent = Math.min(100, Math.round((activeSections / 7) * 100));
+        document.getElementById("main-progress-bar").style.width =
+          percent + "%";
+        document.getElementById("percent-display").innerText = percent + "%";
+        saveState();
+      }
+
+      function unlockSection(nextSectionId, triggerElement) {
+        if (triggerElement) {
+          let currentSection = triggerElement.closest("section");
+          if (currentSection) currentSection.classList.add("completed");
+        }
+        const next = document.getElementById(nextSectionId);
+        if (next) {
+          next.classList.add("active");
+          next.scrollIntoView({ behavior: "smooth" });
+          if (!state.answers["unlock-" + nextSectionId]) {
+            state.answers["unlock-" + nextSectionId] = true;
+            updateProgress(5);
+          }
+          saveState();
+        }
+      }
+
+      function scrollToSection(id, triggerElement) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (triggerElement) {
+          const currentSection = triggerElement.closest("section");
+          if (currentSection) currentSection.classList.add("completed");
+        }
+        el.classList.add("active");
+        el.scrollIntoView({ behavior: "smooth" });
+        saveState();
+      }
+
+      function checkBlanks2() {
+        const alternates = {
+          b2_1: ["inteligenta", "inteligentă", "inteligență"],
+          b2_2: ["NLP", "nlp"],
+          b2_3: ["Large", "large", "LARGE"],
+          b2_4: ["halucinatii", "halucinații", "hallucinations", "halucinatie"],
+          b2_5: ["ANI", "ani", "narrow", "Narrow"],
+        };
+        let correct = 0;
+        Object.keys(alternates).forEach((id) => {
+          const el = document.getElementById(id);
+          const val = el.value.trim().toLowerCase();
+          const ok = alternates[id].map((a) => a.toLowerCase()).includes(val);
+          el.classList.remove("correct", "incorrect");
+          el.classList.add(ok ? "correct" : "incorrect");
+          if (ok) correct++;
+        });
+        const total = Object.keys(alternates).length;
+        const fb = document.getElementById("fb2");
+        if (correct === total) {
+          fb.innerHTML = "✅ Excelent! Toate răspunsurile sunt corecte.";
+          fb.className = "feedback-msg feedback-success";
+          if (!state.answers["blanks-sec-2"]) {
+            state.answers["blanks-sec-2"] = true;
+            updateProgress(15);
+          }
+          document.querySelector("#sec-2 .btn-next") &&
+            (document.querySelector("#sec-2 .btn-next").style.display =
+              "inline-block");
+        } else {
+          fb.innerHTML = `⚠️ ${correct}/${total} corecte. Revedeți secțiunea și încercați din nou.`;
+          fb.className = "feedback-msg feedback-error";
+        }
+        saveState();
+      }
+
+      let dragging3 = null;
+      function initDrag3() {
+        document.querySelectorAll("#dragSource3 .drag-item").forEach((item) => {
+          item.addEventListener("dragstart", (e) => {
+            dragging3 = item;
+            e.dataTransfer.effectAllowed = "move";
+          });
+        });
+      }
+      function allowDrop(e) {
+        e.preventDefault();
+        e.currentTarget.classList.add("drag-over");
+      }
+      function dropItem(e, zoneId) {
+        e.preventDefault();
+        const zone = document.getElementById(zoneId);
+        zone.classList.remove("drag-over");
+        if (dragging3) {
+          const drop = document.createElement("span");
+          drop.className = "drop-item";
+          drop.textContent = dragging3.dataset.id;
+          drop.dataset.id = dragging3.dataset.id;
+          drop.dataset.cat = dragging3.dataset.cat;
+          drop.onclick = () => {
+            document.getElementById("dragSource3").appendChild(dragging3);
+            drop.remove();
+          };
+          zone.appendChild(drop);
+          dragging3.remove();
+          dragging3 = null;
+        }
+      }
+      function checkDrop3() {
+        const zones = {
+          drop3_redactare: "redactare",
+          drop3_cercetare: "cercetare",
+          drop3_contracte: "contracte",
+          drop3_predictie: "predictie",
+          drop3_judiciar: "judiciar",
+          drop3_acces: "acces",
+        };
+        let correct = 0,
+          total = 0;
+        Object.entries(zones).forEach(([zoneId, expectedCat]) => {
+          document.querySelectorAll(`#${zoneId} .drop-item`).forEach((item) => {
+            total++;
+            if (item.dataset.cat === expectedCat) correct++;
+          });
+        });
+        const fb = document.getElementById("fb3drag");
+        if (correct === 6) {
+          fb.innerHTML = "✅ Perfect! Toate instrumentele clasificate corect!";
+          fb.className = "feedback-msg feedback-success";
+          if (!state.answers["drop-sec-3"]) {
+            state.answers["drop-sec-3"] = true;
+            updateProgress(15);
+          }
+          document.querySelector("#sec-3 .btn-next") &&
+            (document.querySelector("#sec-3 .btn-next").style.display =
+              "inline-block");
+        } else {
+          fb.innerHTML = `⚠️ ${correct}/${total} corecte. Harvey AI→redactare, Westlaw Edge→cercetare, Kira→contracte, Lex Machina→predicție, COMPAS→judiciar, DoNotPay→acces.`;
+          fb.className = "feedback-msg feedback-error";
+        }
+        saveState();
+      }
+
+      const correctSelects4 = {
+        sel4_1: "Risc inacceptabil",
+        sel4_2: "Risc limitat",
+        sel4_3: "Risc ridicat",
+        sel4_4: "Risc minim",
+        sel4_5: "Decizii exclusiv automate cu efecte juridice",
+      };
+      function checkSelects4() {
+        let correct = 0;
+        Object.entries(correctSelects4).forEach(([id, ans]) => {
+          if (document.getElementById(id).value === ans) correct++;
+        });
+        const total = Object.keys(correctSelects4).length;
+        const fb = document.getElementById("fb4sel");
+        if (correct === total) {
+          fb.innerHTML = "✅ Excelent! Toate asocierile sunt corecte!";
+          fb.className = "feedback-msg feedback-success";
+          if (!state.answers["sel-sec-4"]) {
+            state.answers["sel-sec-4"] = true;
+            updateProgress(15);
+          }
+          document.querySelector("#sec-4 .btn-next") &&
+            (document.querySelector("#sec-4 .btn-next").style.display =
+              "inline-block");
+        } else {
+          fb.innerHTML = `⚠️ ${correct}/${total} corecte. Răspunsuri: inacceptabil, limitat, ridicat, minim, decizii exclusiv automate.`;
+          fb.className = "feedback-msg feedback-error";
+        }
+        saveState();
+      }
+
+      function checkBlanks5() {
+        const alts5 = {
+          b5_1: [
+            "halucinatii",
+            "halucinații",
+            "hallucinations",
+            "halucinatie",
+            "halucinație",
+          ],
+          b5_2: ["mata", "mata v avianca", "mata v. avianca"],
+          b5_3: ["human", "uman"],
+          b5_4: ["compas", "COMPAS"],
+          b5_5: ["secretul profesional", "secret profesional"],
+        };
+        let correct = 0;
+        Object.entries(alts5).forEach(([id, accepts]) => {
+          const el = document.getElementById(id);
+          const val = el.value.trim().toLowerCase();
+          const ok = accepts.map((a) => a.toLowerCase()).includes(val);
+          el.classList.remove("correct", "incorrect");
+          el.classList.add(ok ? "correct" : "incorrect");
+          if (ok) correct++;
+        });
+        const total = Object.keys(alts5).length;
+        const fb = document.getElementById("fb5");
+        if (correct === total) {
+          fb.innerHTML = "✅ Excelent! Toate răspunsurile corecte!";
+          fb.className = "feedback-msg feedback-success";
+          if (!state.answers["blanks-sec-5"]) {
+            state.answers["blanks-sec-5"] = true;
+            updateProgress(15);
+          }
+          document.querySelector("#sec-5 .btn-next") &&
+            (document.querySelector("#sec-5 .btn-next").style.display =
+              "inline-block");
+        } else {
+          fb.innerHTML = `⚠️ ${correct}/${total} corecte. Răspunsuri: halucinații, Mata v. Avianca, Human, COMPAS, secretul profesional.`;
+          fb.className = "feedback-msg feedback-error";
+        }
+        saveState();
+      }
+
+      let dragging6 = null;
+      function initDrag6() {
+        document.querySelectorAll("#dragSource6 .drag-item").forEach((item) => {
+          item.addEventListener("dragstart", (e) => {
+            dragging6 = item;
+            e.dataTransfer.effectAllowed = "move";
+          });
+        });
+        document.querySelectorAll('[id^="drop6_"]').forEach((zone) => {
+          zone.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            zone.classList.add("drag-over");
+          });
+          zone.addEventListener("dragleave", () =>
+            zone.classList.remove("drag-over"),
+          );
+          zone.addEventListener("drop", (e) => {
+            e.preventDefault();
+            zone.classList.remove("drag-over");
+            if (dragging6) {
+              const drop = document.createElement("span");
+              drop.className = "drop-item";
+              drop.textContent = dragging6.dataset.id;
+              drop.dataset.id = dragging6.dataset.id;
+              drop.dataset.cat = dragging6.dataset.cat;
+              drop.onclick = () => {
+                document.getElementById("dragSource6").appendChild(dragging6);
+                drop.remove();
+              };
+              zone.appendChild(drop);
+              dragging6.remove();
+              dragging6 = null;
+            }
+          });
+        });
+      }
+      function checkDrop6() {
+        const zones = { drop6_auto: "auto", drop6_uman: "uman" };
+        let correct = 0,
+          total = 0;
+        Object.entries(zones).forEach(([zId, cat]) => {
+          document.querySelectorAll(`#${zId} .drop-item`).forEach((item) => {
+            total++;
+            if (item.dataset.cat === cat) correct++;
+          });
+        });
+        const fb = document.getElementById("fb6drag");
+        if (correct === 6) {
+          fb.innerHTML =
+            "✅ Perfect! IA: cercetare, due diligence, contracte standard. Uman: sentință, negociere, pledoarie.";
+          fb.className = "feedback-msg feedback-success";
+          if (!state.answers["drop-sec-6"]) {
+            state.answers["drop-sec-6"] = true;
+            updateProgress(15);
+          }
+          document.querySelector("#sec-6 .btn-next") &&
+            (document.querySelector("#sec-6 .btn-next").style.display =
+              "inline-block");
+        } else {
+          fb.innerHTML = `⚠️ ${correct}/${total} corecte. IA automatizează sarcini repetitive, umane necesită judecată și empatie.`;
+          fb.className = "feedback-msg feedback-error";
+        }
+        saveState();
+      }
+
+      const finalAnswers = {
+        q1: "b",
+        q2: "c",
+        q3: "b",
+        q4: "d",
+        q5: "b",
+        q6: "b",
+        q7: "b",
+        q8: "c",
+        q9: "b",
+        q10: "c",
+      };
+
+      function calculateFinalScore() {
+        let score = 0,
+          all = true;
+        for (let i = 1; i <= 10; i++) {
+          const qn = "q" + i;
+          const sel = document.querySelector(`input[name="${qn}"]:checked`);
+          if (!sel) {
+            all = false;
+            continue;
+          }
+          document
+            .querySelectorAll(`label.quiz-option:has(input[name="${qn}"])`)
+            .forEach((o) => {
+              o.classList.remove("correct", "incorrect");
+              const inp = o.querySelector("input");
+              if (inp.value === finalAnswers[qn]) o.classList.add("correct");
+              else if (inp.checked) o.classList.add("incorrect");
+            });
+          if (sel.value === finalAnswers[qn]) score += 10;
+        }
+        if (!all) {
+          alert(
+            "⚠️ Vă rugăm să răspundeți la toate cele 10 întrebări înainte de a trimite testul.",
+          );
+          return;
+        }
+        const rd = document.getElementById("final-result-panel");
+        rd.style.display = "block";
+        document.getElementById("final-score-display").textContent =
+          score + "/100";
+        const msg = document.getElementById("final-grade-msg");
+        if (score < 50) {
+          msg.innerText = "Insuficient. Vă rugăm să revizuiți materialul.";
+          msg.style.color = "red";
+        } else if (score < 70) {
+          msg.innerText = "Suficient. Ați promovat.";
+          msg.style.color = "orange";
+        } else if (score < 85) {
+          msg.innerText = "Bine! Rezultat solid.";
+          msg.style.color = "blue";
+        } else {
+          msg.innerText = "Foarte Bine! Felicitări!";
+          msg.style.color = "green";
+        }
+        rd.scrollIntoView({ behavior: "smooth" });
+        let globalContribution = score / 5;
+        let previousContribution = state.answers["finalTestContribution"] || 0;
+        let pointsToAdd = globalContribution - previousContribution;
+        state.answers["finalTestContribution"] = globalContribution;
+        updateProgress(pointsToAdd);
+        saveState();
+      }
+
+      function saveState() {
+        const data = {
+          score: state.score,
+          answers: state.answers,
+          timer: seconds,
+          sections: {},
+          inputs: {},
+          radios: {},
+          selects: {},
+          feedbacks: {},
+          dropItems: {},
+        };
+        document.querySelectorAll("section[id]").forEach((sec) => {
+          data.sections[sec.id] = {
+            active: sec.classList.contains("active"),
+            completed: sec.classList.contains("completed"),
+          };
+        });
+        [
+          "b2_1",
+          "b2_2",
+          "b2_3",
+          "b2_4",
+          "b2_5",
+          "b5_1",
+          "b5_2",
+          "b5_3",
+          "b5_4",
+          "b5_5",
+        ].forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) data.inputs[id] = el.value;
+        });
+        const radioGroups = new Set();
+        document
+          .querySelectorAll('input[type="radio"]')
+          .forEach((r) => radioGroups.add(r.name));
+        radioGroups.forEach((name) => {
+          const checked = document.querySelector(
+            `input[name="${name}"]:checked`,
+          );
+          if (checked) data.radios[name] = checked.value;
+        });
+        document.querySelectorAll("select[id]").forEach((el) => {
+          data.selects[el.id] = el.value;
+        });
+        document.querySelectorAll(".feedback-msg").forEach((fb) => {
+          if (fb.id && fb.innerHTML)
+            data.feedbacks[fb.id] = {
+              html: fb.innerHTML,
+              className: fb.className,
+            };
+        });
+        document.querySelectorAll('[id^="drop"]').forEach((zone) => {
+          data.dropItems[zone.id] = Array.from(
+            zone.querySelectorAll(".drop-item"),
+          ).map((i) => ({
+            id: i.dataset.id,
+            cat: i.dataset.cat,
+            text: i.textContent,
+          }));
+        });
+        const chk = document.querySelector('input[type="checkbox"]');
+        if (chk) data.checkObjectives = chk.checked;
+        data.btnNextVisible = [];
+        document.querySelectorAll(".btn-next").forEach((btn) => {
+          if (btn.style.display === "inline-block") {
+            const sec = btn.closest("section");
+            if (sec) data.btnNextVisible.push(sec.id);
+          }
+        });
+        data.quizOptionClasses = {};
+        for (let i = 1; i <= 10; i++) {
+          const opts = document.querySelectorAll(
+            `label.quiz-option:has(input[name="q${i}"])`,
+          );
+          if (opts.length)
+            data.quizOptionClasses[`q${i}`] = Array.from(opts).map(
+              (o) => o.className,
+            );
+        }
+        const rd = document.getElementById("final-result-panel");
+        if (rd && rd.style.display === "block") {
+          data.finalResult = {
+            score:
+              document.getElementById("final-score-display")?.textContent || "",
+            msg: document.getElementById("final-grade-msg")?.innerText || "",
+            msgColor:
+              document.getElementById("final-grade-msg")?.style.color || "",
+          };
+        }
+        try {
+          localStorage.setItem("curs5_progress", JSON.stringify(data));
+        } catch (e) {}
+      }
+
+      function loadState() {
+        let data;
+        try {
+          const raw = localStorage.getItem("curs5_progress");
+          if (!raw) return;
+          data = JSON.parse(raw);
+        } catch (e) {
+          return;
+        }
+        if (typeof data.score === "number") {
+          state.score = data.score;
+          document.getElementById("score-display").innerText = state.score;
+        }
+        if (data.answers) state.answers = data.answers;
+        if (typeof data.timer === "number") seconds = data.timer;
+        if (data.sections)
+          Object.entries(data.sections).forEach(([id, s]) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            if (s.active) el.classList.add("active");
+            if (s.completed) el.classList.add("completed");
+          });
+        if (data.inputs)
+          Object.entries(data.inputs).forEach(([id, val]) => {
+            const el = document.getElementById(id);
+            if (el) el.value = val;
+          });
+        if (data.radios)
+          Object.entries(data.radios).forEach(([name, value]) => {
+            const r = document.querySelector(
+              `input[name="${name}"][value="${value}"]`,
+            );
+            if (r) r.checked = true;
+          });
+        if (data.selects)
+          Object.entries(data.selects).forEach(([id, value]) => {
+            const el = document.getElementById(id);
+            if (el) el.value = value;
+          });
+        if (data.feedbacks)
+          Object.entries(data.feedbacks).forEach(([id, fb]) => {
+            const el = document.getElementById(id);
+            if (el) {
+              el.innerHTML = fb.html;
+              el.className = fb.className;
+            }
+          });
+        if (data.dropItems) {
+          const restoredIds = new Set();
+          Object.entries(data.dropItems).forEach(([zoneId, items]) => {
+            const zone = document.getElementById(zoneId);
+            if (!zone || !items.length) return;
+            items.forEach(({ id, cat, text }) => {
+              const drop = document.createElement("span");
+              drop.className = "drop-item";
+              drop.textContent = text;
+              drop.dataset.id = id;
+              drop.dataset.cat = cat;
+              zone.appendChild(drop);
+              restoredIds.add(id);
+            });
+          });
+          document.querySelectorAll(".drag-item").forEach((item) => {
+            if (restoredIds.has(item.dataset.id)) item.remove();
+          });
+        }
+        const chk = document.querySelector('input[type="checkbox"]');
+        if (chk && data.checkObjectives) chk.checked = true;
+        let activeSections = document.querySelectorAll(
+          "section.active, section.completed",
+        ).length;
+        const biblio = document.getElementById("sec-biblio");
+        if (
+          biblio &&
+          (biblio.classList.contains("active") ||
+            biblio.classList.contains("completed"))
+        )
+          activeSections--;
+        let percent = Math.min(100, Math.round((activeSections / 7) * 100));
+        document.getElementById("main-progress-bar").style.width =
+          percent + "%";
+        document.getElementById("percent-display").innerText = percent + "%";
+        const allSections = Array.from(
+          document.querySelectorAll("section[id]"),
+        );
+        const activeSectionEls = allSections.filter((s) =>
+          s.classList.contains("active"),
+        );
+        if (activeSectionEls.length > 1)
+          activeSectionEls[activeSectionEls.length - 1].scrollIntoView({
+            behavior: "instant",
+          });
+        if (data.btnNextVisible)
+          data.btnNextVisible.forEach((secId) => {
+            const btn = document.querySelector(`#${secId} .btn-next`);
+            if (btn) btn.style.display = "inline-block";
+          });
+        if (data.quizOptionClasses)
+          Object.entries(data.quizOptionClasses).forEach(([qName, classes]) => {
+            const opts = document.querySelectorAll(
+              `label.quiz-option:has(input[name="${qName}"])`,
+            );
+            classes.forEach((cls, i) => {
+              if (opts[i]) opts[i].className = cls;
+            });
+          });
+        if (data.finalResult) {
+          const rd = document.getElementById("final-result-panel");
+          if (rd) {
+            rd.style.display = "block";
+            const scoreEl = document.getElementById("final-score-display");
+            if (scoreEl) scoreEl.textContent = data.finalResult.score;
+            const msgEl = document.getElementById("final-grade-msg");
+            if (msgEl) {
+              msgEl.innerText = data.finalResult.msg;
+              msgEl.style.color = data.finalResult.msgColor;
+            }
+          }
+        }
+      }
+
+      loadState();
+      initDrag3();
+      initDrag6();
+    </script>
+  </body>
+</html>
