@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Curs 1: Introducere în Informatica Juridică</title>
     <link rel="icon" href="favicon.ico" />
-    <!-- Google Fonts: Inter + Source Serif 4 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,7 +13,6 @@
     />
 
     <style>
-      /* ========== DESIGN TOKENS ========== */
       :root {
         --primary: #4338ca;
         --primary-light: #6366f1;
@@ -51,7 +49,6 @@
         --font-ui: "Inter", system-ui, -apple-system, sans-serif;
       }
 
-      /* ========== RESET & BASE ========== */
       *,
       *::before,
       *::after {
@@ -111,7 +108,6 @@
         font-family: var(--font-ui);
       }
 
-      /* ========== HEADER ========== */
       .course-header {
         position: fixed;
         top: 0;
@@ -223,7 +219,6 @@
         box-shadow: var(--shadow-primary);
       }
 
-      /* ========== MAIN CONTAINER ========== */
       main.container {
         max-width: 860px;
         margin: 0 auto 60px;
@@ -233,7 +228,6 @@
         border-radius: 0;
       }
 
-      /* ========== SECTIONS AS CARDS ========== */
       section {
         background: var(--surface);
         border-radius: var(--radius);
@@ -288,7 +282,6 @@
         width: 4px;
       }
 
-      /* ========== TYPOGRAPHY ========== */
       h2 {
         color: var(--secondary);
         font-size: 1.65rem;
@@ -367,7 +360,6 @@
         background: var(--primary-bg);
       }
 
-      /* ========== ARTICLES / INFO CARDS ========== */
       article {
         border-radius: var(--radius-sm);
         padding: 20px 24px;
@@ -385,7 +377,6 @@
         border-bottom: 1px solid var(--border-light);
       }
 
-      /* ========== INTERACTIVE BOX ========== */
       .interactive-box {
         background: var(--surface-2);
         padding: 28px 32px;
@@ -412,7 +403,6 @@
         border-radius: 0 0 4px 4px;
       }
 
-      /* ========== BLANK INPUT ========== */
       .blank-input {
         border: none;
         border-bottom: 2px solid var(--primary-light);
@@ -447,7 +437,6 @@
         background: rgba(220, 38, 38, 0.06);
       }
 
-      /* ========== DRAG AND DROP ========== */
       .draggable-container {
         display: flex;
         gap: 10px;
@@ -526,7 +515,6 @@
         box-shadow: inset 0 0 0 2px var(--primary-bg-hover);
       }
 
-      /* ========== QUIZ OPTIONS ========== */
       .quiz-option {
         display: flex;
         align-items: center;
@@ -568,7 +556,6 @@
         box-shadow: 0 0 0 1px rgba(220, 38, 38, 0.1);
       }
 
-      /* ========== BUTTONS ========== */
       .btn-check {
         font-family: var(--font-ui);
         font-weight: 600;
@@ -614,7 +601,6 @@
         box-shadow: 0 6px 20px rgba(15, 23, 42, 0.3);
       }
 
-      /* ========== VIDEO PLACEHOLDER ========== */
       .video-placeholder {
         background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
         color: #94a3b8;
@@ -631,7 +617,6 @@
         border: 1px solid #334155;
       }
 
-      /* ========== FINAL TEST ========== */
       #final-test-section {
         background: var(--surface);
         border: 2px solid var(--primary);
@@ -695,7 +680,7 @@
         letter-spacing: 0.08em;
       }
 
-      #final-result-panel h1 {
+      #final-result-panel h4 {
         font-family: var(--font-heading);
         font-size: 3.5rem;
         font-weight: 800;
@@ -703,19 +688,6 @@
         margin: 8px 0;
       }
 
-      #final-result-panel button {
-        font-family: var(--font-ui);
-        font-weight: 600;
-        background: var(--secondary);
-        color: #fff;
-        border: none;
-        padding: 10px 24px;
-        border-radius: 100px;
-        cursor: pointer;
-        margin-top: 12px;
-      }
-
-      /* ========== FEEDBACK ========== */
       .feedback-msg {
         margin-top: 14px;
         font-weight: 600;
@@ -737,7 +709,6 @@
         border: 1px solid var(--error-border);
       }
 
-      /* ========== TABLE ========== */
       table {
         border-radius: var(--radius-sm);
         overflow: hidden;
@@ -773,7 +744,6 @@
         background: var(--surface-2);
       }
 
-      /* ========== GRID (Pico override) ========== */
       .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -785,7 +755,6 @@
         margin: 0;
       }
 
-      /* ========== select ========== */
       select {
         font-family: var(--font-ui);
         padding: 10px 14px !important;
@@ -804,7 +773,6 @@
         box-shadow: 0 0 0 3px var(--primary-bg);
       }
 
-      /* ========== CHECKBOX ========== */
       input[type="checkbox"] {
         width: 20px;
         height: 20px;
@@ -814,7 +782,6 @@
         margin-right: 8px;
       }
 
-      /* ========== BIBLIOGRAPHY ========== */
       #sec-biblio {
         background: var(--surface-2) !important;
         border-top: none !important;
@@ -826,7 +793,6 @@
         color: var(--secondary);
       }
 
-      /* ========== FOOTER ========== */
       footer {
         text-align: center;
         padding: 40px 20px;
@@ -839,7 +805,6 @@
         margin: 0;
       }
 
-      /* ========== RESPONSIVE ========== */
       @media (max-width: 768px) {
         html {
           scroll-padding-top: 140px;
@@ -919,13 +884,11 @@
           margin-top: 8px;
         }
 
-        /* Stack inline 2-column grids on mobile */
         div[style*="grid-template-columns: 1fr 1fr"],
         div[style*="grid-template-columns:1fr 1fr"] {
           grid-template-columns: 1fr !important;
         }
 
-        /* Prevent table overflow */
         table {
           display: block;
           overflow-x: auto;
@@ -959,41 +922,19 @@
         }
       }
 
-      /* ========== SMOOTH SCROLL ========== */
       html {
         scroll-behavior: smooth;
         scroll-padding-top: 100px;
       }
 
-      /* ========== SELECTION ========== */
       ::selection {
         background: var(--primary-bg-hover);
         color: var(--primary-dark);
-      }
-
-      /* ========== PRINT ========== */
-      @media print {
-        .course-header {
-          position: static;
-          box-shadow: none;
-        }
-
-        section {
-          opacity: 1 !important;
-          pointer-events: all !important;
-          break-inside: avoid;
-        }
-
-        .btn-check,
-        .btn-next {
-          display: none !important;
-        }
       }
     </style>
   </head>
 
   <body>
-    <!-- Header System -->
     <header class="course-header">
       <div class="header-content">
         <div>
@@ -1024,7 +965,6 @@
     </header>
 
     <main class="container">
-      <!-- Sectiunea 1 -->
       <section id="sec-1" class="active">
         <h2>1. Introducere și Obiective</h2>
 
@@ -1159,7 +1099,6 @@
         </div>
       </section>
 
-      <!-- Sectiunea 2 -->
       <section id="sec-2">
         <h2>
           2. Ce este Informatica Juridică? - Definire și delimitări conceptuale
@@ -1409,7 +1348,6 @@
         </div>
       </section>
 
-      <!-- Sectiunea 3 -->
       <section id="sec-3">
         <h2>3. Domeniile de Aplicare ale Informaticii Juridice</h2>
 
@@ -1852,7 +1790,6 @@
         </div>
       </section>
 
-      <!-- Sectiunea 4 -->
       <section id="sec-4">
         <h2>
           4. Importanța Digitalizării Justiției în România și Uniunea Europeană
@@ -2170,7 +2107,6 @@
         </div>
       </section>
 
-      <!-- Sectiunea 5 -->
       <section id="sec-5">
         <h2>
           5. Panorama Software-urilor Juridice - Instrumentele Practicianului
@@ -2582,7 +2518,6 @@
         </div>
       </section>
 
-      <!-- Sectiunea 6 -->
       <section id="sec-6">
         <h2>6. Provocări și Perspective</h2>
         <div class="grid">
@@ -2610,7 +2545,6 @@
         </div>
       </section>
 
-      <!-- Test Final -->
       <section id="sec-7">
         <h2>📝 Test Final de Evaluare</h2>
         <p>
@@ -2619,7 +2553,6 @@
         </p>
 
         <form id="final-test-form" onsubmit="return false;">
-          <!-- Q1 -->
           <article>
             <h5>1. Ce reprezintă acronimul ECRIS?</h5>
             <label>
@@ -2637,7 +2570,6 @@
             >
           </article>
 
-          <!-- Q2 -->
           <article>
             <h5>2. Informatica juridică documentară se ocupă cu:</h5>
             <label>
@@ -2654,7 +2586,6 @@
             >
           </article>
 
-          <!-- Q3 -->
           <article>
             <h5>3. Portalul e-justice.europa.eu este administrat de:</h5>
             <label>
@@ -2671,7 +2602,6 @@
             >
           </article>
 
-          <!-- Q4: Completare -->
           <article>
             <h5>
               4. Legea semnăturii electronice în România este Legea nr.
@@ -2681,7 +2611,6 @@
             <small>(Introduceți doar numărul)</small>
           </article>
 
-          <!-- Q5: True/False -->
           <article>
             <h5>5. Digitalizarea justiției elimină nevoia grefierilor.</h5>
             <label>
@@ -2694,7 +2623,6 @@
             </label>
           </article>
 
-          <!-- Q6: True/False -->
           <article>
             <h5>
               6. GDPR se aplică și avocaților care prelucrează date personale.
@@ -2709,7 +2637,6 @@
             </label>
           </article>
 
-          <!-- Q7: Input -->
           <article>
             <h5>
               7. Cum se numește tehnologia din spatele criptomonedelor cu
@@ -2718,7 +2645,6 @@
             <input type="text" id="q7-input" placeholder="Ex: Cloud..." />
           </article>
 
-          <!-- Q8 -->
           <article>
             <h5>8. Care NU este un beneficiu al digitalizării?</h5>
             <label>
@@ -2735,7 +2661,6 @@
             >
           </article>
 
-          <!-- Q9 -->
           <article>
             <h5>9. LexisNexis este un exemplu de:</h5>
             <label>
@@ -2748,7 +2673,6 @@
             >
           </article>
 
-          <!-- Q10 -->
           <article>
             <h5>10. Dosarul Electronic Național permite:</h5>
             <label>
@@ -2787,7 +2711,6 @@
             Puteți face o captură de ecran (Screenshot) a acestui rezultat
             pentru profesor.
           </p>
-          <button onclick="window.print()">🖨️ Printează Rezultat</button>
         </div>
       </section>
 
@@ -2820,9 +2743,7 @@
       <p>© 2026 ASE/Facultatea de Drept - Curs Informatica Juridică</p>
     </footer>
 
-    <!-- JavaScript Logic -->
     <script>
-      // State Management
       let state = {
         progress: 0,
         score: 0,
@@ -2831,7 +2752,6 @@
         answers: {},
       };
 
-      // Timer
       let seconds = 0;
       setInterval(() => {
         seconds++;
@@ -2842,16 +2762,13 @@
         document.getElementById("timer").innerText = `${mins}:${secs}`;
       }, 1000);
 
-      // Utility: Update Progress Bars
       function updateProgress(pointsToAdd = 0) {
         state.score += pointsToAdd;
         document.getElementById("score-display").innerText = state.score;
 
-        // Calculate % based on interactive sections (7 total, excluding bibliography)
         let activeSections = document.querySelectorAll(
           "section.active, section.completed",
         ).length;
-        // Exclude sec-biblio from count if it has active/completed
         const biblio = document.getElementById("sec-biblio");
         if (
           biblio &&
@@ -2868,9 +2785,7 @@
         saveState();
       }
 
-      // Navigation
       function unlockSection(nextSectionId, triggerElement) {
-        // Mark current section as completed visually if needed
         if (triggerElement) {
           let currentSection = triggerElement.closest("section");
           currentSection.classList.add("completed");
@@ -2882,7 +2797,7 @@
           next.scrollIntoView({ behavior: "smooth" });
           if (!state.answers["unlock-" + nextSectionId]) {
             state.answers["unlock-" + nextSectionId] = true;
-            updateProgress(5); // 5 points for unlocking a section
+            updateProgress(5);
           }
           saveState();
         }
@@ -2891,7 +2806,6 @@
       function scrollToSection(id, triggerElement) {
         const el = document.getElementById(id);
         if (!el) return;
-        // Mark the section that contains the button as completed
         if (triggerElement) {
           const currentSection = triggerElement.closest("section");
           if (currentSection) currentSection.classList.add("completed");
@@ -2901,7 +2815,6 @@
         saveState();
       }
 
-      // Utility: strip Romanian diacritics
       function stripDiacritics(str) {
         return str
           .replace(/[ăâ]/g, "a")
@@ -2915,7 +2828,6 @@
           .replace(/[ÂÂ]/g, "A");
       }
 
-      // Section 2 Logic (Fill Blanks)
       function checkBlanks(sectionId) {
         const inputs = document.querySelectorAll(`#${sectionId} .blank-input`);
         let allCorrect = true;
@@ -2952,7 +2864,6 @@
         saveState();
       }
 
-      // Section 2 True/False quiz
       function checkTrueFalse() {
         const selected = document.querySelector(
           'input[name="q-bool-1"]:checked',
@@ -2979,7 +2890,6 @@
         saveState();
       }
 
-      // Section 3 Logic (Drag & Drop) - Updated for 3 categories
       function allowDrop(ev) {
         ev.preventDefault();
       }
@@ -2991,10 +2901,8 @@
         var data = ev.dataTransfer.getData("text");
         var draggedEl = document.getElementById(data);
 
-        // Append to zone
         ev.target.closest(".drop-zone").appendChild(draggedEl);
 
-        // Mark validation state roughly
         draggedEl.dataset.currentZone = cat;
       }
 
@@ -3037,7 +2945,6 @@
         saveState();
       }
 
-      // Section 4 Logic (Radio)
       function checkRadio(sectionId, correctVal) {
         const selected = document.querySelector(
           `input[name="q-${sectionId}"]:checked`,
@@ -3060,7 +2967,6 @@
         saveState();
       }
 
-      // Section 5 Logic (Selects) - Updated for 3 questions
       function checkSelects(sectionId) {
         const s1 = document.getElementById("sel-soft-1").value;
         const s2 = document.getElementById("sel-soft-2").value;
@@ -3088,18 +2994,15 @@
         saveState();
       }
 
-      // Final Test Logic
       function calculateFinalScore() {
         let score = 0;
 
-        // Radios (Values are 10 or 0 in HTML)
         const radios = ["q1", "q2", "q3", "q5", "q6", "q8", "q9", "q10"];
         radios.forEach((name) => {
           const el = document.querySelector(`input[name="${name}"]:checked`);
           if (el) score += parseInt(el.value);
         });
 
-        // Inputs
         const q4 = document.getElementById("q4-input").value.trim();
         if (q4 === "455") score += 10;
 
@@ -3109,7 +3012,6 @@
           .toLowerCase();
         if (q7.includes("blockchain")) score += 10;
 
-        // Display
         const resultPanel = document.getElementById("final-result-panel");
         const scoreDisplay = document.getElementById("final-score-display");
         const msg = document.getElementById("final-grade-msg");
@@ -3117,7 +3019,6 @@
         resultPanel.style.display = "block";
         scoreDisplay.innerText = score + "/100";
 
-        // Scroll to results
         resultPanel.scrollIntoView({ behavior: "smooth" });
 
         if (score < 50) {
@@ -3134,13 +3035,11 @@
           msg.style.color = "green";
         }
 
-        // Disable form
         document.getElementById("final-test-form").style.opacity = "0.7";
         document.getElementById("final-test-form").style.pointerEvents = "none";
         saveState();
       }
 
-      // ========== LOCALSTORAGE PERSISTENCE ==========
       function setCookie(name, value) {
         try {
           localStorage.setItem(name, value);
@@ -3166,7 +3065,6 @@
           selects: {},
         };
 
-        // Save section states
         document.querySelectorAll("section[id]").forEach((sec) => {
           data.sections[sec.id] = {
             active: sec.classList.contains("active"),
@@ -3174,18 +3072,15 @@
           };
         });
 
-        // Save text inputs (blank-input fields)
         document.querySelectorAll(".blank-input").forEach((input, i) => {
           data.inputs["blank-" + i] = input.value;
         });
 
-        // Save final test text inputs
         ["q4-input", "q7-input"].forEach((id) => {
           const el = document.getElementById(id);
           if (el) data.inputs[id] = el.value;
         });
 
-        // Save all radio selections
         const radioGroups = new Set();
         document
           .querySelectorAll('input[type="radio"]')
@@ -3197,13 +3092,11 @@
           if (checked) data.radios[name] = checked.value;
         });
 
-        // Save select values
         ["sel-soft-1", "sel-soft-2", "sel-soft-3"].forEach((id) => {
           const el = document.getElementById(id);
           if (el) data.selects[id] = el.value;
         });
 
-        // Save feedback messages
         data.feedbacks = {};
         document.querySelectorAll(".feedback-msg").forEach((fb) => {
           if (fb.id && fb.innerHTML) {
@@ -3214,7 +3107,6 @@
           }
         });
 
-        // Save btn-next visibility
         data.btnNextVisible = [];
         document.querySelectorAll(".btn-next").forEach((btn) => {
           if (btn.style.display === "inline-block") {
@@ -3223,14 +3115,12 @@
           }
         });
 
-        // Save drag-and-drop positions
         data.dragPositions = {};
         document.querySelectorAll(".draggable-item").forEach((item) => {
           const parent = item.parentElement;
           data.dragPositions[item.id] = parent ? parent.id : "source-sec3";
         });
 
-        // Save checkbox
         const chk = document.getElementById("check-objectives");
         if (chk) data.checkObjectives = chk.checked;
 
@@ -3248,21 +3138,17 @@
           return;
         }
 
-        // Restore score
         if (typeof data.score === "number") {
           state.score = data.score;
           document.getElementById("score-display").innerText = state.score;
         }
 
-        // Restore answers tracking
         if (data.answers) state.answers = data.answers;
 
-        // Restore timer
         if (typeof data.timer === "number") {
           seconds = data.timer;
         }
 
-        // Restore sections
         if (data.sections) {
           Object.entries(data.sections).forEach(([id, s]) => {
             const el = document.getElementById(id);
@@ -3272,7 +3158,6 @@
           });
         }
 
-        // Restore text inputs
         if (data.inputs) {
           document.querySelectorAll(".blank-input").forEach((input, i) => {
             const val = data.inputs["blank-" + i];
@@ -3284,7 +3169,6 @@
           });
         }
 
-        // Restore radios
         if (data.radios) {
           Object.entries(data.radios).forEach(([name, value]) => {
             const radio = document.querySelector(
@@ -3294,7 +3178,6 @@
           });
         }
 
-        // Restore selects
         if (data.selects) {
           Object.entries(data.selects).forEach(([id, value]) => {
             const el = document.getElementById(id);
@@ -3302,7 +3185,6 @@
           });
         }
 
-        // Restore feedbacks
         if (data.feedbacks) {
           Object.entries(data.feedbacks).forEach(([id, fb]) => {
             const el = document.getElementById(id);
@@ -3313,7 +3195,6 @@
           });
         }
 
-        // Restore btn-next visibility
         if (data.btnNextVisible) {
           data.btnNextVisible.forEach((secId) => {
             const btn = document.querySelector(`#${secId} .btn-next`);
@@ -3321,7 +3202,6 @@
           });
         }
 
-        // Restore drag-and-drop positions
         if (data.dragPositions) {
           Object.entries(data.dragPositions).forEach(
             ([itemId, containerId]) => {
@@ -3332,11 +3212,9 @@
           );
         }
 
-        // Restore checkbox
         const chk = document.getElementById("check-objectives");
         if (chk && data.checkObjectives) chk.checked = true;
 
-        // Update progress bar without adding points
         let activeSections = document.querySelectorAll(
           "section.active, section.completed",
         ).length;
@@ -3353,7 +3231,6 @@
           percent + "%";
         document.getElementById("percent-display").innerText = percent + "%";
 
-        // Scroll to the last active section (where the user left off).
         const allSections = Array.from(
           document.querySelectorAll("section[id]"),
         );
@@ -3361,13 +3238,11 @@
           s.classList.contains("active"),
         );
         if (activeSectionEls.length > 1) {
-          // More than just sec-1 is active — scroll to the last one.
           const target = activeSectionEls[activeSectionEls.length - 1];
           target.scrollIntoView({ behavior: "instant" });
         }
       }
 
-      // Load saved state on page load
       loadState();
     </script>
   </body>

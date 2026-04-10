@@ -12,7 +12,6 @@
       rel="stylesheet"
     />
     <style>
-      /* ========== DESIGN TOKENS ========== */
       :root {
         --primary: #4338ca;
         --primary-light: #6366f1;
@@ -49,7 +48,6 @@
         --font-ui: var(--font-heading);
       }
 
-      /* ========== RESET & BASE ========== */
       *,
       *::before,
       *::after {
@@ -104,7 +102,6 @@
         font-family: var(--font-ui);
       }
 
-      /* ========== HEADER ========== */
       .course-header {
         position: fixed;
         top: 0;
@@ -216,14 +213,12 @@
         box-shadow: var(--shadow-primary);
       }
 
-      /* ========== MAIN CONTAINER ========== */
       main.container {
         max-width: 860px;
         margin: 0 auto 60px;
         padding: 0 20px;
       }
 
-      /* ========== SECTIONS AS CARDS ========== */
       section {
         background: var(--surface);
         border-radius: var(--radius);
@@ -278,7 +273,6 @@
         width: 4px;
       }
 
-      /* ========== TYPOGRAPHY ========== */
       h2 {
         color: var(--secondary);
         font-size: 1.65rem;
@@ -357,7 +351,6 @@
         background: var(--primary-bg);
       }
 
-      /* ========== ARTICLES / INFO CARDS ========== */
       article {
         border-radius: var(--radius-sm);
         padding: 20px 24px;
@@ -375,7 +368,6 @@
         border-bottom: 1px solid var(--border-light);
       }
 
-      /* ========== INTERACTIVE BOX ========== */
       .interactive-box {
         background: var(--surface-2);
         padding: 28px 32px;
@@ -402,7 +394,6 @@
         border-radius: 0 0 4px 4px;
       }
 
-      /* ========== BLANK INPUT ========== */
       .blank-input {
         border: none;
         border-bottom: 2px solid var(--primary-light);
@@ -437,7 +428,6 @@
         background: rgba(220, 38, 38, 0.06);
       }
 
-      /* ========== DRAG AND DROP ========== */
       .draggable-container {
         display: flex;
         gap: 10px;
@@ -516,7 +506,6 @@
         box-shadow: inset 0 0 0 2px var(--primary-bg-hover);
       }
 
-      /* ========== QUIZ OPTIONS ========== */
       .quiz-option {
         display: flex;
         align-items: center;
@@ -558,7 +547,6 @@
         box-shadow: 0 0 0 1px rgba(220, 38, 38, 0.1);
       }
 
-      /* ========== BUTTONS ========== */
       .btn-check {
         font-family: var(--font-ui);
         font-weight: 600;
@@ -604,7 +592,6 @@
         box-shadow: 0 6px 20px rgba(15, 23, 42, 0.3);
       }
 
-      /* ========== FEEDBACK ========== */
       .feedback-msg {
         margin-top: 14px;
         font-weight: 600;
@@ -626,7 +613,6 @@
         border: 1px solid var(--error-border);
       }
 
-      /* ========== TABLE ========== */
       table {
         border-collapse: collapse;
         width: 100%;
@@ -664,7 +650,6 @@
         background: var(--surface-2);
       }
 
-      /* ========== GRID (Pico override) ========== */
       .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -676,7 +661,6 @@
         margin: 0;
       }
 
-      /* ========== select ========== */
       select {
         font-family: var(--font-ui);
         padding: 10px 14px !important;
@@ -705,7 +689,6 @@
         color: var(--error);
       }
 
-      /* ========== CHECKBOX ========== */
       input[type="checkbox"] {
         width: 20px;
         height: 20px;
@@ -715,7 +698,6 @@
         margin-right: 8px;
       }
 
-      /* ========== FOOTER ========== */
       footer {
         text-align: center;
         padding: 40px 20px;
@@ -728,7 +710,6 @@
         margin: 0;
       }
 
-      /* ========== RESPONSIVE ========== */
       @media (max-width: 768px) {
         html {
           scroll-padding-top: 140px;
@@ -808,13 +789,11 @@
           margin-top: 8px;
         }
 
-        /* Stack inline 2-column grids on mobile */
         div[style*="grid-template-columns: 1fr 1fr"],
         div[style*="grid-template-columns:1fr 1fr"] {
           grid-template-columns: 1fr !important;
         }
 
-        /* Prevent table overflow */
         table {
           display: block;
           overflow-x: auto;
@@ -848,38 +827,16 @@
         }
       }
 
-      /* ========== SMOOTH SCROLL ========== */
       html {
         scroll-behavior: smooth;
         scroll-padding-top: 100px;
       }
 
-      /* ========== SELECTION ========== */
       ::selection {
         background: var(--primary-bg-hover);
         color: var(--primary-dark);
       }
 
-      /* ========== PRINT ========== */
-      @media print {
-        .course-header {
-          position: static;
-          box-shadow: none;
-        }
-
-        section {
-          opacity: 1 !important;
-          pointer-events: all !important;
-          break-inside: avoid;
-        }
-
-        .btn-check,
-        .btn-next {
-          display: none !important;
-        }
-      }
-
-      /* ========== COMPONENT CARD ========== */
       .component-card {
         background: var(--surface-2);
         border: 1px solid var(--border);
@@ -898,7 +855,6 @@
         margin-bottom: 12px;
       }
 
-      /* ========== SPEC BADGE ========== */
       .spec-badge {
         display: inline-block;
         font-family: var(--font-ui);
@@ -913,7 +869,6 @@
         letter-spacing: 0.01em;
       }
 
-      /* ========== INFO / TIP / WARNING BOXES ========== */
       .tip-box {
         background: var(--warn-bg);
         border: 1px solid var(--warn-border);
@@ -956,7 +911,6 @@
         margin-bottom: 8px;
       }
 
-      /* ========== SELECT QUIZ ROW ========== */
       .select-quiz-row {
         display: flex;
         align-items: center;
@@ -972,7 +926,6 @@
         min-width: 200px;
       }
 
-      /* ========== FINAL RESULT ========== */
       .final-result {
         display: none;
         margin-top: 24px;
@@ -1003,9 +956,6 @@
   </head>
 
   <body>
-    <!-- ============================================
-            HEADER SYSTEM
-            ============================================ -->
     <header class="course-header">
       <div class="header-content">
         <div>
@@ -1029,7 +979,6 @@
     </header>
 
     <main class="container">
-      <!-- ============================================ SECTIUNEA 1 ============================================ -->
       <section id="sec-1" class="active completed">
         <h2>1. Introducere și Obiective</h2>
 
@@ -1154,7 +1103,6 @@
         </div>
       </section>
 
-      <!-- ============================================ SECTIUNEA 2 ============================================ -->
       <section id="sec-2">
         <h2>2. Hardware - Componentele Fizice ale Calculatorului</h2>
 
@@ -1367,7 +1315,6 @@
         </div>
       </section>
 
-      <!-- ============================================ SECTIUNEA 3 ============================================ -->
       <section id="sec-3">
         <h2>3. Software - Tipuri, Clasificări și Licențe</h2>
 
@@ -1608,7 +1555,6 @@
         </div>
       </section>
 
-      <!-- ============================================ SECTIUNEA 4 ============================================ -->
       <section id="sec-4">
         <h2>4. Sisteme de Operare în Practica Juridică</h2>
 
@@ -1830,7 +1776,6 @@
         </div>
       </section>
 
-      <!-- ============================================ SECTIUNEA 5 ============================================ -->
       <section id="sec-5">
         <h2>5. Aplicații Software Esențiale în Activitatea Juridică</h2>
 
@@ -2090,7 +2035,6 @@
         </div>
       </section>
 
-      <!-- ============================================ SECTIUNEA 6 ============================================ -->
       <section id="sec-6">
         <h2>6. Securitatea Informatică în Practica Juridică</h2>
 
@@ -2329,7 +2273,6 @@
         </div>
       </section>
 
-      <!-- ============================================ SECTIUNEA 7 - TEST FINAL ============================================ -->
       <section id="sec-7">
         <h2>7. 📝 Test Final de Evaluare - Curs 2</h2>
 
@@ -2350,7 +2293,6 @@
             apăsați butonul de verificare.
           </p>
 
-          <!-- Q1 -->
           <div style="margin-bottom: 25px">
             <p>
               <strong
@@ -2376,7 +2318,6 @@
             >
           </div>
 
-          <!-- Q2 -->
           <div style="margin-bottom: 25px">
             <p>
               <strong
@@ -2402,7 +2343,6 @@
             >
           </div>
 
-          <!-- Q3 -->
           <div style="margin-bottom: 25px">
             <p>
               <strong
@@ -2429,7 +2369,6 @@
             >
           </div>
 
-          <!-- Q4 -->
           <div style="margin-bottom: 25px">
             <p>
               <strong
@@ -2458,7 +2397,6 @@
             >
           </div>
 
-          <!-- Q5 -->
           <div style="margin-bottom: 25px">
             <p>
               <strong
@@ -2484,7 +2422,6 @@
             >
           </div>
 
-          <!-- Q6 -->
           <div style="margin-bottom: 25px">
             <p><strong>6. Regula de backup „3-2-1" înseamnă:</strong></p>
             <label class="quiz-option">
@@ -2508,7 +2445,6 @@
             >
           </div>
 
-          <!-- Q7 -->
           <div style="margin-bottom: 25px">
             <p>
               <strong
@@ -2537,7 +2473,6 @@
             >
           </div>
 
-          <!-- Q8 -->
           <div style="margin-bottom: 25px">
             <p>
               <strong
@@ -2565,7 +2500,6 @@
             >
           </div>
 
-          <!-- Q9 -->
           <div style="margin-bottom: 25px">
             <p>
               <strong
@@ -2594,7 +2528,6 @@
             >
           </div>
 
-          <!-- Q10 -->
           <div style="margin-bottom: 25px">
             <p>
               <strong
@@ -2635,21 +2568,6 @@
             <h2 id="final-score-display">0/100</h2>
             <p id="final-message" style="font-size: 1.2rem; margin: 15px 0"></p>
             <p id="final-detail" style="color: #555; font-size: 0.95rem"></p>
-            <button
-              onclick="window.print()"
-              style="
-                margin-top: 20px;
-                padding: 10px 25px;
-                background: #1a73e8;
-                color: white;
-                border: none;
-                border-radius: 8px;
-                cursor: pointer;
-                font-size: 1rem;
-              "
-            >
-              🖨️ Printează Rezultat
-            </button>
           </div>
         </div>
       </section>
@@ -2669,9 +2587,6 @@
     </footer>
 
     <script>
-      // ============================================================
-      // TIMER
-      // ============================================================
       let timerInterval = null,
         secondsElapsed = 0,
         totalScore = 0,
@@ -2700,9 +2615,6 @@
           String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
       }
 
-      // ============================================================
-      // PROGRESS TRACKING
-      // ============================================================
       function updateProgress() {
         const totalSections = 7;
         const pct = Math.min(
@@ -2761,7 +2673,6 @@
           timestamp: new Date().toISOString(),
         };
 
-        // Section visual classes
         data.sectionClasses = {};
         ["sec-1", "sec-2", "sec-3", "sec-4", "sec-5", "sec-6", "sec-7"].forEach(
           (id) => {
@@ -2770,7 +2681,6 @@
           },
         );
 
-        // Checkboxes
         data.checkboxes = {};
         document
           .querySelectorAll('input[type="checkbox"][id]')
@@ -2778,7 +2688,6 @@
             data.checkboxes[cb.id] = cb.checked;
           });
 
-        // Blank inputs (by section)
         data.blanks = {};
         ["sec-2", "sec-5"].forEach((secId) => {
           const sec = document.getElementById(secId);
@@ -2791,7 +2700,6 @@
           }));
         });
 
-        // Select dropdowns (by section)
         data.selects = {};
         ["sec-4"].forEach((secId) => {
           const sec = document.getElementById(secId);
@@ -2804,7 +2712,6 @@
           }));
         });
 
-        // Drag-and-drop: save items in each container/zone
         data.dragDrop = {};
         document
           .querySelectorAll(".draggable-container[id], .drop-zone[id]")
@@ -2814,7 +2721,6 @@
             ).map((item) => item.dataset.item);
           });
 
-        // Final test: radio selections and quiz-option classes
         data.radios = {};
         data.quizOptionClasses = {};
         for (let i = 1; i <= 10; i++) {
@@ -2828,7 +2734,6 @@
           );
         }
 
-        // Feedback elements
         data.feedbacks = {};
         document.querySelectorAll('[id^="feedback-sec-"]').forEach((el) => {
           data.feedbacks[el.id] = {
@@ -2838,7 +2743,6 @@
           };
         });
 
-        // Next-button visibility (per section)
         data.nextBtns = {};
         ["sec-2", "sec-3", "sec-4", "sec-5", "sec-6"].forEach((secId) => {
           const sec = document.getElementById(secId);
@@ -2847,7 +2751,6 @@
           if (btn) data.nextBtns[secId] = btn.style.display;
         });
 
-        // Final result panel
         const fr = document.getElementById("final-result");
         if (fr) {
           data.finalResult = {
@@ -2870,7 +2773,6 @@
           if (data.sectionState) Object.assign(sectionState, data.sectionState);
           updateProgress();
 
-          // Restore section visual classes
           if (data.sectionClasses) {
             Object.entries(data.sectionClasses).forEach(([id, classes]) => {
               const el = document.getElementById(id);
@@ -2878,7 +2780,6 @@
             });
           }
 
-          // Restore checkboxes
           if (data.checkboxes) {
             Object.entries(data.checkboxes).forEach(([id, checked]) => {
               const cb = document.getElementById(id);
@@ -2886,7 +2787,6 @@
             });
           }
 
-          // Restore blank inputs
           if (data.blanks) {
             Object.entries(data.blanks).forEach(([secId, inputs]) => {
               const sec = document.getElementById(secId);
@@ -2901,7 +2801,6 @@
             });
           }
 
-          // Restore selects
           if (data.selects) {
             Object.entries(data.selects).forEach(([secId, selects]) => {
               const sec = document.getElementById(secId);
@@ -2916,7 +2815,6 @@
             });
           }
 
-          // Restore drag-and-drop
           if (data.dragDrop) {
             const allItems = {};
             document.querySelectorAll(".draggable-item").forEach((item) => {
@@ -2931,7 +2829,6 @@
             });
           }
 
-          // Restore radio buttons
           if (data.radios) {
             Object.entries(data.radios).forEach(([name, value]) => {
               if (value) {
@@ -2943,7 +2840,6 @@
             });
           }
 
-          // Restore quiz-option classes
           if (data.quizOptionClasses) {
             Object.entries(data.quizOptionClasses).forEach(
               ([qName, classes]) => {
@@ -2957,7 +2853,6 @@
             );
           }
 
-          // Restore feedbacks
           if (data.feedbacks) {
             Object.entries(data.feedbacks).forEach(([id, saved]) => {
               const el = document.getElementById(id);
@@ -2969,7 +2864,6 @@
             });
           }
 
-          // Restore next-button visibility
           if (data.nextBtns) {
             Object.entries(data.nextBtns).forEach(([secId, display]) => {
               const sec = document.getElementById(secId);
@@ -2979,7 +2873,6 @@
             });
           }
 
-          // Restore final result panel
           if (data.finalResult) {
             const fr = document.getElementById("final-result");
             if (fr) {
@@ -2994,11 +2887,6 @@
         }
       }
 
-      // ============================================================
-      // INTERACTIVE EXERCISES
-      // ============================================================
-
-      // Fill in the blanks
       function checkBlanks(sectionId) {
         const section = document.getElementById(sectionId);
         const inputs = section.querySelectorAll(".blank-input");
@@ -3030,7 +2918,6 @@
         saveUserProgress();
       }
 
-      // Drag and Drop
       let draggedItem = null;
 
       document.addEventListener("dragstart", (e) => {
@@ -3082,7 +2969,6 @@
               allCorrect = false;
             }
           });
-          // Check if all expected items are present
           const itemNames = Array.from(items).map((i) => i.dataset.item);
           accepts.forEach((a) => {
             if (!itemNames.includes(a)) {
@@ -3105,7 +2991,6 @@
         saveUserProgress();
       }
 
-      // Select dropdowns
       function checkSelects(sectionId) {
         const section = document.getElementById(sectionId);
         const selects = section.querySelectorAll("select[data-answer]");
@@ -3133,9 +3018,6 @@
         saveUserProgress();
       }
 
-      // ============================================================
-      // FINAL TEST
-      // ============================================================
       const CORRECT_ANSWERS = {
         q1: "b",
         q2: "c",
@@ -3226,9 +3108,6 @@
         resultDiv.scrollIntoView({ behavior: "smooth", block: "center" });
       }
 
-      // ============================================================
-      // INITIALIZATION
-      // ============================================================
       document.addEventListener("DOMContentLoaded", () => {
         updateProgress();
         document.querySelectorAll('input[type="radio"]').forEach((radio) => {

@@ -12,7 +12,6 @@
       rel="stylesheet"
     />
     <style>
-      /* ========== DESIGN TOKENS ========== */
       :root {
         --primary: #4338ca;
         --primary-light: #6366f1;
@@ -49,7 +48,6 @@
         --font-ui: "Inter", system-ui, -apple-system, sans-serif;
       }
 
-      /* ========== RESET & BASE ========== */
       *,
       *::before,
       *::after {
@@ -83,6 +81,7 @@
         color: var(--primary);
         text-decoration: none;
       }
+
       a:hover {
         text-decoration: underline;
       }
@@ -101,19 +100,18 @@
       img {
         max-width: 100%;
       }
+
       table {
         border-collapse: collapse;
         width: 100%;
       }
 
-      /* ========== MAIN CONTAINER ========== */
       main.container {
         max-width: 860px;
         margin: 0 auto;
         padding: 0 20px;
       }
 
-      /* ========== SECTIONS AS CARDS ========== */
       section {
         background: var(--surface);
         border-radius: var(--radius);
@@ -129,6 +127,7 @@
         section {
           padding: 24px 20px;
         }
+
         main.container {
           padding: 0 10px;
         }
@@ -144,7 +143,6 @@
         background: var(--primary);
       }
 
-      /* ========== TYPOGRAPHY ========== */
       h1 {
         font-size: 2rem;
         font-weight: 800;
@@ -182,7 +180,6 @@
         margin-bottom: 8px;
       }
 
-      /* ========== ARTICLES / INFO CARDS ========== */
       article {
         border-radius: var(--radius-sm);
         padding: 20px 24px;
@@ -225,7 +222,6 @@
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       }
 
-      /* COVER PAGE */
       .cover-page {
         text-align: center;
         padding: 60px 20px;
@@ -260,7 +256,6 @@
         color: var(--primary);
       }
 
-      /* Table layout */
       table {
         border-radius: var(--radius-sm);
         overflow: hidden;
@@ -295,13 +290,13 @@
         background: var(--surface-2);
       }
 
-      /* TOC */
       .toc-entry {
         display: block;
         border-bottom: 1px dashed var(--border);
         padding: 8px 0;
         font-family: var(--font-heading);
       }
+
       .toc-link {
         color: var(--text);
         text-decoration: none;
@@ -309,6 +304,7 @@
         width: 100%;
         transition: color 0.2s ease;
       }
+
       .toc-link:hover {
         color: var(--primary);
       }
@@ -358,14 +354,13 @@
   <body>
     <main class="container">
       <section>
-        <!-- COVER PAGE -->
         <div class="cover-page">
           <div class="uni-brand"><span style="font-size: 32px">ASE</span></div>
           <div class="uni-brand">FACULTATEA DE DREPT</div>
 
-          <div class="course-title">
+          <h1 class="course-title">
             CURS UNIVERSITAR INTERACTIV<br />INFORMATICĂ JURIDICĂ
-          </div>
+          </h1>
           <div class="course-subtitle"><br /></div>
 
           <div style="margin-top: 80px">
@@ -389,7 +384,6 @@
         </div>
       </section>
       <section>
-        <!-- TABLE OF CONTENTS -->
         <h2>CUPRINS</h2>
         <div class="toc">
           <div class="toc-entry">
@@ -446,8 +440,7 @@
         </div>
       </section>
       <section id="chapter-0">
-        <!-- INTRODUCTION -->
-        <h1>INTRODUCERE ÎN CURS</h1>
+        <h2>INTRODUCERE ÎN CURS</h2>
 
         <h3>Obiectivele Cursului</h3>
         <p>
@@ -541,7 +534,6 @@
         </article>
       </section>
       <section id="chapter-1">
-        <!-- CURS I -->
         <h2>CURSUL I<br />Introducere în informatica juridică</h2>
         <div class="meta-info">
           Durată: 80 minute | Tip: Prelegere &amp; Introducere
@@ -687,7 +679,6 @@
         </ol>
       </section>
       <section id="chapter-2">
-        <!-- CURS II -->
         <h2>CURSUL II<br />Bazele tehnologiei informației pentru juriști</h2>
 
         <h3>1. Hardware și Software în Activitatea Juridică (25 min)</h3>
@@ -771,7 +762,6 @@
         </p>
       </section>
       <section id="chapter-3">
-        <!-- CURS III -->
         <h2>CURSUL III<br />Sisteme informatice și baze de date juridice</h2>
 
         <h3>1. Surse de Informare Legislativă (25 min)</h3>
@@ -842,7 +832,6 @@
         </article>
       </section>
       <section id="chapter-4">
-        <!-- CURS IV -->
         <h2>
           CURSUL IV<br />Securitatea informației și protecția datelor (GDPR)
         </h2>
@@ -913,7 +902,6 @@
         </p>
       </section>
       <section id="chapter-5">
-        <!-- CURS V -->
         <h2>
           CURSUL V<br />Introducere în inteligența artificială în domeniul
           juridic
@@ -991,7 +979,6 @@
         </p>
       </section>
       <section id="chapter-6">
-        <!-- CURS VI -->
         <h2>CURSUL VI<br />Introducere în tehnologia Blockchain</h2>
 
         <h3>1. Principii de Funcționare (25 min)</h3>
@@ -1055,7 +1042,6 @@
         </p>
       </section>
       <section id="chapter-7">
-        <!-- CURS VII -->
         <h2>
           CURSUL VII<br />Contracte inteligente și perspectivele utilizării
           tehnologiilor emergente
@@ -1113,7 +1099,6 @@
         </p>
       </section>
       <section id="chapter-8">
-        <!-- BIBLIOGRAPHY -->
         <h2>BIBLIOGRAFIE</h2>
 
         <article class="box">
@@ -1175,7 +1160,6 @@
         </article>
       </section>
       <section id="chapter-9">
-        <!-- INTERACTIVE PLATFORM -->
         <h2>PLATFORMA INTERACTIVĂ</h2>
         <h3>Specificații Tehnice pentru Implementare (Moodle)</h3>
 
@@ -1264,7 +1248,6 @@
         </table>
       </section>
       <section id="chapter-10">
-        <!-- APPENDICES -->
         <h2>ANEXE</h2>
 
         <h3>Glosar de Termeni</h3>
